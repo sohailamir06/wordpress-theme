@@ -80,6 +80,8 @@ add_action( 'init', function () {
 add_action( 'after_switch_theme', 'ca_sync_theme_pages_with_admin' );
 add_action( 'admin_init', 'ca_sync_theme_pages_with_admin' );
 add_action( 'save_post_page', 'ca_sync_theme_page_on_save', 20, 3 );
+add_filter( 'allowed_block_types_all', 'ca_allowed_block_types_all', 10, 2 );
+add_filter( 'block_editor_settings_all', 'ca_block_editor_builder_settings', 10, 2 );
 
 /**
  * Canonical page map used to auto-provision and synchronize page structure.
@@ -156,6 +158,7 @@ function ca_sync_theme_pages_with_admin() {
 		$page_ids[ $path ] = $page_id;
 
 		ca_apply_page_template( $page_id, isset( $config['template'] ) ? (string) $config['template'] : '' );
+		ca_normalize_editable_block_wrapper( $page_id );
 
 		if ( ! empty( $config['render'] ) && is_callable( $config['render'] ) ) {
 			ca_seed_post_content_if_empty( $page_id, $config['render'], '' );
@@ -306,6 +309,88 @@ function ca_set_front_page( $home_id ) {
 }
 
 /**
+ * Curate block inserter list for a page-builder-like editing experience.
+ *
+ * @param bool|array               $allowed_block_types Allowed block types.
+ * @param WP_Block_Editor_Context  $context             Editor context.
+ * @return bool|array
+ */
+function ca_allowed_block_types_all( $allowed_block_types, $context ) {
+	if ( empty( $context->post ) ) {
+		return $allowed_block_types;
+	}
+
+	$post_type = get_post_type( $context->post );
+	if ( ! in_array( $post_type, [ 'page', 'wp_template', 'wp_template_part' ], true ) ) {
+		return $allowed_block_types;
+	}
+
+	return [
+		'core/group',
+		'core/columns',
+		'core/column',
+		'core/cover',
+		'core/media-text',
+		'core/spacer',
+		'core/separator',
+		'core/heading',
+		'core/paragraph',
+		'core/list',
+		'core/quote',
+		'core/buttons',
+		'core/button',
+		'core/image',
+		'core/gallery',
+		'core/video',
+		'core/file',
+		'core/freeform',
+		'core/shortcode',
+		'core/template-part',
+		'core/post-content',
+		'core/post-title',
+		'core/query',
+		'core/query-title',
+		'core/query-pagination',
+		'core/query-pagination-next',
+		'core/query-pagination-previous',
+		'core/query-pagination-numbers',
+		'core/site-logo',
+		'core/site-title',
+		'core/site-tagline',
+		'core/navigation',
+		'core/navigation-link',
+		'core/navigation-submenu',
+		'core/social-links',
+		'core/social-link',
+	];
+}
+
+/**
+ * Force visual editing defaults to keep Gutenberg "builder-like" for editors.
+ *
+ * @param array                    $settings Editor settings.
+ * @param WP_Block_Editor_Context  $context  Editor context.
+ * @return array
+ */
+function ca_block_editor_builder_settings( $settings, $context ) {
+	$settings['codeEditingEnabled'] = false;
+	$settings['richEditingEnabled'] = true;
+	$settings['focusMode']          = false;
+	$settings['fixedToolbar']       = true;
+	$settings['keepCaretInsideBlock'] = true;
+	$settings['enableOpenverseMediaCategory'] = false;
+
+	if ( ! empty( $context->post ) ) {
+		$post_type = get_post_type( $context->post );
+		if ( in_array( $post_type, [ 'page', 'wp_template', 'wp_template_part' ], true ) ) {
+			$settings['defaultMode'] = 'visual';
+		}
+	}
+
+	return $settings;
+}
+
+/**
  * Backward-compatible wrapper.
  */
 function ca_seed_static_design_content() {
@@ -344,7 +429,7 @@ function ca_seed_post_content_if_empty( $post_id, $renderer, $template = '' ) {
 	$updated = wp_update_post(
 		[
 			'ID'           => $post_id,
-			'post_content' => ca_wrap_html_block( $html ),
+			'post_content' => ca_wrap_editable_content_block( $html ),
 		],
 		true
 	);
@@ -359,13 +444,48 @@ function ca_seed_post_content_if_empty( $post_id, $renderer, $template = '' ) {
 }
 
 /**
- * Wrap arbitrary HTML inside a core/html Gutenberg block.
+ * Wrap arbitrary HTML in a visual-editable Classic (freeform) block.
  *
  * @param string $html Raw HTML markup.
  * @return string
  */
-function ca_wrap_html_block( $html ) {
-	return "<!-- wp:html -->\n" . trim( $html ) . "\n<!-- /wp:html -->";
+function ca_wrap_editable_content_block( $html ) {
+	return "<!-- wp:freeform -->\n" . trim( $html ) . "\n<!-- /wp:freeform -->";
+}
+
+/**
+ * Convert old core/html wrappers into visual-editable freeform wrappers.
+ *
+ * @param int $post_id Page ID.
+ * @return void
+ */
+function ca_normalize_editable_block_wrapper( $post_id ) {
+	$post = get_post( $post_id );
+	if ( ! $post || 'page' !== $post->post_type ) {
+		return;
+	}
+
+	$content = trim( (string) $post->post_content );
+	$open    = '<!-- wp:html -->';
+	$close   = '<!-- /wp:html -->';
+
+	if ( ! str_starts_with( $content, $open ) || ! str_ends_with( $content, $close ) ) {
+		return;
+	}
+
+	$inner = substr( $content, strlen( $open ), -strlen( $close ) );
+	$new   = ca_wrap_editable_content_block( $inner );
+
+	if ( $new === $content ) {
+		return;
+	}
+
+	wp_update_post(
+		[
+			'ID'           => $post_id,
+			'post_content' => $new,
+		]
+	);
 }
 
 add_filter( 'should_load_remote_block_patterns', '__return_false' );
