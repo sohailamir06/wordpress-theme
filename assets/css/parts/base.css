@@ -1,0 +1,88 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { overflow-x: hidden; }
+
+:root {
+	--navy: #0b1d3a;
+	--navy-2: #0d2347;
+	--navy-3: #152d5c;
+	--ice: #38bdf8;
+	--ice-2: #7dd3fc;
+	--ice-3: #bae6fd;
+	--green: #22c55e;
+	--green-2: #16a34a;
+	--red: #ef4444;
+	--red-2: #dc2626;
+	--white: #f9fafc;
+	--off: #f1f5f9;
+	--text: #1e293b;
+	--text-2: #475569;
+	--max-w: 1280px;
+	--accent: #38bdf8;
+	--accent-2: #7dd3fc;
+	--cta: #22c55e;
+	--cta-2: #16a34a;
+}
+
+html { scroll-behavior: smooth; }
+body {
+	font-family: 'Barlow', sans-serif;
+	color: var(--text);
+	overflow-x: hidden;
+	line-height: 1.5;
+}
+h1, h2, h3, h4 { font-family: 'Barlow Condensed', sans-serif; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; font-family: inherit; background: none; }
+img { max-width: 100%; }
+
+.center { text-align: center; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mt-32 { margin-top: 32px; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+.d1 { transition-delay: .1s; }
+.d2 { transition-delay: .2s; }
+.d3 { transition-delay: .3s; }
+.d4 { transition-delay: .4s; }
+
+.section { padding: 80px 40px; }
+.section-sm { padding: 60px 40px; }
+.sec-in { max-width: var(--max-w); margin: 0 auto; }
+.sec-label {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: var(--accent);
+	margin-bottom: 10px;
+}
+.sec-label::before { content: ''; width: 28px; height: 2px; background: var(--accent); display: block; }
+.sec-label.center { justify-content: center; }
+.sec-title {
+	font-size: clamp(32px, 4vw, 52px);
+	font-weight: 800;
+	text-transform: uppercase;
+	line-height: .95;
+	margin-bottom: 14px;
+	color: var(--text);
+}
+.sec-title.light { color: #fff; }
+.sec-title.center { text-align: center; }
+.sec-sub {
+	font-size: 17px;
+	color: var(--text-2);
+	line-height: 1.7;
+	max-width: 580px;
+}
+.sec-sub.light { color: rgba(255,255,255,.72); }
+.sec-sub.center { text-align: center; }
+
+@keyframes pgfade {
+	from { opacity: 0; transform: translateY(6px); }
+	to   { opacity: 1; transform: none; }
+}
+.ca-main > * { animation: pgfade .35s ease; }

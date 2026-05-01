@@ -1,0 +1,19 @@
+/* Cool Air USA — Main Stylesheet
+   Imports modular CSS files for theme. */
+@import url('parts/base.css');
+@import url('parts/buttons.css');
+@import url('parts/header.css');
+@import url('parts/hero.css');
+@import url('parts/sections.css');
+@import url('parts/services.css');
+@import url('parts/why.css');
+@import url('parts/reviews.css');
+@import url('parts/process.css');
+@import url('parts/brands.css');
+@import url('parts/map.css');
+@import url('parts/membership.css');
+@import url('parts/gallery.css');
+@import url('parts/emergency.css');
+@import url('parts/pages.css');
+@import url('parts/footer.css');
+@import url('parts/responsive.css');

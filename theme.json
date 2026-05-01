@@ -1,0 +1,126 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true,
+    "color": {
+      "custom": false,
+      "customGradient": false,
+      "palette": [
+        { "slug": "navy",       "color": "#0b1d3a", "name": "Navy" },
+        { "slug": "navy-2",     "color": "#0d2347", "name": "Navy Mid" },
+        { "slug": "navy-3",     "color": "#152d5c", "name": "Navy Light" },
+        { "slug": "ice",        "color": "#38bdf8", "name": "Ice Blue" },
+        { "slug": "ice-2",      "color": "#7dd3fc", "name": "Ice Blue Light" },
+        { "slug": "ice-3",      "color": "#bae6fd", "name": "Ice Blue Pale" },
+        { "slug": "green",      "color": "#22c55e", "name": "Green" },
+        { "slug": "green-2",    "color": "#16a34a", "name": "Green Dark" },
+        { "slug": "red",        "color": "#ef4444", "name": "Red" },
+        { "slug": "red-2",      "color": "#dc2626", "name": "Red Dark" },
+        { "slug": "white",      "color": "#f9fafc", "name": "White" },
+        { "slug": "off-white",  "color": "#f1f5f9", "name": "Off White" },
+        { "slug": "text",       "color": "#1e293b", "name": "Text Dark" },
+        { "slug": "text-2",     "color": "#475569", "name": "Text Mid" },
+        { "slug": "footer-bg",  "color": "#060d1a", "name": "Footer" }
+      ],
+      "gradients": [
+        {
+          "slug": "navy-gradient",
+          "gradient": "linear-gradient(135deg, #0b1d3a 0%, #0d2247 60%, #091829 100%)",
+          "name": "Navy Gradient"
+        },
+        {
+          "slug": "green-gradient",
+          "gradient": "linear-gradient(135deg, #16a34a 0%, #0a6630 100%)",
+          "name": "Green Gradient"
+        }
+      ]
+    },
+    "typography": {
+      "customFontSize": false,
+      "fontFamilies": [
+        {
+          "fontFamily": "'Barlow', sans-serif",
+          "slug": "barlow",
+          "name": "Barlow"
+        },
+        {
+          "fontFamily": "'Barlow Condensed', sans-serif",
+          "slug": "barlow-condensed",
+          "name": "Barlow Condensed"
+        }
+      ],
+      "fontSizes": [
+        { "slug": "small",   "size": "13px",                      "name": "Small" },
+        { "slug": "medium",  "size": "16px",                      "name": "Medium" },
+        { "slug": "large",   "size": "20px",                      "name": "Large" },
+        { "slug": "x-large", "size": "clamp(32px,4vw,52px)",      "name": "X Large" },
+        { "slug": "hero",    "size": "clamp(52px,7vw,90px)",      "name": "Hero" }
+      ],
+      "fluid": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true,
+      "units": ["px", "em", "rem", "%", "vw"],
+      "customSpacingSize": true,
+      "spacingSizes": [
+        { "slug": "20",  "size": "20px",  "name": "20" },
+        { "slug": "40",  "size": "40px",  "name": "40" },
+        { "slug": "60",  "size": "60px",  "name": "60" },
+        { "slug": "80",  "size": "80px",  "name": "80" }
+      ]
+    },
+    "dimensions": {
+      "minHeight": true
+    },
+    "layout": {
+      "contentSize": "1280px",
+      "wideSize": "1400px"
+    },
+    "blocks": {
+      "core/button": {
+        "color": {
+          "palette": []
+        }
+      }
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#ffffff",
+      "text": "#1e293b"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--barlow)",
+      "fontSize": "16px",
+      "lineHeight": "1.5"
+    },
+    "elements": {
+      "h1": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--barlow-condensed)",
+          "fontWeight": "900"
+        }
+      },
+      "h2": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--barlow-condensed)",
+          "fontWeight": "800"
+        }
+      },
+      "h3": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--barlow-condensed)",
+          "fontWeight": "700"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "#38bdf8"
+        }
+      }
+    }
+  }
+}

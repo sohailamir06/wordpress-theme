@@ -1,0 +1,118 @@
+.footer {
+	background: #060d1a;
+	color: rgba(255,255,255,.65);
+}
+.footer-main {
+	max-width: var(--max-w);
+	margin: 0 auto;
+	padding: 60px 40px 40px;
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr 1fr;
+	gap: 48px;
+}
+.footer-logo img {
+	height: 78px;
+	margin-bottom: 10px;
+	display: block;
+	filter: drop-shadow(0 4px 16px rgba(56,189,248,.25));
+}
+.footer-tagline {
+	font-family: 'Barlow Condensed', sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	color: var(--green);
+	margin-bottom: 10px;
+}
+.footer-about {
+	font-size: 14px;
+	line-height: 1.75;
+	margin-bottom: 20px;
+}
+.footer-crow {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 14px;
+	margin-bottom: 8px;
+}
+.footer-crow a {
+	color: var(--accent);
+	transition: color .15s;
+}
+.footer-crow a:hover { color: var(--accent-2); }
+
+.fcol-title {
+	font-family: 'Barlow Condensed', sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: #fff;
+	margin-bottom: 14px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.flink {
+	display: block;
+	font-size: 14px;
+	color: rgba(255,255,255,.6);
+	margin-bottom: 8px;
+	cursor: pointer;
+	transition: color .15s;
+	text-decoration: none;
+}
+.flink:hover { color: var(--accent); }
+
+.footer-bot {
+	border-top: 1px solid rgba(255,255,255,.07);
+	padding: 20px 40px;
+	max-width: var(--max-w);
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 13px;
+	flex-wrap: wrap;
+	gap: 14px;
+}
+.footer-legal-links {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	flex-wrap: wrap;
+}
+.footer-legal-links a {
+	color: rgba(255,255,255,.55);
+	font-size: 13px;
+	transition: color .15s;
+	text-decoration: none;
+}
+.footer-legal-links a:hover { color: var(--accent); }
+.footer-legal-sep {
+	color: rgba(255,255,255,.2);
+	font-size: 13px;
+}
+.footer-bot-copy {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	color: rgba(255,255,255,.35);
+	flex-wrap: wrap;
+}
+.fbadges {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+.fbadge {
+	background: rgba(255,255,255,.05);
+	border: 1px solid rgba(255,255,255,.1);
+	border-radius: 5px;
+	padding: 4px 10px;
+	font-size: 12px;
+	font-weight: 600;
+	color: rgba(255,255,255,.45);
+	white-space: nowrap;
+}

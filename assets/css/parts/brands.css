@@ -1,0 +1,51 @@
+.brands-section {
+	background: var(--off);
+	padding: 48px 0;
+	overflow: hidden;
+}
+.brands-hdr {
+	text-align: center;
+	font-family: 'Barlow Condensed', sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: var(--text-2);
+	margin-bottom: 24px;
+	padding: 0 40px;
+}
+@keyframes marquee {
+	from { transform: translateX(0); }
+	to   { transform: translateX(-50%); }
+}
+.brands-track {
+	display: flex;
+	gap: 10px;
+	animation: marquee 30s linear infinite;
+	width: max-content;
+	padding: 0 7px;
+}
+.brands-track:hover { animation-play-state: paused; }
+.brand-chip {
+	background: var(--navy);
+	border: 1px solid rgba(255,255,255,.08);
+	border-radius: 10px;
+	padding: 12px 22px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 140px;
+	height: 60px;
+	flex-shrink: 0;
+	transition: all .2s;
+	box-shadow: 0 2px 8px rgba(11,29,58,.18);
+}
+.brand-chip span {
+	font-family: 'Barlow Condensed', sans-serif;
+	font-size: 18px;
+	font-weight: 800;
+	color: #fff;
+	white-space: nowrap;
+	text-transform: uppercase;
+	letter-spacing: .5px;
+}

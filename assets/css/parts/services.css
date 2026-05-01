@@ -1,0 +1,68 @@
+.svcs-section {
+	background: var(--off);
+	padding-top: 56px;
+	padding-bottom: 56px;
+}
+.svcs-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 18px;
+	margin-top: 40px;
+}
+.svc-card-mod {
+	background: #fff;
+	border: 1px solid #e8edf5;
+	border-radius: 18px;
+	padding: 28px 22px;
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+	transition: all .3s;
+	display: block;
+	text-decoration: none;
+	--svc-color: #38bdf8;
+}
+.svc-card-mod:hover {
+	background: linear-gradient(135deg, var(--svc-color), color-mix(in srgb, var(--svc-color) 73%, black));
+	border-color: transparent;
+	box-shadow: 0 22px 52px color-mix(in srgb, var(--svc-color) 22%, transparent);
+	transform: translateY(-7px);
+}
+.svc-cat {
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: var(--svc-color);
+	margin-bottom: 10px;
+	transition: color .2s;
+}
+.svc-card-mod:hover .svc-cat { color: rgba(255,255,255,.7); }
+.svc-name {
+	font-family: 'Barlow Condensed', sans-serif;
+	font-size: 22px;
+	font-weight: 700;
+	color: var(--navy);
+	text-transform: uppercase;
+	margin-bottom: 9px;
+	line-height: 1.05;
+	transition: color .2s;
+}
+.svc-card-mod:hover .svc-name { color: #fff; }
+.svc-desc {
+	font-size: 13px;
+	color: var(--text-2);
+	line-height: 1.6;
+	margin-bottom: 16px;
+	transition: color .2s;
+}
+.svc-card-mod:hover .svc-desc { color: rgba(255,255,255,.82); }
+.svc-link {
+	font-size: 12px;
+	font-weight: 700;
+	color: var(--svc-color);
+	text-transform: uppercase;
+	letter-spacing: .5px;
+	transition: color .2s;
+}
+.svc-card-mod:hover .svc-link { color: rgba(255,255,255,.9); }
