@@ -30,7 +30,11 @@ add_action( 'after_setup_theme', function () {
 	add_theme_support( 'html5', [ 'search-form','comment-form','comment-list','gallery','caption','script','style' ] );
 	register_nav_menus(
 		[
-			'primary' => __( 'Primary Menu', 'cool-air-usa' ),
+			'primary'        => __( 'Primary Menu', 'cool-air-usa' ),
+			'footer_hvac'    => __( 'Footer HVAC Services', 'cool-air-usa' ),
+			'footer_more'    => __( 'Footer More Services', 'cool-air-usa' ),
+			'footer_company' => __( 'Footer Company', 'cool-air-usa' ),
+			'footer_legal'   => __( 'Footer Legal', 'cool-air-usa' ),
 		]
 	);
 } );
@@ -86,6 +90,8 @@ add_action( 'after_switch_theme', 'ca_sync_theme_pages_with_admin' );
 add_action( 'admin_init', 'ca_sync_theme_pages_with_admin' );
 add_action( 'after_switch_theme', 'ca_ensure_primary_menu' );
 add_action( 'admin_init', 'ca_ensure_primary_menu' );
+add_action( 'after_switch_theme', 'ca_ensure_footer_menus' );
+add_action( 'admin_init', 'ca_ensure_footer_menus' );
 add_action( 'save_post_page', 'ca_sync_theme_page_on_save', 20, 3 );
 add_filter( 'allowed_block_types_all', 'ca_allowed_block_types_all', 10, 2 );
 add_filter( 'block_editor_settings_all', 'ca_block_editor_builder_settings', 10, 2 );
@@ -347,6 +353,50 @@ function ca_ensure_primary_menu() {
 	}
 
 	$locations['primary'] = $menu_id;
+	set_theme_mod( 'nav_menu_locations', $locations );
+}
+
+/**
+ * Create and assign default footer menus only when their locations are empty.
+ *
+ * @return void
+ */
+function ca_ensure_footer_menus() {
+	if ( is_admin() && ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
+	if ( ! function_exists( 'ca_default_footer_menus' ) ) {
+		return;
+	}
+
+	$locations = (array) get_theme_mod( 'nav_menu_locations', [] );
+
+	foreach ( ca_default_footer_menus() as $location => $config ) {
+		if ( ! empty( $locations[ $location ] ) ) {
+			continue;
+		}
+
+		$menu_name = isset( $config['name'] ) ? (string) $config['name'] : ucwords( str_replace( '_', ' ', $location ) );
+		$menu      = wp_get_nav_menu_object( $menu_name );
+		$menu_id   = $menu && ! is_wp_error( $menu ) ? (int) $menu->term_id : 0;
+
+		if ( $menu_id <= 0 ) {
+			$created = wp_create_nav_menu( $menu_name );
+			if ( is_wp_error( $created ) ) {
+				continue;
+			}
+			$menu_id = (int) $created;
+		}
+
+		$existing_items = wp_get_nav_menu_items( $menu_id );
+		if ( empty( $existing_items ) && ! empty( $config['items'] ) && is_array( $config['items'] ) ) {
+			ca_seed_nav_menu_items( $menu_id, $config['items'] );
+		}
+
+		$locations[ $location ] = $menu_id;
+	}
+
 	set_theme_mod( 'nav_menu_locations', $locations );
 }
 
