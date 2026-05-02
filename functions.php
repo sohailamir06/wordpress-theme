@@ -430,7 +430,7 @@ function ca_seed_nav_menu_items( $menu_id, $items, $parent_id = 0 ) {
 }
 
 /**
- * Curate block inserter list for a page-builder-like editing experience.
+ * Keep all core and plugin blocks available in editable site surfaces.
  *
  * @param bool|array               $allowed_block_types Allowed block types.
  * @param WP_Block_Editor_Context  $context             Editor context.
@@ -446,44 +446,7 @@ function ca_allowed_block_types_all( $allowed_block_types, $context ) {
 		return $allowed_block_types;
 	}
 
-	return [
-		'core/group',
-		'core/columns',
-		'core/column',
-		'core/cover',
-		'core/media-text',
-		'core/spacer',
-		'core/separator',
-		'core/heading',
-		'core/paragraph',
-		'core/list',
-		'core/quote',
-		'core/buttons',
-		'core/button',
-		'core/image',
-		'core/gallery',
-		'core/video',
-		'core/file',
-		'core/freeform',
-		'core/shortcode',
-		'core/template-part',
-		'core/post-content',
-		'core/post-title',
-		'core/query',
-		'core/query-title',
-		'core/query-pagination',
-		'core/query-pagination-next',
-		'core/query-pagination-previous',
-		'core/query-pagination-numbers',
-		'core/site-logo',
-		'core/site-title',
-		'core/site-tagline',
-		'core/navigation',
-		'core/navigation-link',
-		'core/navigation-submenu',
-		'core/social-links',
-		'core/social-link',
-	];
+	return true;
 }
 
 /**

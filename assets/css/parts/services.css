@@ -22,6 +22,14 @@
 	text-decoration: none;
 	--svc-color: #38bdf8;
 }
+.svc-card-mod:nth-child(8n+1) { --svc-color: #0ea5e9; }
+.svc-card-mod:nth-child(8n+2) { --svc-color: #22c55e; }
+.svc-card-mod:nth-child(8n+3) { --svc-color: #3b82f6; }
+.svc-card-mod:nth-child(8n+4) { --svc-color: #8b5cf6; }
+.svc-card-mod:nth-child(8n+5) { --svc-color: #f59e0b; }
+.svc-card-mod:nth-child(8n+6) { --svc-color: #06b6d4; }
+.svc-card-mod:nth-child(8n+7) { --svc-color: #0891b2; }
+.svc-card-mod:nth-child(8n+8) { --svc-color: #ef4444; }
 .svc-card-mod:hover {
 	background: linear-gradient(135deg, var(--svc-color), color-mix(in srgb, var(--svc-color) 73%, black));
 	border-color: transparent;
@@ -64,5 +72,9 @@
 	text-transform: uppercase;
 	letter-spacing: .5px;
 	transition: color .2s;
+}
+.svc-link a {
+	color: inherit;
+	text-decoration: none;
 }
 .svc-card-mod:hover .svc-link { color: rgba(255,255,255,.9); }

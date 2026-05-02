@@ -6,6 +6,13 @@
 	display: flex;
 	align-items: center;
 }
+.hero p,
+.hero h1,
+.hero h2,
+.hero h3,
+.hero figure {
+	margin-top: 0;
+}
 .hero-bg {
 	position: absolute;
 	inset: 0;
@@ -235,6 +242,10 @@
 	text-transform: uppercase;
 	letter-spacing: .5px;
 	white-space: nowrap;
+}
+.grating-link a {
+	color: inherit;
+	text-decoration: none;
 }
 
 @keyframes scrollPulse {

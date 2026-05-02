@@ -30,6 +30,12 @@
 	will-change: transform;
 	--why-color: #38bdf8;
 }
+.why-card:nth-child(6n+1) { --why-color: #0ea5e9; }
+.why-card:nth-child(6n+2) { --why-color: #22c55e; }
+.why-card:nth-child(6n+3) { --why-color: #f59e0b; }
+.why-card:nth-child(6n+4) { --why-color: #8b5cf6; }
+.why-card:nth-child(6n+5) { --why-color: #ef4444; }
+.why-card:nth-child(6n+6) { --why-color: #06b6d4; }
 .why-bar {
 	position: absolute;
 	top: 0;
