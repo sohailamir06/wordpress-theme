@@ -7,50 +7,159 @@
  * Inserter: true
  */
 ?>
-<!-- wp:html -->
-<section class="hero" data-parallax>
+<!-- wp:group {"tagName":"section","className":"hero","layout":{"type":"constrained"}} -->
+<section class="wp-block-group hero">
+	<!-- wp:html -->
 	<div class="hero-bg"></div>
 	<div class="hero-float hero-float-a">AC</div>
 	<div class="hero-float hero-float-b">H2O</div>
-	<div class="hero-split">
-		<div>
-			<div class="hero-eyebrow">Your Neighbors. Not a Franchise. Since 2009.</div>
-			<h1 class="hero-h1"><em>HVAC &amp;</em><br><em>Plumbing</em><br>Experts<br>You Can<br>Trust</h1>
+	<!-- /wp:html -->
+
+	<!-- wp:group {"className":"hero-split","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+	<div class="wp-block-group hero-split">
+		<!-- wp:group {"layout":{"type":"constrained"}} -->
+		<div class="wp-block-group">
+			<!-- wp:paragraph {"className":"hero-eyebrow"} -->
+			<p class="hero-eyebrow">Your Neighbors. Not a Franchise. Since 2009.</p>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:heading {"level":1,"className":"hero-h1"} -->
+			<h1 class="wp-block-heading hero-h1"><em>HVAC &amp;</em><br><em>Plumbing</em><br>Experts<br>You Can<br>Trust</h1>
+			<!-- /wp:heading -->
+
+			<!-- wp:paragraph {"className":"hero-sub"} -->
 			<p class="hero-sub">Honest pricing, same-day service, and a team that treats your home like their own. South Florida's most trusted HVAC and plumbing company, open 24/7, 365 days a year.</p>
-			<div class="hero-acts">
-				<a class="btn-green" href="/contact/">Schedule Service &rarr;</a>
-				<a class="btn-outline-w" href="tel:9549151155">Call or Text (954) 915-1155</a>
+			<!-- /wp:paragraph -->
+
+			<!-- wp:buttons {"className":"hero-acts"} -->
+			<div class="wp-block-buttons hero-acts">
+				<!-- wp:button {"className":"btn-green"} -->
+				<div class="wp-block-button btn-green"><a class="wp-block-button__link wp-element-button" href="/contact/">Schedule Service &rarr;</a></div>
+				<!-- /wp:button -->
+
+				<!-- wp:button {"className":"btn-outline-w"} -->
+				<div class="wp-block-button btn-outline-w"><a class="wp-block-button__link wp-element-button" href="tel:9549151155">Call or Text (954) 915-1155</a></div>
+				<!-- /wp:button -->
 			</div>
-			<div class="hero-checks">
-				<div class="hero-check"><span class="hero-check-icon">&#10003;</span>Licensed &amp; Insured</div>
-				<div class="hero-check"><span class="hero-check-icon">&#10003;</span>4.9 Star Rating and 4,600+ Reviews</div>
-				<div class="hero-check"><span class="hero-check-icon">&#10003;</span>Same-Day Service</div>
-				<div class="hero-check"><span class="hero-check-icon">&#10003;</span>1-Year Warranty</div>
+			<!-- /wp:buttons -->
+
+			<!-- wp:group {"className":"hero-checks","layout":{"type":"constrained"}} -->
+			<div class="wp-block-group hero-checks">
+				<!-- wp:paragraph {"className":"hero-check"} -->
+				<p class="hero-check"><span class="hero-check-icon">✓</span>Licensed &amp; Insured</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:paragraph {"className":"hero-check"} -->
+				<p class="hero-check"><span class="hero-check-icon">✓</span>4.9 Star Rating and 4,600+ Reviews</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:paragraph {"className":"hero-check"} -->
+				<p class="hero-check"><span class="hero-check-icon">✓</span>Same-Day Service</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:paragraph {"className":"hero-check"} -->
+				<p class="hero-check"><span class="hero-check-icon">✓</span>1-Year Warranty</p>
+				<!-- /wp:paragraph -->
 			</div>
+			<!-- /wp:group -->
 		</div>
-		<div class="hero-right">
-			<div class="hero-logo-card">
-				<img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo4t.png' ); ?>" alt="Cool Air USA" height="210">
+		<!-- /wp:group -->
+
+		<!-- wp:group {"className":"hero-right","layout":{"type":"constrained"}} -->
+		<div class="wp-block-group hero-right">
+			<!-- wp:group {"className":"hero-logo-card","layout":{"type":"constrained"}} -->
+			<div class="wp-block-group hero-logo-card">
+				<!-- wp:image {"sizeSlug":"full","linkDestination":"none"} -->
+				<figure class="wp-block-image size-full"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/logo4t.png' ); ?>" alt="Cool Air USA"/></figure>
+				<!-- /wp:image -->
 			</div>
-			<div class="hero-badges">
-				<div class="hero-badge"><div class="hero-badge-val">250K+</div><div class="hero-badge-lbl">Customers Served</div></div>
-				<div class="hero-badge"><div class="hero-badge-val">4.9</div><div class="hero-badge-lbl">Google Rating</div></div>
-				<div class="hero-badge"><div class="hero-badge-val">17+</div><div class="hero-badge-lbl">Years Family-Owned</div></div>
-				<div class="hero-badge"><div class="hero-badge-val">24/7</div><div class="hero-badge-lbl">Always Open</div></div>
-			</div>
-			<div class="grating-card">
-				<div class="grating-g-pill"><span class="grating-g">G</span></div>
-				<div class="grating-meta">
-					<div class="grating-row"><span class="grating-num">4.9</span><span class="grating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
-					<div class="grating-sub">Based on 4,600+ Google reviews</div>
+			<!-- /wp:group -->
+
+			<!-- wp:group {"className":"hero-badges","layout":{"type":"constrained"}} -->
+			<div class="wp-block-group hero-badges">
+				<!-- wp:group {"className":"hero-badge","layout":{"type":"constrained"}} -->
+				<div class="wp-block-group hero-badge">
+					<!-- wp:paragraph {"className":"hero-badge-val"} -->
+					<p class="hero-badge-val">250K+</p>
+					<!-- /wp:paragraph -->
+					<!-- wp:paragraph {"className":"hero-badge-lbl"} -->
+					<p class="hero-badge-lbl">Customers Served</p>
+					<!-- /wp:paragraph -->
 				</div>
-				<a class="grating-link" href="#reviews">Read All &rarr;</a>
+				<!-- /wp:group -->
+
+				<!-- wp:group {"className":"hero-badge","layout":{"type":"constrained"}} -->
+				<div class="wp-block-group hero-badge">
+					<!-- wp:paragraph {"className":"hero-badge-val"} -->
+					<p class="hero-badge-val">4.9</p>
+					<!-- /wp:paragraph -->
+					<!-- wp:paragraph {"className":"hero-badge-lbl"} -->
+					<p class="hero-badge-lbl">Google Rating</p>
+					<!-- /wp:paragraph -->
+				</div>
+				<!-- /wp:group -->
+
+				<!-- wp:group {"className":"hero-badge","layout":{"type":"constrained"}} -->
+				<div class="wp-block-group hero-badge">
+					<!-- wp:paragraph {"className":"hero-badge-val"} -->
+					<p class="hero-badge-val">17+</p>
+					<!-- /wp:paragraph -->
+					<!-- wp:paragraph {"className":"hero-badge-lbl"} -->
+					<p class="hero-badge-lbl">Years Family-Owned</p>
+					<!-- /wp:paragraph -->
+				</div>
+				<!-- /wp:group -->
+
+				<!-- wp:group {"className":"hero-badge","layout":{"type":"constrained"}} -->
+				<div class="wp-block-group hero-badge">
+					<!-- wp:paragraph {"className":"hero-badge-val"} -->
+					<p class="hero-badge-val">24/7</p>
+					<!-- /wp:paragraph -->
+					<!-- wp:paragraph {"className":"hero-badge-lbl"} -->
+					<p class="hero-badge-lbl">Always Open</p>
+					<!-- /wp:paragraph -->
+				</div>
+				<!-- /wp:group -->
 			</div>
+			<!-- /wp:group -->
+
+			<!-- wp:group {"className":"grating-card","layout":{"type":"constrained"}} -->
+			<div class="wp-block-group grating-card">
+				<!-- wp:html -->
+				<div class="grating-g-pill"><span class="grating-g">G</span></div>
+				<!-- /wp:html -->
+				<!-- wp:group {"className":"grating-meta","layout":{"type":"constrained"}} -->
+				<div class="wp-block-group grating-meta">
+					<!-- wp:group {"className":"grating-row","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+					<div class="wp-block-group grating-row">
+						<!-- wp:paragraph {"className":"grating-num"} -->
+						<p class="grating-num">4.9</p>
+						<!-- /wp:paragraph -->
+						<!-- wp:paragraph {"className":"grating-stars"} -->
+						<p class="grating-stars">★★★★★</p>
+						<!-- /wp:paragraph -->
+					</div>
+					<!-- /wp:group -->
+					<!-- wp:paragraph {"className":"grating-sub"} -->
+					<p class="grating-sub">Based on 4,600+ Google reviews</p>
+					<!-- /wp:paragraph -->
+				</div>
+				<!-- /wp:group -->
+				<!-- wp:paragraph -->
+				<p><a class="grating-link" href="#reviews">Read All &rarr;</a></p>
+				<!-- /wp:paragraph -->
+			</div>
+			<!-- /wp:group -->
 		</div>
+		<!-- /wp:group -->
 	</div>
+	<!-- /wp:group -->
+
+	<!-- wp:html -->
 	<div class="scroll-indicator">
 		<span class="scroll-label">Scroll</span>
 		<div class="scroll-line"></div>
 	</div>
+	<!-- /wp:html -->
 </section>
-<!-- /wp:html -->
+<!-- /wp:group -->
