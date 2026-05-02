@@ -22,7 +22,7 @@ require_once CA_THEME_DIR . '/inc/render-home.php';
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'wp-block-styles' );
 	add_theme_support( 'editor-styles' );
-	add_editor_style( 'assets/css/main.css' );
+	add_editor_style( [ 'assets/css/main.css', 'assets/css/editor-style.css' ] );
 	add_theme_support( 'responsive-embeds' );
 	add_theme_support( 'align-wide' );
 	add_theme_support( 'title-tag' );
@@ -63,6 +63,7 @@ add_action( 'enqueue_block_assets', function () {
 		null
 	);
 	wp_enqueue_style( 'ca-main', CA_THEME_URI . '/assets/css/main.css', [], CA_THEME_VERSION );
+	wp_enqueue_style( 'ca-editor-fix', CA_THEME_URI . '/assets/css/editor-style.css', [], CA_THEME_VERSION );
 } );
 
 add_action( 'init', function () {
@@ -446,7 +447,7 @@ function ca_allowed_block_types_all( $allowed_block_types, $context ) {
 		return $allowed_block_types;
 	}
 
-	return [
+	$allowed = [
 		'core/group',
 		'core/columns',
 		'core/column',
@@ -484,6 +485,13 @@ function ca_allowed_block_types_all( $allowed_block_types, $context ) {
 		'core/social-links',
 		'core/social-link',
 	];
+
+	if ( function_exists( 'ca_dynamic_block_definitions' ) ) {
+		$theme_blocks = array_keys( ca_dynamic_block_definitions() );
+		$allowed      = array_merge( $allowed, $theme_blocks );
+	}
+
+	return $allowed;
 }
 
 /**

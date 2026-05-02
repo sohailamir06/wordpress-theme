@@ -1,0 +1,20 @@
+﻿/* Editor styles for Cool Air USA */
+.reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+.wp-block-cool-air-usa-site-header,
+.wp-block-cool-air-usa-site-footer,
+.wp-block-cool-air-usa-homepage,
+.wp-block-cool-air-usa-service-page,
+.wp-block-cool-air-usa-about-page,
+.wp-block-cool-air-usa-contact-page,
+.wp-block-cool-air-usa-membership-page,
+.wp-block-cool-air-usa-financing-page,
+.wp-block-cool-air-usa-careers-page,
+.wp-block-cool-air-usa-specials-page,
+.wp-block-cool-air-usa-brands-page,
+.wp-block-cool-air-usa-service-areas-page,
+.wp-block-cool-air-usa-legal-page {
+	min-height: 100px;
+	display: block !important;
+	visibility: visible !important;
+}
+.wp-block-freeform { overflow: visible !important; }
