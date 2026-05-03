@@ -18,7 +18,7 @@
 		</div>
 		<!-- /wp:group -->
 
-		<!-- wp:group {"className":"why-grid","layout":{"type":"constrained"}} -->
+		<!-- wp:group {"className":"why-grid","layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"260px"},"style":{"spacing":{"blockGap":"24px"}}} -->
 		<div class="wp-block-group why-grid">
 			<!-- wp:group {"className":"why-card reveal d1","layout":{"type":"constrained"}} -->
 			<div class="wp-block-group why-card reveal d1" style="--why-color:#0ea5e9;"><!-- wp:group {"className":"why-bar","layout":{"type":"constrained"}} --><div class="wp-block-group why-bar"></div><!-- /wp:group --><!-- wp:paragraph {"className":"why-icon-wrap"} --><p class="why-icon-wrap">⚡</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"why-title"} --><p class="why-title">Same-Day Service</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"why-desc"} --><p class="why-desc">Emergency calls dispatched fast. Fully stocked vans mean most problems solved in one visit.</p><!-- /wp:paragraph --></div>

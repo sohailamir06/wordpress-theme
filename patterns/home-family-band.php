@@ -15,7 +15,7 @@
 			<!-- wp:paragraph {"className":"family-eyebrow"} --><p class="family-eyebrow">Family Owned &amp; Operated</p><!-- /wp:paragraph -->
 			<!-- wp:heading {"level":3,"className":"family-title"} --><h3 class="wp-block-heading family-title">Your Neighbors.<br>Not a Franchise.</h3><!-- /wp:heading -->
 			<!-- wp:paragraph {"className":"family-quote"} --><p class="family-quote">From our Fort Lauderdale home, we've built this company on honesty and family values - treating every customer the way we'd want our own family treated.</p><!-- /wp:paragraph -->
-			<!-- wp:group {"className":"family-pills","layout":{"type":"constrained"}} -->
+			<!-- wp:group {"className":"family-pills","layout":{"type":"flex","flexWrap":"nowrap"},"style":{"spacing":{"blockGap":"18px"}}} -->
 			<div class="wp-block-group family-pills">
 				<!-- wp:paragraph {"className":"family-pill"} --><p class="family-pill"><span class="family-pill-chk">✓</span>Local Team</p><!-- /wp:paragraph -->
 				<!-- wp:paragraph {"className":"family-pill"} --><p class="family-pill"><span class="family-pill-chk">✓</span>South Florida Born &amp; Raised</p><!-- /wp:paragraph -->

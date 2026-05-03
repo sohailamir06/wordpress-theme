@@ -136,14 +136,7 @@
 	padding: 48px 40px;
 }
 
-.family-band-inner {
-	max-width: var(--max-w);
-	margin: 0 auto;
-	display: grid;
-	grid-template-columns: 1.4fr 1fr 1fr 1fr;
-	gap: 32px;
-	align-items: center;
-}
+.family-band-inner {}
 
 .family-eyebrow {
 	font-size: 12px;
@@ -171,14 +164,7 @@
 	max-width: 380px;
 }
 
-.family-pills {
-	display: flex;
-	gap: 18px;
-	flex-wrap: nowrap;
-	margin-top: 14px;
-	white-space: nowrap;
-	overflow-x: auto;
-}
+.family-pills {}
 
 .family-pill {
 	display: inline-flex;

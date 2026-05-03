@@ -99,7 +99,7 @@
 		</div>
 		<!-- /wp:group -->
 
-		<!-- wp:group {"className":"reviews-grid","layout":{"type":"constrained"}} -->
+		<!-- wp:group {"className":"reviews-grid","layout":{"type":"grid","columnCount":2,"minimumColumnWidth":"260px"},"style":{"spacing":{"blockGap":"20px"}}} -->
 		<div class="wp-block-group reviews-grid">
 			<!-- wp:group {"className":"review-card reveal d1","layout":{"type":"constrained"}} -->
 			<div class="wp-block-group review-card reveal d1">

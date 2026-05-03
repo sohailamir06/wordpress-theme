@@ -11,12 +11,7 @@
 .why-header .sec-title { justify-content: center; text-align: center; }
 .why-header .sec-sub { margin: 0 auto; text-align: center; }
 
-.why-grid {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 28px;
-	margin-bottom: 24px;
-}
+.why-grid {}
 .why-card {
 	background: #fff;
 	border: 1px solid #e8edf5;

@@ -10,9 +10,9 @@
 <div class="wp-block-group stats-bar stats-start-3">
 	<!-- wp:group {"className":"stats-slider-wrap","layout":{"type":"constrained"}} -->
 	<div class="wp-block-group stats-slider-wrap">
-		<!-- wp:group {"className":"stats-slider-track","layout":{"type":"constrained"}} -->
+		<!-- wp:group {"className":"stats-slider-track","layout":{"type":"flex","flexWrap":"nowrap"}} -->
 		<div class="wp-block-group stats-slider-track">
-			<!-- wp:group {"className":"stats-slide","layout":{"type":"constrained"}} -->
+			<!-- wp:group {"className":"stats-slide","layout":{"type":"grid","columnCount":4,"minimumColumnWidth":"200px"}} -->
 			<div class="wp-block-group stats-slide">
 				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">250,000+</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Lifetime Customers</p><!-- /wp:paragraph --></div><!-- /wp:group -->
 				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">4,600+</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">5-Star Google Reviews</p><!-- /wp:paragraph --></div><!-- /wp:group -->
@@ -21,7 +21,7 @@
 			</div>
 			<!-- /wp:group -->
 
-			<!-- wp:group {"className":"stats-slide","layout":{"type":"constrained"}} -->
+			<!-- wp:group {"className":"stats-slide","layout":{"type":"grid","columnCount":4,"minimumColumnWidth":"200px"}} -->
 			<div class="wp-block-group stats-slide">
 				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">38,000+</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Service Calls / Year</p><!-- /wp:paragraph --></div><!-- /wp:group -->
 				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">23,000+</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Installs Completed</p><!-- /wp:paragraph --></div><!-- /wp:group -->
@@ -30,7 +30,7 @@
 			</div>
 			<!-- /wp:group -->
 
-			<!-- wp:group {"className":"stats-slide","layout":{"type":"constrained"}} -->
+			<!-- wp:group {"className":"stats-slide","layout":{"type":"grid","columnCount":4,"minimumColumnWidth":"200px"}} -->
 			<div class="wp-block-group stats-slide">
 				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">99%</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Same-Day Service Rate</p><!-- /wp:paragraph --></div><!-- /wp:group -->
 				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">1-Yr</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Warranty on All Work</p><!-- /wp:paragraph --></div><!-- /wp:group -->
