@@ -8,21 +8,81 @@
       "custom": true,
       "customGradient": true,
       "palette": [
-        { "slug": "navy",       "color": "#0b1d3a", "name": "Navy" },
-        { "slug": "navy-2",     "color": "#0d2347", "name": "Navy Mid" },
-        { "slug": "navy-3",     "color": "#152d5c", "name": "Navy Light" },
-        { "slug": "ice",        "color": "#38bdf8", "name": "Ice Blue" },
-        { "slug": "ice-2",      "color": "#7dd3fc", "name": "Ice Blue Light" },
-        { "slug": "ice-3",      "color": "#bae6fd", "name": "Ice Blue Pale" },
-        { "slug": "green",      "color": "#22c55e", "name": "Green" },
-        { "slug": "green-2",    "color": "#16a34a", "name": "Green Dark" },
-        { "slug": "red",        "color": "#ef4444", "name": "Red" },
-        { "slug": "red-2",      "color": "#dc2626", "name": "Red Dark" },
-        { "slug": "white",      "color": "#f9fafc", "name": "White" },
-        { "slug": "off-white",  "color": "#f1f5f9", "name": "Off White" },
-        { "slug": "text",       "color": "#1e293b", "name": "Text Dark" },
-        { "slug": "text-2",     "color": "#475569", "name": "Text Mid" },
-        { "slug": "footer-bg",  "color": "#060d1a", "name": "Footer" }
+        {
+          "slug": "navy",
+          "color": "#0b1d3a",
+          "name": "Navy"
+        },
+        {
+          "slug": "navy-2",
+          "color": "#0d2347",
+          "name": "Navy Mid"
+        },
+        {
+          "slug": "navy-3",
+          "color": "#152d5c",
+          "name": "Navy Light"
+        },
+        {
+          "slug": "ice",
+          "color": "#38bdf8",
+          "name": "Ice Blue"
+        },
+        {
+          "slug": "ice-2",
+          "color": "#7dd3fc",
+          "name": "Ice Blue Light"
+        },
+        {
+          "slug": "ice-3",
+          "color": "#bae6fd",
+          "name": "Ice Blue Pale"
+        },
+        {
+          "slug": "green",
+          "color": "#22c55e",
+          "name": "Green"
+        },
+        {
+          "slug": "green-2",
+          "color": "#16a34a",
+          "name": "Green Dark"
+        },
+        {
+          "slug": "red",
+          "color": "#ef4444",
+          "name": "Red"
+        },
+        {
+          "slug": "red-2",
+          "color": "#dc2626",
+          "name": "Red Dark"
+        },
+        {
+          "slug": "white",
+          "color": "#f9fafc",
+          "name": "White"
+        },
+        {
+          "slug": "off-white",
+          "color": "#f1f5f9",
+          "name": "Off White"
+        },
+        {
+          "slug": "text",
+          "color": "#1e293b",
+          "name": "Text Dark"
+        },
+        {
+          "slug": "text-2",
+          "color": "#475569",
+          "name": "Text Mid"
+        },
+        {
+          "slug": "footer-bg",
+          "color": "#060d1a",
+          "name": "Footer"
+        }
       ],
       "gradients": [
         {
@@ -59,11 +119,31 @@
         }
       ],
       "fontSizes": [
-        { "slug": "small",   "size": "13px",                      "name": "Small" },
-        { "slug": "medium",  "size": "16px",                      "name": "Medium" },
-        { "slug": "large",   "size": "20px",                      "name": "Large" },
-        { "slug": "x-large", "size": "clamp(32px,4vw,52px)",      "name": "X Large" },
-        { "slug": "hero",    "size": "clamp(52px,7vw,90px)",      "name": "Hero" }
+        {
+          "slug": "small",
+          "size": "13px",
+          "name": "Small"
+        },
+        {
+          "slug": "medium",
+          "size": "16px",
+          "name": "Medium"
+        },
+        {
+          "slug": "large",
+          "size": "20px",
+          "name": "Large"
+        },
+        {
+          "slug": "x-large",
+          "size": "clamp(32px,4vw,52px)",
+          "name": "X Large"
+        },
+        {
+          "slug": "hero",
+          "size": "clamp(52px,7vw,90px)",
+          "name": "Hero"
+        }
       ],
       "fluid": true
     },
@@ -71,21 +151,47 @@
       "margin": true,
       "padding": true,
       "blockGap": true,
-      "units": ["px", "em", "rem", "%", "vw", "vh"],
+      "units": [
+        "px",
+        "em",
+        "rem",
+        "%",
+        "vw",
+        "vh"
+      ],
       "customSpacingSize": true,
       "spacingSizes": [
-        { "slug": "20",  "size": "20px",  "name": "20" },
-        { "slug": "40",  "size": "40px",  "name": "40" },
-        { "slug": "60",  "size": "60px",  "name": "60" },
-        { "slug": "80",  "size": "80px",  "name": "80" }
+        {
+          "slug": "20",
+          "size": "20px",
+          "name": "20"
+        },
+        {
+          "slug": "40",
+          "size": "40px",
+          "name": "40"
+        },
+        {
+          "slug": "60",
+          "size": "60px",
+          "name": "60"
+        },
+        {
+          "slug": "80",
+          "size": "80px",
+          "name": "80"
+        }
       ]
     },
     "dimensions": {
-      "minHeight": true
+      "minHeight": true,
+      "aspectRatio": true
     },
     "layout": {
       "contentSize": "1280px",
-      "wideSize": "1400px"
+      "wideSize": "1400px",
+      "allowEditing": true,
+      "allowCustomContentAndWideSize": true
     },
     "blocks": {
       "core/group": {
@@ -98,6 +204,20 @@
           "background": true,
           "text": true,
           "gradients": true
+        },
+        "layout": {
+          "allowEditing": true,
+          "allowCustomContentAndWideSize": true
+        },
+        "border": {
+          "color": true,
+          "radius": true,
+          "style": true,
+          "width": true
+        },
+        "dimensions": {
+          "minHeight": true,
+          "aspectRatio": true
         }
       },
       "core/columns": {
@@ -105,12 +225,35 @@
           "margin": true,
           "padding": true,
           "blockGap": true
+        },
+        "layout": {
+          "allowEditing": true,
+          "allowCustomContentAndWideSize": true
+        },
+        "border": {
+          "color": true,
+          "radius": true,
+          "style": true,
+          "width": true
+        },
+        "dimensions": {
+          "minHeight": true,
+          "aspectRatio": true
         }
       },
       "core/column": {
         "spacing": {
           "margin": true,
-          "padding": true
+          "padding": true,
+          "blockGap": true
+        },
+        "layout": {
+          "allowEditing": true,
+          "allowCustomContentAndWideSize": true
+        },
+        "dimensions": {
+          "minHeight": true,
+          "aspectRatio": true
         }
       },
       "core/heading": {
@@ -167,7 +310,34 @@
           "aspectRatio": true,
           "minHeight": true
         }
+      },
+      "core/cover": {
+        "spacing": {
+          "margin": true,
+          "padding": true,
+          "blockGap": true
+        },
+        "layout": {
+          "allowEditing": true,
+          "allowCustomContentAndWideSize": true
+        },
+        "dimensions": {
+          "minHeight": true,
+          "aspectRatio": true
+        }
       }
+    },
+    "border": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true
+    },
+    "position": {
+      "sticky": true
+    },
+    "shadow": {
+      "defaultPresets": true
     }
   },
   "styles": {
