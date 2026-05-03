@@ -1,40 +1,6 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
-
-/**
- * Build page hero section with native blocks.
- */
-function ca_builder_page_hero_block( $crumb, $title, $subtitle, $badges = [] ) {
-	ob_start();
-	?>
-<!-- wp:group {"tagName":"section","className":"page-hero","layout":{"type":"constrained"}} -->
-<section class="wp-block-group page-hero">
-	<!-- wp:group {"className":"page-hero-in","layout":{"type":"constrained"}} -->
-	<div class="wp-block-group page-hero-in">
-		<!-- wp:paragraph {"className":"page-crumb"} -->
-		<p class="page-crumb">Home <span>&gt;</span> <?php echo esc_html( $crumb ); ?></p>
-		<!-- /wp:paragraph -->
-		<!-- wp:heading {"level":1,"className":"page-title"} -->
-		<h1 class="wp-block-heading page-title"><?php echo esc_html( $title ); ?></h1>
-		<!-- /wp:heading -->
-		<!-- wp:paragraph {"className":"page-sub"} -->
-		<p class="page-sub"><?php echo esc_html( $subtitle ); ?></p>
-		<!-- /wp:paragraph -->
-		<?php if ( ! empty( $badges ) ) : ?>
-		<!-- wp:group {"className":"page-badges","layout":{"type":"constrained"}} -->
-		<div class="wp-block-group page-badges">
-			<?php foreach ( $badges as $badge ) : ?>
-			<span class="page-badge"><?php echo esc_html( $badge ); ?></span>
-			<?php endforeach; ?>
-		</div>
-		<!-- /wp:group -->
-		<?php endif; ?>
-	</div>
-	<!-- /wp:group -->
-</section>
-<!-- /wp:group -->
-	<?php
-	return trim( ob_get_clean() );
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
 /**

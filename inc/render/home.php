@@ -1,5 +1,7 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 require_once CA_THEME_DIR . '/inc/render/home-hero.php';
 require_once CA_THEME_DIR . '/inc/render/home-stats.php';

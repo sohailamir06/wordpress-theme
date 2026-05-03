@@ -1,14 +1,17 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 function ca_render_contact_page() {
 	$rows = [
-		[ '📞', 'Phone',   '<a href="tel:' . CA_PHONE_RAW . '">' . CA_PHONE . '</a><br>24/7/365 — real people, never a machine.' ],
-		[ '✉️', 'Email',   '<a href="mailto:' . esc_attr( CA_EMAIL ) . '">' . esc_html( CA_EMAIL ) . '</a><br>We reply within 1 business hour.' ],
-		[ '📍', 'Office',  CA_ADDRESS . '<br>Drop-ins welcome 8am–6pm.' ],
-		[ '🕐', 'Hours',   'Office: 7am–9pm Mon–Sat<br>Emergency dispatch: 24/7/365' ],
+		[ '&#128222;', 'Phone', '<a href="tel:' . CA_PHONE_RAW . '">' . CA_PHONE . '</a><br>24/7/365 &mdash; real people, never a machine.' ],
+		[ '&#9993;&#65039;', 'Email', '<a href="mailto:' . esc_attr( CA_EMAIL ) . '">' . esc_html( CA_EMAIL ) . '</a><br>We reply within 1 business hour.' ],
+		[ '&#128205;', 'Office', CA_ADDRESS . '<br>Drop-ins welcome 8am&ndash;6pm.' ],
+		[ '&#128336;', 'Hours', 'Office: 7am&ndash;9pm Mon&ndash;Sat<br>Emergency dispatch: 24/7/365' ],
 	];
 	$service_options = [ 'AC Repair', 'AC Installation', 'AC Maintenance', 'Duct Services', 'Air Quality', 'Plumbing', 'Commercial', 'Emergency', 'Other' ];
+	$contact_status  = isset( $_GET['contact-status'] ) ? sanitize_key( wp_unslash( $_GET['contact-status'] ) ) : '';
 
 	ob_start(); ?>
 	<div class="ca-contact">
@@ -23,7 +26,7 @@ function ca_render_contact_page() {
 						<div class="contact-info-card">
 							<?php foreach ( $rows as $r ) : ?>
 								<div class="contact-row">
-									<div class="contact-icon"><?php echo $r[0]; ?></div>
+									<div class="contact-icon"><?php echo wp_kses_post( $r[0] ); ?></div>
 									<div class="contact-detail">
 										<h4><?php echo esc_html( $r[1] ); ?></h4>
 										<p><?php echo wp_kses_post( $r[2] ); ?></p>
@@ -33,8 +36,19 @@ function ca_render_contact_page() {
 						</div>
 					</div>
 					<div class="reveal">
-						<form class="form-card" data-contact-form>
+						<form class="form-card" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" method="post" data-contact-form>
+							<?php wp_nonce_field( 'ca_contact_request', 'ca_contact_nonce' ); ?>
+							<input type="hidden" name="action" value="ca_contact_request">
+							<div class="form-row ca-hp" aria-hidden="true">
+								<label for="cf-website">Website</label>
+								<input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off">
+							</div>
 							<div class="form-title">Schedule Service</div>
+							<?php if ( 'success' === $contact_status ) : ?>
+								<div class="form-submit-msg" data-form-success>Thanks &mdash; we'll be in touch shortly.</div>
+							<?php elseif ( in_array( $contact_status, [ 'invalid', 'missing', 'failed' ], true ) ) : ?>
+								<div class="form-submit-msg is-error">We could not submit the form. Please check the required fields or call <?php echo esc_html( CA_PHONE ); ?>.</div>
+							<?php endif; ?>
 							<div class="form-row">
 								<label for="cf-name">Full Name</label>
 								<input id="cf-name" name="name" type="text" required>
@@ -59,8 +73,7 @@ function ca_render_contact_page() {
 								<label for="cf-message">Tell Us More</label>
 								<textarea id="cf-message" name="message" rows="4"></textarea>
 							</div>
-							<button class="btn-green form-submit" type="submit">Submit Request →</button>
-							<div class="form-submit-msg" hidden data-form-success>Thanks — we'll be in touch shortly.</div>
+							<button class="btn-green form-submit" type="submit">Submit Request &rarr;</button>
 						</form>
 					</div>
 				</div>

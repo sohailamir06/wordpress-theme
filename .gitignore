@@ -1,0 +1,21 @@
+# Operating system and editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+tmp/
+scratch/
+
+# Dependency/build directories if tooling is added later
+node_modules/
+vendor/
+dist/
+build/
+
+# WordPress local/runtime files
+wp-config.php
+wp-content/uploads/

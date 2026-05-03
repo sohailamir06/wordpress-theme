@@ -10,7 +10,7 @@
 	};
 
 	ready(function () {
-		// Load each module — they self-register listeners.
+		// Load each module - they self-register listeners.
 		initReveal();
 		initParallax();
 		initStatsRotator();
@@ -242,16 +242,15 @@
 		startAuto();
 	}
 
-	// Contact form: simulated submit (real handler is server-side via wp-admin/admin-post.php)
+	// Contact form: disable repeat submits while the server-side handler runs.
 	function initContactForm() {
 		var form = document.querySelector('[data-contact-form]');
 		if (!form) return;
-		var success = form.querySelector('[data-form-success]');
-		form.addEventListener('submit', function (e) {
-			e.preventDefault();
-			if (success) {
-				success.hidden = false;
-				form.querySelectorAll('input, select, textarea, button').forEach(function (el) { el.disabled = true; });
+		form.addEventListener('submit', function () {
+			var button = form.querySelector('[type="submit"]');
+			if (button) {
+				button.disabled = true;
+				button.textContent = 'Submitting...';
 			}
 		});
 	}

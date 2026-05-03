@@ -1,5 +1,7 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 function ca_service_data() {
 	static $data = null;
@@ -13,6 +15,7 @@ function ca_brands() {
 		'Carrier','Rheem','Trane','Daikin','American Standard','Lennox',
 		'Goodman','York','Bryant','Ruud','Mitsubishi','Bosch','ClimateMaster',
 		'Armstrong','Tempstar','Ameristar','ICP','Bard','Allied','First Co',
+		'Comfortmaker','Nordyne','Aprilaire','Honeywell',
 	];
 }
 

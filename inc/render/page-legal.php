@@ -1,5 +1,7 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 function ca_render_legal_page( $attrs ) {
 	$kind = ! empty( $attrs['kind'] ) ? $attrs['kind'] : 'privacy';
