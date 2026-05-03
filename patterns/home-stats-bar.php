@@ -6,24 +6,53 @@
  * Inserter: true
  */
 ?>
-<!-- wp:html -->
-<div class="stats-bar" data-stats-rotator>
-	<div class="stats-slider-wrap">
-		<div class="stats-slider-track">
-			<div class="stats-slide">
-				<div class="stat"><div class="stat-val">250,000+</div><div class="stat-lbl">Lifetime Customers</div></div>
-				<div class="stat"><div class="stat-val">4,600+</div><div class="stat-lbl">5-Star Google Reviews</div></div>
-				<div class="stat"><div class="stat-val">17+</div><div class="stat-lbl">Years Family Owned & Operated</div></div>
-				<div class="stat"><div class="stat-val">100+</div><div class="stat-lbl">Cities Served</div></div>
+<!-- wp:group {"className":"stats-bar stats-start-3","layout":{"type":"constrained"}} -->
+<div class="wp-block-group stats-bar stats-start-3">
+	<!-- wp:group {"className":"stats-slider-wrap","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group stats-slider-wrap">
+		<!-- wp:group {"className":"stats-slider-track","layout":{"type":"constrained"}} -->
+		<div class="wp-block-group stats-slider-track">
+			<!-- wp:group {"className":"stats-slide","layout":{"type":"constrained"}} -->
+			<div class="wp-block-group stats-slide">
+				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">250,000+</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Lifetime Customers</p><!-- /wp:paragraph --></div><!-- /wp:group -->
+				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">4,600+</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">5-Star Google Reviews</p><!-- /wp:paragraph --></div><!-- /wp:group -->
+				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">17+</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Years Family Owned &amp; Operated</p><!-- /wp:paragraph --></div><!-- /wp:group -->
+				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">100+</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Cities Served</p><!-- /wp:paragraph --></div><!-- /wp:group -->
 			</div>
+			<!-- /wp:group -->
+
+			<!-- wp:group {"className":"stats-slide","layout":{"type":"constrained"}} -->
+			<div class="wp-block-group stats-slide">
+				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">38,000+</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Service Calls / Year</p><!-- /wp:paragraph --></div><!-- /wp:group -->
+				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">23,000+</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Installs Completed</p><!-- /wp:paragraph --></div><!-- /wp:group -->
+				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">24/7</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Real People Answering</p><!-- /wp:paragraph --></div><!-- /wp:group -->
+				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">365</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Days Open Each Year</p><!-- /wp:paragraph --></div><!-- /wp:group -->
+			</div>
+			<!-- /wp:group -->
+
+			<!-- wp:group {"className":"stats-slide","layout":{"type":"constrained"}} -->
+			<div class="wp-block-group stats-slide">
+				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">99%</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Same-Day Service Rate</p><!-- /wp:paragraph --></div><!-- /wp:group -->
+				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">1-Yr</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Warranty on All Work</p><!-- /wp:paragraph --></div><!-- /wp:group -->
+				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">0</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Hidden Fees &middot; Ever</p><!-- /wp:paragraph --></div><!-- /wp:group -->
+				<!-- wp:group {"className":"stat","layout":{"type":"constrained"}} --><div class="wp-block-group stat"><!-- wp:paragraph {"className":"stat-val"} --><p class="stat-val">100%</p><!-- /wp:paragraph --><!-- wp:paragraph {"className":"stat-lbl"} --><p class="stat-lbl">Licensed &amp; Insured</p><!-- /wp:paragraph --></div><!-- /wp:group -->
+			</div>
+			<!-- /wp:group -->
 		</div>
-		<button class="stats-arrow stats-arrow-l" aria-label="Previous">‹</button>
-		<button class="stats-arrow stats-arrow-r" aria-label="Next">›</button>
-		<div class="stats-dots">
-			<button class="stats-dot active" aria-label="Stats 1"></button>
-			<button class="stats-dot" aria-label="Stats 2"></button>
-			<button class="stats-dot" aria-label="Stats 3"></button>
+		<!-- /wp:group -->
+
+		<!-- wp:paragraph {"className":"stats-arrow stats-arrow-l"} --><p class="stats-arrow stats-arrow-l">&lsaquo;</p><!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"stats-arrow stats-arrow-r"} --><p class="stats-arrow stats-arrow-r">&rsaquo;</p><!-- /wp:paragraph -->
+
+		<!-- wp:group {"className":"stats-dots","layout":{"type":"constrained"}} -->
+		<div class="wp-block-group stats-dots">
+			<!-- wp:paragraph {"className":"stats-dot"} --><p class="stats-dot"></p><!-- /wp:paragraph -->
+			<!-- wp:paragraph {"className":"stats-dot"} --><p class="stats-dot"></p><!-- /wp:paragraph -->
+			<!-- wp:paragraph {"className":"stats-dot active"} --><p class="stats-dot active"></p><!-- /wp:paragraph -->
 		</div>
+		<!-- /wp:group -->
 	</div>
+	<!-- /wp:group -->
 </div>
-<!-- /wp:html -->
+<!-- /wp:group -->
+

@@ -5,7 +5,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'CA_THEME_VERSION', '1.0.0' );
+define( 'CA_THEME_VERSION', '1.0.10' );
 define( 'CA_THEME_DIR', get_template_directory() );
 define( 'CA_THEME_URI', get_template_directory_uri() );
 define( 'CA_PHONE',     '(954) 915-1155' );
@@ -18,6 +18,7 @@ require_once CA_THEME_DIR . '/inc/page-data.php';
 require_once CA_THEME_DIR . '/inc/render-services.php';
 require_once CA_THEME_DIR . '/inc/render-pages.php';
 require_once CA_THEME_DIR . '/inc/render-home.php';
+require_once CA_THEME_DIR . '/inc/builder-pages.php';
 
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'wp-block-styles' );
@@ -64,6 +65,7 @@ add_action( 'enqueue_block_assets', function () {
 	);
 	wp_enqueue_style( 'ca-main', CA_THEME_URI . '/assets/css/main.css', [], CA_THEME_VERSION );
 	wp_enqueue_style( 'ca-editor-fix', CA_THEME_URI . '/assets/css/editor-style.css', [], CA_THEME_VERSION );
+	wp_enqueue_script( 'ca-editor-enhancements', CA_THEME_URI . '/assets/js/editor-enhancements.js', [], CA_THEME_VERSION, true );
 } );
 
 add_action( 'init', function () {
@@ -107,19 +109,19 @@ function ca_theme_page_blueprint() {
 		'home'             => [
 			'title'      => 'Home',
 			'template'   => '',
-			'render'     => 'ca_render_homepage',
+			'render'     => 'ca_render_homepage_builder_content',
 			'set_front'  => true,
 		],
-		'about'            => [ 'title' => 'About',            'template' => 'page-about.html',            'render' => 'ca_render_about_page' ],
-		'contact'          => [ 'title' => 'Contact',          'template' => 'page-contact.html',          'render' => 'ca_render_contact_page' ],
-		'membership'       => [ 'title' => 'Membership',       'template' => 'page-membership.html',       'render' => 'ca_render_membership_page' ],
-		'financing'        => [ 'title' => 'Financing',        'template' => 'page-financing.html',        'render' => 'ca_render_financing_page' ],
-		'careers'          => [ 'title' => 'Careers',          'template' => 'page-careers.html',          'render' => 'ca_render_careers_page' ],
-		'specials'         => [ 'title' => 'Specials & Deals', 'template' => 'page-specials.html',         'render' => 'ca_render_specials_page' ],
-		'brands'           => [ 'title' => 'Brands',           'template' => 'page-brands.html',           'render' => 'ca_render_brands_page' ],
-		'service-areas'    => [ 'title' => 'Service Areas',    'template' => 'page-service-areas.html',    'render' => 'ca_render_service_areas_page' ],
-		'privacy-policy'   => [ 'title' => 'Privacy Policy',   'template' => 'page-privacy-policy.html',   'render' => function () { return ca_render_legal_page( [ 'kind' => 'privacy' ] ); } ],
-		'terms-of-service' => [ 'title' => 'Terms of Service', 'template' => 'page-terms-of-service.html', 'render' => function () { return ca_render_legal_page( [ 'kind' => 'terms' ] ); } ],
+		'about'            => [ 'title' => 'About',            'template' => 'page-about.html',            'render' => 'ca_render_about_page_builder_content' ],
+		'contact'          => [ 'title' => 'Contact',          'template' => 'page-contact.html',          'render' => 'ca_render_contact_page_builder_content' ],
+		'membership'       => [ 'title' => 'Membership',       'template' => 'page-membership.html',       'render' => 'ca_render_membership_page_builder_content' ],
+		'financing'        => [ 'title' => 'Financing',        'template' => 'page-financing.html',        'render' => 'ca_render_financing_page_builder_content' ],
+		'careers'          => [ 'title' => 'Careers',          'template' => 'page-careers.html',          'render' => 'ca_render_careers_page_builder_content' ],
+		'specials'         => [ 'title' => 'Specials & Deals', 'template' => 'page-specials.html',         'render' => 'ca_render_specials_page_builder_content' ],
+		'brands'           => [ 'title' => 'Brands',           'template' => 'page-brands.html',           'render' => 'ca_render_brands_page_builder_content' ],
+		'service-areas'    => [ 'title' => 'Service Areas',    'template' => 'page-service-areas.html',    'render' => 'ca_render_service_areas_page_builder_content' ],
+		'privacy-policy'   => [ 'title' => 'Privacy Policy',   'template' => 'page-privacy-policy.html',   'render' => function () { return ca_render_legal_page_builder_content( 'privacy' ); } ],
+		'terms-of-service' => [ 'title' => 'Terms of Service', 'template' => 'page-terms-of-service.html', 'render' => function () { return ca_render_legal_page_builder_content( 'terms' ); } ],
 		'services'         => [ 'title' => 'Services',         'template' => 'page-services.html',         'render' => '' ],
 	];
 
@@ -133,7 +135,7 @@ function ca_theme_page_blueprint() {
 			'parent_path' => 'services',
 			'template'    => 'page-services.html',
 			'render'      => function () use ( $service_slug ) {
-				return ca_render_service_page( $service_slug );
+				return ca_render_service_page_builder_content( $service_slug );
 			},
 		];
 	}
@@ -172,11 +174,21 @@ function ca_sync_theme_pages_with_admin() {
 		$page_ids[ $path ] = $page_id;
 
 		ca_apply_page_template( $page_id, isset( $config['template'] ) ? (string) $config['template'] : '' );
+		ca_migrate_legacy_page_content_to_blocks( $page_id, $path, $config );
 		ca_normalize_editable_block_wrapper( $page_id );
 
 		if ( ! empty( $config['render'] ) && is_callable( $config['render'] ) ) {
 			ca_seed_post_content_if_empty( $page_id, $config['render'], '' );
 		}
+
+		// Expand pattern references into concrete block trees on the front page so
+		// Gutenberg loads all sections as directly editable content.
+		ca_expand_front_page_pattern_references( $page_id, $path );
+		ca_refresh_legacy_home_gallery_section( $page_id, $path );
+		ca_refresh_legacy_home_stats_section( $page_id, $path );
+		ca_refresh_legacy_home_reviews_section( $page_id, $path );
+		ca_refresh_legacy_home_process_section( $page_id, $path );
+		ca_refresh_legacy_home_brands_section( $page_id, $path );
 	}
 
 	if ( ! empty( $page_ids['home'] ) ) {
@@ -230,6 +242,12 @@ function ca_sync_theme_page_on_save( $post_id, $post, $update ) {
 		}
 
 		ca_apply_page_template( $post_id, isset( $config['template'] ) ? (string) $config['template'] : '' );
+		ca_expand_front_page_pattern_references( $post_id, $path );
+		ca_refresh_legacy_home_gallery_section( $post_id, $path );
+		ca_refresh_legacy_home_stats_section( $post_id, $path );
+		ca_refresh_legacy_home_reviews_section( $post_id, $path );
+		ca_refresh_legacy_home_process_section( $post_id, $path );
+		ca_refresh_legacy_home_brands_section( $post_id, $path );
 	}
 
 	$running = false;
@@ -449,6 +467,8 @@ function ca_allowed_block_types_all( $allowed_block_types, $context ) {
 
 	$allowed = [
 		'core/group',
+		'core/row',
+		'core/stack',
 		'core/columns',
 		'core/column',
 		'core/cover',
@@ -458,15 +478,19 @@ function ca_allowed_block_types_all( $allowed_block_types, $context ) {
 		'core/heading',
 		'core/paragraph',
 		'core/list',
+		'core/list-item',
 		'core/quote',
+		'core/pullquote',
+		'core/table',
 		'core/buttons',
 		'core/button',
 		'core/image',
 		'core/gallery',
 		'core/video',
 		'core/file',
-		'core/freeform',
+		'core/html',
 		'core/shortcode',
+		'core/details',
 		'core/template-part',
 		'core/post-content',
 		'core/post-title',
@@ -505,7 +529,7 @@ function ca_block_editor_builder_settings( $settings, $context ) {
 	$settings['codeEditingEnabled'] = false;
 	$settings['richEditingEnabled'] = true;
 	$settings['focusMode']          = false;
-	$settings['fixedToolbar']       = true;
+	$settings['fixedToolbar']       = false;
 	$settings['keepCaretInsideBlock'] = true;
 	$settings['enableOpenverseMediaCategory'] = false;
 
@@ -513,6 +537,10 @@ function ca_block_editor_builder_settings( $settings, $context ) {
 		$post_type = get_post_type( $context->post );
 		if ( in_array( $post_type, [ 'page', 'wp_template', 'wp_template_part' ], true ) ) {
 			$settings['defaultMode'] = 'visual';
+		}
+		if ( 'page' === $post_type ) {
+			// Keep editors in page-content mode instead of template-edit mode.
+			$settings['supportsTemplateMode'] = false;
 		}
 	}
 
@@ -555,10 +583,15 @@ function ca_seed_post_content_if_empty( $post_id, $renderer, $template = '' ) {
 		return;
 	}
 
+	$content = ca_wrap_editable_content_block( $html );
+	if ( ca_is_block_markup( $html ) ) {
+		$content = trim( $html );
+	}
+
 	$updated = wp_update_post(
 		[
 			'ID'           => $post_id,
-			'post_content' => ca_wrap_editable_content_block( $html ),
+			'post_content' => $content,
 		],
 		true
 	);
@@ -573,17 +606,27 @@ function ca_seed_post_content_if_empty( $post_id, $renderer, $template = '' ) {
 }
 
 /**
- * Wrap arbitrary HTML in a visual-editable Classic (freeform) block.
+ * Build editable block markup from raw HTML.
  *
  * @param string $html Raw HTML markup.
  * @return string
  */
 function ca_wrap_editable_content_block( $html ) {
-	return "<!-- wp:freeform -->\n" . trim( $html ) . "\n<!-- /wp:freeform -->";
+	return "<!-- wp:html -->\n" . trim( $html ) . "\n<!-- /wp:html -->";
 }
 
 /**
- * Convert old core/html wrappers into visual-editable freeform wrappers.
+ * Determine whether markup already contains native block comments.
+ *
+ * @param string $markup Potential block markup.
+ * @return bool
+ */
+function ca_is_block_markup( $markup ) {
+	return false !== strpos( (string) $markup, '<!-- wp:' );
+}
+
+/**
+ * Convert old freeform wrappers into non-Classic block wrappers.
  *
  * @param int $post_id Page ID.
  * @return void
@@ -595,14 +638,14 @@ function ca_normalize_editable_block_wrapper( $post_id ) {
 	}
 
 	$content = trim( (string) $post->post_content );
-	$open    = '<!-- wp:html -->';
-	$close   = '<!-- /wp:html -->';
+	$freeform_open  = '<!-- wp:freeform -->';
+	$freeform_close = '<!-- /wp:freeform -->';
 
-	if ( ! str_starts_with( $content, $open ) || ! str_ends_with( $content, $close ) ) {
+	if ( ! str_starts_with( $content, $freeform_open ) || ! str_ends_with( $content, $freeform_close ) ) {
 		return;
 	}
 
-	$inner = substr( $content, strlen( $open ), -strlen( $close ) );
+	$inner = substr( $content, strlen( $freeform_open ), -strlen( $freeform_close ) );
 	$new   = ca_wrap_editable_content_block( $inner );
 
 	if ( $new === $content ) {
@@ -613,6 +656,573 @@ function ca_normalize_editable_block_wrapper( $post_id ) {
 		[
 			'ID'           => $post_id,
 			'post_content' => $new,
+		]
+	);
+}
+
+/**
+ * Compose homepage content from native editable pattern references.
+ *
+ * @return string
+ */
+function ca_render_homepage_builder_content() {
+	$patterns = [
+		'cool-air-usa/home-hero',
+		'cool-air-usa/home-stats-bar',
+		'cool-air-usa/home-family-band',
+		'cool-air-usa/home-services',
+		'cool-air-usa/home-why',
+		'cool-air-usa/home-reviews',
+		'cool-air-usa/home-process',
+		'cool-air-usa/home-brands',
+		'cool-air-usa/home-map',
+		'cool-air-usa/home-membership-cta',
+		'cool-air-usa/home-gallery',
+		'cool-air-usa/home-emergency',
+	];
+
+	$lines = array_map(
+		static function ( $slug ) {
+			return sprintf( '<!-- wp:pattern {"slug":"%s"} /-->', $slug );
+		},
+		$patterns
+	);
+
+	return implode( "\n\n", $lines );
+}
+
+/**
+ * Migrate known legacy homepage content to editable block patterns.
+ *
+ * @param int    $post_id Page ID.
+ * @param string $path    Blueprint page path.
+ * @param array  $config  Blueprint config.
+ * @return void
+ */
+function ca_migrate_legacy_page_content_to_blocks( $post_id, $path, $config = [] ) {
+	$post = get_post( $post_id );
+	if ( ! $post || 'page' !== $post->post_type ) {
+		return;
+	}
+
+	$content = trim( (string) $post->post_content );
+	if ( '' === $content ) {
+		return;
+	}
+
+	$is_freeform_wrapper = str_starts_with( $content, '<!-- wp:freeform -->' ) && str_ends_with( $content, '<!-- /wp:freeform -->' );
+	$is_html_wrapper     = str_starts_with( $content, '<!-- wp:html -->' ) && str_ends_with( $content, '<!-- /wp:html -->' );
+	$is_dynamic_wrapper  = 1 === preg_match( '/^<!--\s+wp:cool-air-usa\/[a-z0-9-]+\s*\/-->$/', $content );
+
+	if ( ! $is_freeform_wrapper && ! $is_html_wrapper && ! $is_dynamic_wrapper ) {
+		return;
+	}
+
+	$renderer = isset( $config['render'] ) ? $config['render'] : '';
+	if ( ! is_callable( $renderer ) ) {
+		return;
+	}
+
+	$migrated = (string) ca_call_dynamic_callback( $renderer, [], '' );
+	if ( trim( $migrated ) === $content ) {
+		return;
+	}
+
+	wp_update_post(
+		[
+			'ID'           => $post_id,
+			'post_content' => $migrated,
+		]
+	);
+}
+
+/**
+ * Resolve core/pattern references into full block markup for front page editing.
+ *
+ * @param int    $post_id Page ID.
+ * @param string $path    Blueprint page path.
+ * @return void
+ */
+function ca_expand_front_page_pattern_references( $post_id, $path ) {
+	if ( 'home' !== $path ) {
+		return;
+	}
+
+	$post = get_post( $post_id );
+	if ( ! $post || 'page' !== $post->post_type ) {
+		return;
+	}
+
+	$content = trim( (string) $post->post_content );
+	if ( '' === $content || false === strpos( $content, '<!-- wp:pattern' ) ) {
+		return;
+	}
+	if ( ! function_exists( 'parse_blocks' ) || ! function_exists( 'serialize_blocks' ) || ! function_exists( 'resolve_pattern_blocks' ) ) {
+		return;
+	}
+
+	$blocks = parse_blocks( $content );
+	if ( empty( $blocks ) ) {
+		return;
+	}
+
+	$resolved = resolve_pattern_blocks( $blocks );
+	$updated  = trim( serialize_blocks( $resolved ) );
+
+	if ( '' === $updated || $updated === $content ) {
+		return;
+	}
+
+	wp_update_post(
+		[
+			'ID'           => $post_id,
+			'post_content' => $updated,
+		]
+	);
+}
+
+/**
+ * Upgrade legacy 3-card home gallery block to the editable 12-card slider layout.
+ *
+ * @param int    $post_id Page ID.
+ * @param string $path    Blueprint page path.
+ * @return void
+ */
+function ca_refresh_legacy_home_gallery_section( $post_id, $path ) {
+	if ( 'home' !== $path ) {
+		return;
+	}
+
+	$post = get_post( $post_id );
+	if ( ! $post || 'page' !== $post->post_type ) {
+		return;
+	}
+
+	$content = trim( (string) $post->post_content );
+	if ( '' === $content ) {
+		return;
+	}
+	if ( ! function_exists( 'parse_blocks' ) || ! function_exists( 'serialize_blocks' ) || ! function_exists( 'resolve_pattern_blocks' ) ) {
+		return;
+	}
+
+	$blocks = parse_blocks( $content );
+	if ( empty( $blocks ) ) {
+		return;
+	}
+
+	$gallery_markup = '';
+	$gallery_file   = trailingslashit( CA_THEME_DIR ) . 'patterns/home-gallery.php';
+	if ( is_readable( $gallery_file ) ) {
+		ob_start();
+		include $gallery_file;
+		$gallery_markup = trim( (string) ob_get_clean() );
+	}
+	if ( '' === $gallery_markup ) {
+		return;
+	}
+
+	$gallery_pattern_blocks = parse_blocks( $gallery_markup );
+	if ( empty( $gallery_pattern_blocks[0] ) || ! is_array( $gallery_pattern_blocks[0] ) ) {
+		return;
+	}
+
+	$gallery_block = $gallery_pattern_blocks[0];
+	$updated       = false;
+
+	$replace_gallery = static function ( array &$items ) use ( &$replace_gallery, $gallery_block, &$updated ) {
+		foreach ( $items as $index => &$block ) {
+			if ( ! is_array( $block ) ) {
+				continue;
+			}
+
+			$attrs      = isset( $block['attrs'] ) && is_array( $block['attrs'] ) ? $block['attrs'] : [];
+			$class_name = isset( $attrs['className'] ) ? (string) $attrs['className'] : '';
+			$pattern    = '';
+			if ( isset( $attrs['metadata'] ) && is_array( $attrs['metadata'] ) ) {
+				$pattern = isset( $attrs['metadata']['patternName'] ) ? (string) $attrs['metadata']['patternName'] : '';
+			}
+
+			$is_gallery_block = false !== strpos( $class_name, 'gallery-section' ) || 'cool-air-usa/home-gallery' === $pattern;
+			if ( $is_gallery_block ) {
+				$serialized = serialize_blocks( [ $block ] );
+				$is_current = false !== strpos( $serialized, 'gallery-start-' )
+					&& false !== strpos( $serialized, 'gallery-arrow-l' )
+					&& false !== strpos( $serialized, 'Project 12 / 12' );
+
+				if ( ! $is_current ) {
+					$items[ $index ] = $gallery_block;
+					$updated         = true;
+				}
+
+				return;
+			}
+
+			if ( ! empty( $block['innerBlocks'] ) && is_array( $block['innerBlocks'] ) ) {
+				$replace_gallery( $block['innerBlocks'] );
+				if ( $updated ) {
+					return;
+				}
+			}
+		}
+	};
+
+	$replace_gallery( $blocks );
+
+	if ( ! $updated ) {
+		return;
+	}
+
+	$new_content = trim( serialize_blocks( $blocks ) );
+	if ( '' === $new_content || $new_content === $content ) {
+		return;
+	}
+
+	wp_update_post(
+		[
+			'ID'           => $post_id,
+			'post_content' => $new_content,
+		]
+	);
+}
+
+/**
+ * Upgrade legacy home stats section markup to latest editable slider structure.
+ *
+ * @param int    $post_id Page ID.
+ * @param string $path    Blueprint page path.
+ * @return void
+ */
+function ca_refresh_legacy_home_stats_section( $post_id, $path ) {
+	if ( 'home' !== $path ) {
+		return;
+	}
+
+	$post = get_post( $post_id );
+	if ( ! $post || 'page' !== $post->post_type ) {
+		return;
+	}
+
+	$content = trim( (string) $post->post_content );
+	if ( '' === $content || false !== strpos( $content, 'stats-start-' ) ) {
+		return;
+	}
+	if ( ! function_exists( 'parse_blocks' ) || ! function_exists( 'serialize_blocks' ) ) {
+		return;
+	}
+
+	$blocks = parse_blocks( $content );
+	if ( empty( $blocks ) ) {
+		return;
+	}
+
+	$stats_markup = '';
+	$stats_file   = trailingslashit( CA_THEME_DIR ) . 'patterns/home-stats-bar.php';
+	if ( is_readable( $stats_file ) ) {
+		ob_start();
+		include $stats_file;
+		$stats_markup = trim( (string) ob_get_clean() );
+	}
+	if ( '' === $stats_markup ) {
+		return;
+	}
+
+	$stats_pattern_blocks = parse_blocks( $stats_markup );
+	if ( empty( $stats_pattern_blocks[0] ) || ! is_array( $stats_pattern_blocks[0] ) ) {
+		return;
+	}
+	$stats_block = $stats_pattern_blocks[0];
+	$updated     = false;
+
+	foreach ( $blocks as $index => $block ) {
+		if ( empty( $block['blockName'] ) || 'core/group' !== $block['blockName'] ) {
+			continue;
+		}
+		$class_name = isset( $block['attrs']['className'] ) ? (string) $block['attrs']['className'] : '';
+		if ( false === strpos( $class_name, 'stats-bar' ) ) {
+			continue;
+		}
+
+		$blocks[ $index ] = $stats_block;
+		$updated          = true;
+		break;
+	}
+
+	if ( ! $updated ) {
+		return;
+	}
+
+	$new_content = trim( serialize_blocks( $blocks ) );
+	if ( '' === $new_content || $new_content === $content ) {
+		return;
+	}
+
+	wp_update_post(
+		[
+			'ID'           => $post_id,
+			'post_content' => $new_content,
+		]
+	);
+}
+
+/**
+ * Upgrade legacy home reviews section markup to latest editable block structure.
+ *
+ * @param int    $post_id Page ID.
+ * @param string $path    Blueprint page path.
+ * @return void
+ */
+function ca_refresh_legacy_home_reviews_section( $post_id, $path ) {
+	if ( 'home' !== $path ) {
+		return;
+	}
+
+	$post = get_post( $post_id );
+	if ( ! $post || 'page' !== $post->post_type ) {
+		return;
+	}
+
+	$content = trim( (string) $post->post_content );
+	if ( '' === $content ) {
+		return;
+	}
+	if ( ! function_exists( 'parse_blocks' ) || ! function_exists( 'serialize_blocks' ) ) {
+		return;
+	}
+
+	$blocks = parse_blocks( $content );
+	if ( empty( $blocks ) ) {
+		return;
+	}
+
+	$reviews_markup = '';
+	$reviews_file   = trailingslashit( CA_THEME_DIR ) . 'patterns/home-reviews.php';
+	if ( is_readable( $reviews_file ) ) {
+		ob_start();
+		include $reviews_file;
+		$reviews_markup = trim( (string) ob_get_clean() );
+	}
+	if ( '' === $reviews_markup ) {
+		return;
+	}
+
+	$reviews_pattern_blocks = parse_blocks( $reviews_markup );
+	if ( empty( $reviews_pattern_blocks[0] ) || ! is_array( $reviews_pattern_blocks[0] ) ) {
+		return;
+	}
+	$reviews_block = $reviews_pattern_blocks[0];
+	$updated       = false;
+
+	foreach ( $blocks as $index => $block ) {
+		if ( empty( $block['blockName'] ) || 'core/group' !== $block['blockName'] ) {
+			continue;
+		}
+		$class_name = isset( $block['attrs']['className'] ) ? (string) $block['attrs']['className'] : '';
+		if ( false === strpos( $class_name, 'reviews-section' ) ) {
+			continue;
+		}
+
+		$serialized = serialize_blocks( [ $block ] );
+		$is_current = false !== strpos( $serialized, 'reviews-tags-lead' )
+			&& false !== strpos( $serialized, 'reviews-google-mark' )
+			&& false !== strpos( $serialized, 'reviews-dist-row' )
+			&& false !== strpos( $serialized, 'section reviews-section' );
+		if ( $is_current ) {
+			return;
+		}
+
+		$blocks[ $index ] = $reviews_block;
+		$updated          = true;
+		break;
+	}
+
+	if ( ! $updated ) {
+		return;
+	}
+
+	$new_content = trim( serialize_blocks( $blocks ) );
+	if ( '' === $new_content || $new_content === $content ) {
+		return;
+	}
+
+	wp_update_post(
+		[
+			'ID'           => $post_id,
+			'post_content' => $new_content,
+		]
+	);
+}
+
+/**
+ * Upgrade legacy home process section to latest editable v2 block structure.
+ *
+ * @param int    $post_id Page ID.
+ * @param string $path    Blueprint page path.
+ * @return void
+ */
+function ca_refresh_legacy_home_process_section( $post_id, $path ) {
+	if ( 'home' !== $path ) {
+		return;
+	}
+
+	$post = get_post( $post_id );
+	if ( ! $post || 'page' !== $post->post_type ) {
+		return;
+	}
+
+	$content = trim( (string) $post->post_content );
+	if ( '' === $content ) {
+		return;
+	}
+	if ( ! function_exists( 'parse_blocks' ) || ! function_exists( 'serialize_blocks' ) ) {
+		return;
+	}
+
+	$blocks = parse_blocks( $content );
+	if ( empty( $blocks ) ) {
+		return;
+	}
+
+	$process_markup = '';
+	$process_file   = trailingslashit( CA_THEME_DIR ) . 'patterns/home-process.php';
+	if ( is_readable( $process_file ) ) {
+		ob_start();
+		include $process_file;
+		$process_markup = trim( (string) ob_get_clean() );
+	}
+	if ( '' === $process_markup ) {
+		return;
+	}
+
+	$process_pattern_blocks = parse_blocks( $process_markup );
+	if ( empty( $process_pattern_blocks[0] ) || ! is_array( $process_pattern_blocks[0] ) ) {
+		return;
+	}
+	$process_block = $process_pattern_blocks[0];
+	$updated       = false;
+
+	foreach ( $blocks as $index => $block ) {
+		if ( empty( $block['blockName'] ) || 'core/group' !== $block['blockName'] ) {
+			continue;
+		}
+		$class_name = isset( $block['attrs']['className'] ) ? (string) $block['attrs']['className'] : '';
+		if ( false === strpos( $class_name, 'process-section' ) && false === strpos( $class_name, 'proc-section' ) ) {
+			continue;
+		}
+
+		$serialized = serialize_blocks( [ $block ] );
+		$is_current = false !== strpos( $serialized, 'process-v2' )
+			&& false !== strpos( $serialized, 'process-static-end' )
+			&& false !== strpos( $serialized, '&#128666;' );
+		if ( $is_current ) {
+			return;
+		}
+
+		$blocks[ $index ] = $process_block;
+		$updated          = true;
+		break;
+	}
+
+	if ( ! $updated ) {
+		return;
+	}
+
+	$new_content = trim( serialize_blocks( $blocks ) );
+	if ( '' === $new_content || $new_content === $content ) {
+		return;
+	}
+
+	wp_update_post(
+		[
+			'ID'           => $post_id,
+			'post_content' => $new_content,
+		]
+	);
+}
+
+/**
+ * Upgrade legacy home brands section to latest editable v2 block structure.
+ *
+ * @param int    $post_id Page ID.
+ * @param string $path    Blueprint page path.
+ * @return void
+ */
+function ca_refresh_legacy_home_brands_section( $post_id, $path ) {
+	if ( 'home' !== $path ) {
+		return;
+	}
+
+	$post = get_post( $post_id );
+	if ( ! $post || 'page' !== $post->post_type ) {
+		return;
+	}
+
+	$content = trim( (string) $post->post_content );
+	if ( '' === $content ) {
+		return;
+	}
+	if ( ! function_exists( 'parse_blocks' ) || ! function_exists( 'serialize_blocks' ) ) {
+		return;
+	}
+
+	$blocks = parse_blocks( $content );
+	if ( empty( $blocks ) ) {
+		return;
+	}
+
+	$brands_markup = '';
+	$brands_file   = trailingslashit( CA_THEME_DIR ) . 'patterns/home-brands.php';
+	if ( is_readable( $brands_file ) ) {
+		ob_start();
+		include $brands_file;
+		$brands_markup = trim( (string) ob_get_clean() );
+	}
+	if ( '' === $brands_markup ) {
+		return;
+	}
+
+	$brands_pattern_blocks = parse_blocks( $brands_markup );
+	if ( empty( $brands_pattern_blocks[0] ) || ! is_array( $brands_pattern_blocks[0] ) ) {
+		return;
+	}
+	$brands_block = $brands_pattern_blocks[0];
+	$updated      = false;
+
+	foreach ( $blocks as $index => $block ) {
+		if ( empty( $block['blockName'] ) || 'core/group' !== $block['blockName'] ) {
+			continue;
+		}
+		$class_name = isset( $block['attrs']['className'] ) ? (string) $block['attrs']['className'] : '';
+		if ( false === strpos( $class_name, 'brands-section' ) ) {
+			continue;
+		}
+
+		$serialized = serialize_blocks( [ $block ] );
+		$is_current = false !== strpos( $serialized, 'brands-static-v2' )
+			&& false !== strpos( $serialized, 'Climatemaster' )
+			&& false !== strpos( $serialized, 'Ameristar' );
+		if ( $is_current ) {
+			return;
+		}
+
+		$blocks[ $index ] = $brands_block;
+		$updated          = true;
+		break;
+	}
+
+	if ( ! $updated ) {
+		return;
+	}
+
+	$new_content = trim( serialize_blocks( $blocks ) );
+	if ( '' === $new_content || $new_content === $content ) {
+		return;
+	}
+
+	wp_update_post(
+		[
+			'ID'           => $post_id,
+			'post_content' => $new_content,
 		]
 	);
 }

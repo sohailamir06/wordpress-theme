@@ -5,8 +5,8 @@
     "appearanceTools": true,
     "useRootPaddingAwareAlignments": true,
     "color": {
-      "custom": false,
-      "customGradient": false,
+      "custom": true,
+      "customGradient": true,
       "palette": [
         { "slug": "navy",       "color": "#0b1d3a", "name": "Navy" },
         { "slug": "navy-2",     "color": "#0d2347", "name": "Navy Mid" },
@@ -38,7 +38,14 @@
       ]
     },
     "typography": {
-      "customFontSize": false,
+      "customFontSize": true,
+      "lineHeight": true,
+      "textAlign": true,
+      "fontStyle": true,
+      "fontWeight": true,
+      "letterSpacing": true,
+      "textDecoration": true,
+      "textTransform": true,
       "fontFamilies": [
         {
           "fontFamily": "'Barlow', sans-serif",
@@ -63,7 +70,8 @@
     "spacing": {
       "margin": true,
       "padding": true,
-      "units": ["px", "em", "rem", "%", "vw"],
+      "blockGap": true,
+      "units": ["px", "em", "rem", "%", "vw", "vh"],
       "customSpacingSize": true,
       "spacingSizes": [
         { "slug": "20",  "size": "20px",  "name": "20" },
@@ -80,9 +88,84 @@
       "wideSize": "1400px"
     },
     "blocks": {
+      "core/group": {
+        "spacing": {
+          "margin": true,
+          "padding": true,
+          "blockGap": true
+        },
+        "color": {
+          "background": true,
+          "text": true,
+          "gradients": true
+        }
+      },
+      "core/columns": {
+        "spacing": {
+          "margin": true,
+          "padding": true,
+          "blockGap": true
+        }
+      },
+      "core/column": {
+        "spacing": {
+          "margin": true,
+          "padding": true
+        }
+      },
+      "core/heading": {
+        "typography": {
+          "fontSize": true,
+          "lineHeight": true,
+          "fontWeight": true,
+          "fontStyle": true,
+          "letterSpacing": true,
+          "textTransform": true
+        },
+        "color": {
+          "text": true,
+          "background": true
+        }
+      },
+      "core/paragraph": {
+        "typography": {
+          "fontSize": true,
+          "lineHeight": true,
+          "fontWeight": true,
+          "fontStyle": true,
+          "letterSpacing": true
+        },
+        "color": {
+          "text": true,
+          "background": true
+        }
+      },
       "core/button": {
         "color": {
-          "palette": []
+          "background": true,
+          "text": true,
+          "gradients": true
+        },
+        "spacing": {
+          "margin": true,
+          "padding": true
+        },
+        "typography": {
+          "fontSize": true,
+          "lineHeight": true,
+          "fontWeight": true,
+          "fontStyle": true,
+          "letterSpacing": true,
+          "textTransform": true
+        }
+      },
+      "core/image": {
+        "spacing": {
+          "margin": true
+        },
+        "dimensions": {
+          "aspectRatio": true,
+          "minHeight": true
         }
       }
     }

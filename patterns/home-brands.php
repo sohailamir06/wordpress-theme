@@ -6,23 +6,29 @@
  * Inserter: true
  */
 ?>
-<!-- wp:html -->
-<section class="section brands-section">
-	<div class="sec-in">
-		<div class="reveal center" style="margin-bottom: 40px;">
-			<div class="sec-label center">Certified Experts</div>
-			<h2 class="sec-title center">We Service All Major Brands</h2>
-		</div>
-		<div class="brands-grid reveal">
-			<div class="brand-item">Trane</div>
-			<div class="brand-item">Carrier</div>
-			<div class="brand-item">Rheem</div>
-			<div class="brand-item">Lennox</div>
-			<div class="brand-item">Goodman</div>
-			<div class="brand-item">York</div>
-			<div class="brand-item">American Standard</div>
-			<div class="brand-item">Amana</div>
-		</div>
+<!-- wp:group {"className":"brands-section brands-static-v2","layout":{"type":"constrained"}} -->
+<div class="wp-block-group brands-section brands-static-v2">
+	<!-- wp:paragraph {"align":"center","className":"brands-hdr"} -->
+	<p class="has-text-align-center brands-hdr">Factory Certified On All Major HVAC &amp; Plumbing Brands</p>
+	<!-- /wp:paragraph -->
+	<!-- wp:group {"className":"brands-track","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group brands-track">
+		<!-- wp:paragraph {"className":"brand-chip"} --><p class="brand-chip"><span>Rheem</span></p><!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"brand-chip"} --><p class="brand-chip"><span>Trane</span></p><!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"brand-chip"} --><p class="brand-chip"><span>Daikin</span></p><!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"brand-chip"} --><p class="brand-chip"><span>American Standard</span></p><!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"brand-chip"} --><p class="brand-chip"><span>Lennox</span></p><!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"brand-chip"} --><p class="brand-chip"><span>Goodman</span></p><!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"brand-chip"} --><p class="brand-chip"><span>York</span></p><!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"brand-chip"} --><p class="brand-chip"><span>Bryant</span></p><!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"brand-chip"} --><p class="brand-chip"><span>Ruud</span></p><!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"brand-chip"} --><p class="brand-chip"><span>Mitsubishi</span></p><!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"brand-chip"} --><p class="brand-chip"><span>Bosch</span></p><!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"brand-chip"} --><p class="brand-chip"><span>Climatemaster</span></p><!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"brand-chip"} --><p class="brand-chip"><span>Armstrong</span></p><!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"brand-chip"} --><p class="brand-chip"><span>Tempstar</span></p><!-- /wp:paragraph -->
+		<!-- wp:paragraph {"className":"brand-chip"} --><p class="brand-chip"><span>Ameristar</span></p><!-- /wp:paragraph -->
 	</div>
-</section>
-<!-- /wp:html -->
+	<!-- /wp:group -->
+</div>
+<!-- /wp:group -->

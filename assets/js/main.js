@@ -54,14 +54,25 @@
 
 	// Rotating stats bar
 	function initStatsRotator() {
-		var root = document.querySelector('[data-stats-rotator]');
+		var root = document.querySelector('[data-stats-rotator]') || document.querySelector('.stats-bar');
 		if (!root) return;
 		var track = root.querySelector('.stats-slider-track');
 		var slides = root.querySelectorAll('.stats-slide');
 		var dots = root.querySelectorAll('.stats-dot');
 		var prev = root.querySelector('.stats-arrow-l');
 		var next = root.querySelector('.stats-arrow-r');
+		if (!track || !slides.length) return;
+
 		var idx = 0;
+		var startClass = Array.prototype.find.call(root.classList, function (cls) {
+			return cls.indexOf('stats-start-') === 0;
+		});
+		if (startClass) {
+			var parsed = parseInt(startClass.replace('stats-start-', ''), 10);
+			if (!isNaN(parsed) && parsed > 0 && parsed <= slides.length) {
+				idx = parsed - 1;
+			}
+		}
 		var paused = false;
 		var timer = null;
 
@@ -82,15 +93,16 @@
 		root.addEventListener('mouseenter', function () { paused = true; });
 		root.addEventListener('mouseleave', function () { paused = false; });
 
+		go(idx);
 		start();
 	}
 
 	// Process section: van animation + step highlighting on scroll
 	function initProcessSection() {
-		var section = document.querySelector('[data-process]');
+		var section = document.querySelector('[data-process]') || document.querySelector('.process-section') || document.querySelector('.proc-section');
 		if (!section) return;
-		var van = section.querySelector('[data-process-van]');
-		var fill = section.querySelector('[data-process-fill]');
+		var van = section.querySelector('[data-process-van]') || section.querySelector('.process-van') || section.querySelector('.proc-van');
+		var fill = section.querySelector('[data-process-fill]') || section.querySelector('.process-road-fill') || section.querySelector('.proc-line-fill');
 		var steps = section.querySelectorAll('.proc-step');
 		if (!van || !steps.length) return;
 
@@ -106,6 +118,11 @@
 				s.classList.toggle('is-active', si === i);
 				s.classList.toggle('is-past', si < i);
 			});
+		}
+
+		if (section.classList.contains('process-static-end')) {
+			update(3);
+			return;
 		}
 
 		function startCycle() {
@@ -133,7 +150,7 @@
 
 	// 3D tilt for cards with [data-tilt]
 	function initTilt() {
-		var cards = document.querySelectorAll('[data-tilt], [data-tilt-soft]');
+		var cards = document.querySelectorAll('[data-tilt], [data-tilt-soft], .why-card');
 		cards.forEach(function (card) {
 			var soft = card.hasAttribute('data-tilt-soft');
 			card.addEventListener('mousemove', function (e) {
@@ -156,9 +173,9 @@
 
 	// 3D rotating gallery (Lazy-Susan)
 	function initGallery() {
-		var stage = document.querySelector('[data-gallery]');
+		var stage = document.querySelector('[data-gallery]') || document.querySelector('.gallery-section');
 		if (!stage) return;
-		var cards = stage.querySelectorAll('[data-gallery-card]');
+		var cards = stage.querySelectorAll('[data-gallery-card], .gallery-card');
 		var dots = stage.querySelectorAll('.gallery-dot');
 		var arrL = stage.querySelector('.gallery-arrow-l');
 		var arrR = stage.querySelector('.gallery-arrow-r');
@@ -166,6 +183,16 @@
 		if (!n) return;
 
 		var idx = 0;
+		var startHost = stage.classList.contains('gallery-stage') ? stage : stage.querySelector('.gallery-stage');
+		var startClass = startHost ? Array.prototype.find.call(startHost.classList, function (cls) {
+			return cls.indexOf('gallery-start-') === 0;
+		}) : null;
+		if (startClass) {
+			var parsed = parseInt(startClass.replace('gallery-start-', ''), 10);
+			if (!isNaN(parsed) && parsed > 0 && parsed <= n) {
+				idx = parsed - 1;
+			}
+		}
 		var paused = false;
 		var auto = null;
 

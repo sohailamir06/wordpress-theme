@@ -1,70 +1,63 @@
 .process-section {
 	background: #fff;
-	padding: 48px 40px 72px;
+	padding: 78px 40px 64px;
 }
 .process-head {
 	text-align: center;
-	max-width: 560px;
+	max-width: 640px;
 	margin: 0 auto;
 }
 .process-head .sec-label,
 .process-head .sec-title { justify-content: center; text-align: center; }
-.process-head .sec-sub { margin: 0 auto; text-align: center; }
+.process-head .sec-sub { margin: 8px auto 0; text-align: center; max-width: 620px; }
 
 .process-road {
 	position: relative;
-	margin-top: 48px;
-	margin-bottom: 18px;
-	height: 50px;
+	margin-top: 54px;
+	margin-bottom: 26px;
+	height: 40px;
 }
 .process-road-base {
 	position: absolute;
-	top: 24px;
+	top: 19px;
 	left: 12.5%;
 	right: 12.5%;
-	height: 3px;
-	background: #e2e8f0;
+	height: 2px;
+	background: #b5d4eb;
 	border-radius: 2px;
 }
 .process-road-fill {
 	position: absolute;
-	top: 24px;
+	top: 19px;
 	left: 12.5%;
-	width: 0%;
-	height: 3px;
+	width: 100%;
+	height: 2px;
 	background: linear-gradient(90deg, var(--accent), var(--cta));
 	border-radius: 2px;
-	transition: width 1s cubic-bezier(.4,.6,.3,1);
-}
-.process-road-dashed {
-	position: absolute;
-	top: 25px;
-	left: 12.5%;
-	right: 12.5%;
-	height: 1px;
-	background-image: repeating-linear-gradient(90deg, rgba(255,255,255,.6) 0 8px, transparent 8px 16px);
-	pointer-events: none;
+	transition: width .8s cubic-bezier(.4,.6,.3,1);
 }
 .process-van-wrap {
 	position: absolute;
 	top: 0;
 	left: 12.5%;
 	right: 12.5%;
-	height: 50px;
+	height: 40px;
 	pointer-events: none;
 }
 .process-van {
 	position: absolute;
-	left: 0;
-	top: 0;
+	left: 100%;
+	top: -2px;
 	transform: translateX(-50%);
-	transition: left 1s cubic-bezier(.4,.6,.3,1);
+	transition: left .8s cubic-bezier(.4,.6,.3,1);
+	font-size: 34px;
+	line-height: 1;
 }
 
 .process-grid {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	gap: 24px;
+	gap: 22px;
 	margin-top: 0;
 	position: relative;
 }
@@ -72,43 +65,46 @@
 .proc-num {
 	width: 54px;
 	height: 54px;
-	background: var(--navy);
-	border: 2px solid var(--accent);
+	background: #22c55e;
+	border: 2px solid #22c55e;
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-family: 'Barlow Condensed', sans-serif;
-	font-size: 22px;
+	font-size: 28px;
 	font-weight: 800;
 	color: #fff;
 	margin: 0 auto 14px;
-	transition: all .5s ease;
+	transition: all .45s ease;
 }
 .proc-step.is-active .proc-num {
-	background: var(--accent);
-	border-color: #fff;
-	transform: scale(1.12);
-	box-shadow: 0 0 0 6px rgba(56,189,248,.18), 0 8px 22px rgba(56,189,248,.35);
+	background: #38bdf8;
+	border-color: #38bdf8;
+	transform: scale(1.04);
+	box-shadow: 0 0 0 5px rgba(56,189,248,.25);
 }
 .proc-step.is-past .proc-num {
-	background: var(--green);
-	border-color: var(--green);
+	background: #22c55e;
+	border-color: #22c55e;
 }
-.proc-step.is-past .proc-num::before { content: '✓'; }
-.proc-step.is-past .proc-num-text { display: none; }
 .proc-title {
 	font-family: 'Barlow Condensed', sans-serif;
-	font-size: 17px;
-	font-weight: 700;
+	font-size: 28px;
+	font-size: clamp(22px, 1.15vw, 28px);
+	font-weight: 800;
 	color: var(--navy);
 	text-transform: uppercase;
 	margin-bottom: 7px;
 	transition: color .3s;
+	letter-spacing: .3px;
 }
 .proc-step.is-active .proc-title { color: var(--accent); }
 .proc-desc {
-	font-size: 13px;
+	font-size: 25px;
+	font-size: clamp(12px, .86vw, 14px);
 	color: var(--text-2);
 	line-height: 1.55;
+	max-width: 290px;
+	margin: 0 auto;
 }

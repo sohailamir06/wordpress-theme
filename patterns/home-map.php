@@ -6,28 +6,53 @@
  * Inserter: true
  */
 ?>
-<!-- wp:html -->
-<section class="map-section">
-	<div class="map-container">
-		<div class="map-overlay reveal">
-			<div class="sec-label">Our Service Areas</div>
-			<h2 class="sec-title">We're In Your Neighborhood</h2>
-			<p class="sec-sub">From Jupiter to Homestead, our fleet of 50+ fully stocked vans is always just a few minutes away.</p>
-			<ul class="map-list">
-				<li>Fort Lauderdale</li>
-				<li>Miami & Coral Gables</li>
-				<li>Boca Raton & Delray</li>
-				<li>West Palm Beach</li>
-				<li>Hollywood & Pembroke Pines</li>
-			</ul>
-			<a class="btn-green" href="/service-areas/">View All 100+ Cities →</a>
+<!-- wp:group {"tagName":"section","className":"section map-section","layout":{"type":"constrained"}} -->
+<section class="wp-block-group section map-section">
+	<!-- wp:group {"className":"sec-in","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group sec-in">
+		<!-- wp:group {"className":"reveal map-head","layout":{"type":"constrained"}} -->
+		<div class="wp-block-group reveal map-head">
+			<!-- wp:paragraph {"align":"center","className":"sec-label"} --><p class="has-text-align-center sec-label">Service Coverage</p><!-- /wp:paragraph -->
+			<!-- wp:heading {"textAlign":"center","className":"sec-title light"} --><h2 class="wp-block-heading has-text-align-center sec-title light">Serving 80+ Cities Across South Florida</h2><!-- /wp:heading -->
+			<!-- wp:paragraph {"align":"center","className":"sec-sub light"} --><p class="has-text-align-center sec-sub light">Hover any city below to see how many of your neighbors trust Cool Air USA for HVAC and plumbing service.</p><!-- /wp:paragraph -->
 		</div>
-		<div class="map-placeholder">
-			<!-- Map background or interactive map would go here -->
-			<div class="map-pulse" style="top: 40%; left: 60%;"></div>
-			<div class="map-pulse" style="top: 55%; left: 50%;"></div>
-			<div class="map-pulse" style="top: 30%; left: 70%;"></div>
+		<!-- /wp:group -->
+
+		<!-- wp:columns {"className":"reveal county-cards"} -->
+		<div class="wp-block-columns reveal county-cards">
+			<!-- wp:column {"className":"county-card"} -->
+			<div class="wp-block-column county-card">
+				<!-- wp:paragraph {"className":"county-card-icon"} --><p class="county-card-icon">🌴</p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"county-card-name"} --><p class="county-card-name">Palm Beach County</p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"county-card-cities"} --><p class="county-card-cities">West Palm Beach · Boca Raton · Boynton Beach · Delray Beach <span class="county-card-more">+ 4 more</span></p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"county-card-link"} --><p class="county-card-link"><a href="/service-areas/">View All Palm Beach Cities -&gt;</a></p><!-- /wp:paragraph -->
+			</div>
+			<!-- /wp:column -->
+			<!-- wp:column {"className":"county-card"} -->
+			<div class="wp-block-column county-card">
+				<!-- wp:paragraph {"className":"county-card-icon"} --><p class="county-card-icon">🏖️</p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"county-card-name"} --><p class="county-card-name">Broward County</p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"county-card-cities"} --><p class="county-card-cities">Fort Lauderdale · Hollywood · Pembroke Pines · Coral Springs <span class="county-card-more">+ 6 more</span></p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"county-card-link"} --><p class="county-card-link"><a href="/service-areas/">View All Broward Cities -&gt;</a></p><!-- /wp:paragraph -->
+			</div>
+			<!-- /wp:column -->
+			<!-- wp:column {"className":"county-card"} -->
+			<div class="wp-block-column county-card">
+				<!-- wp:paragraph {"className":"county-card-icon"} --><p class="county-card-icon">🌆</p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"county-card-name"} --><p class="county-card-name">Miami-Dade County</p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"county-card-cities"} --><p class="county-card-cities">Miami · Miami Beach · Hialeah · Coral Gables <span class="county-card-more">+ 6 more</span></p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"county-card-link"} --><p class="county-card-link"><a href="/service-areas/">View All Miami-Dade Cities -&gt;</a></p><!-- /wp:paragraph -->
+			</div>
+			<!-- /wp:column -->
 		</div>
+		<!-- /wp:columns -->
+
+		<!-- wp:buttons {"className":"reveal map-cta-wrap","layout":{"type":"flex","justifyContent":"center"}} -->
+		<div class="wp-block-buttons reveal map-cta-wrap">
+			<!-- wp:button {"className":"btn-green"} --><div class="wp-block-button btn-green"><a class="wp-block-button__link wp-element-button" href="/service-areas/">View All Service Areas -&gt;</a></div><!-- /wp:button -->
+		</div>
+		<!-- /wp:buttons -->
 	</div>
+	<!-- /wp:group -->
 </section>
-<!-- /wp:html -->
+<!-- /wp:group -->

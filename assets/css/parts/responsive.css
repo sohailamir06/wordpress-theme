@@ -1,8 +1,15 @@
 @media (max-width: 1024px) {
+	.stats-arrow-l { left: 14px; }
+	.stats-arrow-r { right: 14px; }
 	.svcs-grid { grid-template-columns: repeat(2, 1fr); }
 	.why-grid { grid-template-columns: 1fr 1fr; }
 	.process-grid { grid-template-columns: repeat(2, 1fr); }
 	.process-road { display: none; }
+	.brands-track {
+		justify-content: flex-start;
+		overflow-x: auto;
+		padding: 0 14px;
+	}
 	.footer-main { grid-template-columns: 1fr 1fr; gap: 32px; }
 	.benefit-cards { grid-template-columns: 1fr 1fr; }
 	.specials-grid { grid-template-columns: 1fr 1fr; }
@@ -32,6 +39,10 @@
 }
 
 @media (max-width: 768px) {
+	.stats-slide { grid-template-columns: repeat(2, 1fr); min-height: auto; }
+	.stat { padding: 18px 12px 22px; }
+	.stat-val { font-size: clamp(36px, 8vw, 46px); }
+	.stat-lbl { font-size: 12px; letter-spacing: .6px; }
 	.nav-links, .nav-actions { display: none; }
 	.nav-hamburger { display: flex; }
 	.section, .section-sm { padding: 56px 20px; }
@@ -72,6 +83,7 @@
 	.family-band-inner { grid-template-columns: 1fr; gap: 16px; }
 	.emg-watermark { font-size: 100px; }
 	.process-grid { grid-template-columns: 1fr; }
+	.proc-desc { max-width: 420px; }
 	.reviews-grid { grid-template-columns: 1fr; }
 	.reviews-tags { justify-content: flex-start; }
 	.milestones { grid-template-columns: repeat(2, 1fr); }
@@ -79,4 +91,8 @@
 	.gallery-card { width: 240px; height: 280px; margin-left: -120px; margin-top: -140px; }
 	.page-hero-split { grid-template-columns: 1fr; gap: 32px; }
 	.counties-cities { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+	.stats-slide { grid-template-columns: 1fr; }
 }

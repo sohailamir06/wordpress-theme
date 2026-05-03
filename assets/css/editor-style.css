@@ -18,3 +18,151 @@
 	visibility: visible !important;
 }
 .wp-block-freeform { overflow: visible !important; }
+
+.editor-styles-wrapper .wp-block-post-content.is-layout-constrained > * + * {
+	margin-block-start: 0 !important;
+}
+.editor-styles-wrapper .wp-block-post-content > .wp-block-group {
+	margin-block-start: 0 !important;
+	margin-block-end: 0 !important;
+}
+
+/* Keep hero/banner fully visible and easy to edit in Gutenberg canvas. */
+.editor-styles-wrapper .wp-block-group.hero {
+	min-height: clamp(620px, 80vh, 900px);
+	overflow: visible;
+}
+.editor-styles-wrapper .wp-block-group.hero .hero-bg {
+	pointer-events: none;
+}
+.editor-styles-wrapper .wp-block-group.hero .hero-split {
+	display: grid !important;
+	grid-template-columns: 1.1fr 0.9fr !important;
+	gap: 40px;
+	padding: 56px 24px;
+	align-items: start;
+}
+.editor-styles-wrapper .wp-block-group.hero .hero-right {
+	display: flex !important;
+}
+.editor-styles-wrapper .wp-block-group.hero .hero-logo-card img {
+	height: auto;
+	max-height: 200px;
+}
+.editor-styles-wrapper .wp-block-group.hero .scroll-indicator {
+	display: none;
+}
+
+/* In editor, show all slider cards as a clean grid for direct editing. */
+.editor-styles-wrapper .gallery-section .gallery-stage {
+	height: auto !important;
+	max-width: none;
+	margin-top: 24px;
+	perspective: none;
+}
+.editor-styles-wrapper .gallery-section .gallery-track {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px;
+	height: auto;
+}
+.editor-styles-wrapper .gallery-section .gallery-card {
+	position: relative;
+	left: auto;
+	top: auto;
+	width: 100%;
+	height: auto;
+	min-height: 220px;
+	margin: 0;
+	transform: none !important;
+	opacity: 1 !important;
+	z-index: auto !important;
+}
+.editor-styles-wrapper .gallery-section .gallery-arrow,
+.editor-styles-wrapper .gallery-section .gallery-dots {
+	display: none !important;
+}
+
+.editor-styles-wrapper .stats-bar {
+	overflow: visible;
+	margin-block: 0 !important;
+	padding: 0 !important;
+}
+.editor-styles-wrapper .stats-bar .stats-slider-wrap {
+	overflow: hidden;
+	max-width: var(--max-w);
+	margin-left: auto;
+	margin-right: auto;
+}
+.editor-styles-wrapper .stats-bar .stats-slider-track {
+	display: flex;
+	gap: 0;
+}
+.editor-styles-wrapper .stats-bar .stats-slide {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.editor-styles-wrapper .stats-bar .stats-arrow {
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+}
+.editor-styles-wrapper .stats-bar .stats-dots {
+	display: flex !important;
+}
+.editor-styles-wrapper .stats-bar .wp-block-group,
+.editor-styles-wrapper .stats-bar p {
+	margin: 0 !important;
+}
+
+@media (max-width: 1100px) {
+	.editor-styles-wrapper .wp-block-group.hero .hero-split {
+		grid-template-columns: 1fr !important;
+	}
+	.editor-styles-wrapper .gallery-section .gallery-track {
+		grid-template-columns: 1fr;
+	}
+	.editor-styles-wrapper .stats-bar .stats-slide {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 680px) {
+	.editor-styles-wrapper .stats-bar .stats-slide {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Keep forms editable and predictable inside Gutenberg. */
+.editor-styles-wrapper .form-card input,
+.editor-styles-wrapper .form-card select,
+.editor-styles-wrapper .form-card textarea,
+.editor-styles-wrapper .form-card button {
+	pointer-events: auto;
+}
+.editor-styles-wrapper .form-card .form-submit-msg[hidden] {
+	display: none !important;
+}
+.editor-form-note {
+	margin-top: 12px;
+	padding: 10px 12px;
+	border-radius: 8px;
+	background: #e7f2ff;
+	border: 1px solid #bfdcff;
+	color: #113968;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+/* Keep process/brands close to frontend structure inside editor canvas. */
+.editor-styles-wrapper .process-section .process-road-fill { width: 100% !important; }
+.editor-styles-wrapper .process-section .process-van { left: 100% !important; }
+.editor-styles-wrapper .process-section .proc-step {
+	padding-left: 6px;
+	padding-right: 6px;
+}
+.editor-styles-wrapper .brands-section .brands-track {
+	flex-wrap: wrap;
+	justify-content: center;
+	animation: none !important;
+}

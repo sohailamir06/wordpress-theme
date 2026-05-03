@@ -9,11 +9,15 @@
 ?>
 <!-- wp:group {"tagName":"section","className":"hero","layout":{"type":"constrained"}} -->
 <section class="wp-block-group hero">
-	<!-- wp:html -->
-	<div class="hero-bg"></div>
-	<div class="hero-float hero-float-a">AC</div>
-	<div class="hero-float hero-float-b">H2O</div>
-	<!-- /wp:html -->
+	<!-- wp:group {"className":"hero-bg","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group hero-bg"></div>
+	<!-- /wp:group -->
+	<!-- wp:paragraph {"className":"hero-float hero-float-a"} -->
+	<p class="hero-float hero-float-a">AC</p>
+	<!-- /wp:paragraph -->
+	<!-- wp:paragraph {"className":"hero-float hero-float-b"} -->
+	<p class="hero-float hero-float-b">H2O</p>
+	<!-- /wp:paragraph -->
 
 	<!-- wp:group {"className":"hero-split","layout":{"type":"flex","flexWrap":"nowrap"}} -->
 	<div class="wp-block-group hero-split">
@@ -125,9 +129,9 @@
 
 			<!-- wp:group {"className":"grating-card","layout":{"type":"constrained"}} -->
 			<div class="wp-block-group grating-card">
-				<!-- wp:html -->
-				<div class="grating-g-pill"><span class="grating-g">G</span></div>
-				<!-- /wp:html -->
+				<!-- wp:paragraph {"className":"grating-g-pill"} -->
+				<p class="grating-g-pill"><span class="grating-g">G</span></p>
+				<!-- /wp:paragraph -->
 				<!-- wp:group {"className":"grating-meta","layout":{"type":"constrained"}} -->
 				<div class="wp-block-group grating-meta">
 					<!-- wp:group {"className":"grating-row","layout":{"type":"flex","flexWrap":"nowrap"}} -->
@@ -136,7 +140,7 @@
 						<p class="grating-num">4.9</p>
 						<!-- /wp:paragraph -->
 						<!-- wp:paragraph {"className":"grating-stars"} -->
-						<p class="grating-stars">★★★★★</p>
+						<p class="grating-stars">*****</p>
 						<!-- /wp:paragraph -->
 					</div>
 					<!-- /wp:group -->
@@ -155,11 +159,15 @@
 	</div>
 	<!-- /wp:group -->
 
-	<!-- wp:html -->
-	<div class="scroll-indicator">
-		<span class="scroll-label">Scroll</span>
-		<div class="scroll-line"></div>
+	<!-- wp:group {"className":"scroll-indicator","layout":{"type":"constrained"}} -->
+	<div class="wp-block-group scroll-indicator">
+		<!-- wp:paragraph {"className":"scroll-label"} -->
+		<p class="scroll-label">Scroll</p>
+		<!-- /wp:paragraph -->
+		<!-- wp:group {"className":"scroll-line","layout":{"type":"constrained"}} -->
+		<div class="wp-block-group scroll-line"></div>
+		<!-- /wp:group -->
 	</div>
-	<!-- /wp:html -->
+	<!-- /wp:group -->
 </section>
 <!-- /wp:group -->
