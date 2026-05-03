@@ -103,6 +103,3 @@ function ca_block_editor_builder_settings( $settings, $context ) {
 
 	return $settings;
 }
-
-/**
- * Backward-compatible wrapper.

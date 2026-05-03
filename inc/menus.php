@@ -114,7 +114,3 @@ function ca_seed_nav_menu_items( $menu_id, $items, $parent_id = 0 ) {
 		ca_seed_nav_menu_items( $menu_id, $item['children'], (int) $item_id );
 	}
 }
-
-/**
- * Curate block inserter list for a page-builder-like editing experience.
- *

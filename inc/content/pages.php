@@ -237,6 +237,18 @@ function ca_page_path_from_id( $post_id ) {
  * @return void
  */
 function ca_set_front_page( $home_id ) {
+	if ( $home_id <= 0 ) {
+		return;
+	}
+
+	if ( (int) get_option( 'page_on_front' ) === $home_id ) {
+		return;
+	}
+
+	update_option( 'show_on_front', 'page' );
+	update_option( 'page_on_front', $home_id );
+}
+
 /**
  * Fill a page with block HTML content if it has not been authored yet.
  *
