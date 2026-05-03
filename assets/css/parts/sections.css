@@ -16,7 +16,7 @@
 	margin: 0 auto;
 	position: relative;
 	overflow: hidden;
-	padding: 0 0 14px;
+	padding: 34px 0 34px;
 }
 
 .stats-slider-track {
@@ -38,7 +38,7 @@
 }
 
 .stat {
-	padding: 30px 24px 32px;
+	padding: 16px 24px;
 	text-align: center;
 	border-right: 1px solid rgba(255, 255, 255, .18);
 }
@@ -103,7 +103,7 @@
 
 .stats-dots {
 	position: absolute;
-	bottom: 10px;
+	bottom: 14px;
 	left: 50%;
 	transform: translateX(-50%);
 	display: flex;
@@ -133,7 +133,7 @@
 	background: #fff;
 	border-top: 4px solid var(--cta);
 	border-bottom: 1px solid #e8edf5;
-	padding: 36px 40px;
+	padding: 48px 40px;
 }
 
 .family-band-inner {
@@ -141,7 +141,7 @@
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: 1.4fr 1fr 1fr 1fr;
-	gap: 24px;
+	gap: 32px;
 	align-items: center;
 }
 

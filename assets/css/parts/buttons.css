@@ -1,10 +1,10 @@
 .btn-green, .btn-green-call {
 	background: var(--cta);
 	color: #fff;
-	font-size: 16px;
+	font-size: 17px; letter-spacing: 0.5px;
 	font-weight: 700;
-	padding: 15px 30px;
-	border-radius: 8px;
+	padding: 18px 36px;
+	border-radius: 10px;
 	transition: all .2s;
 	display: inline-flex;
 	align-items: center;
@@ -21,10 +21,10 @@
 .btn-outline-w {
 	background: transparent;
 	color: #fff;
-	font-size: 15px;
+	font-size: 16px; letter-spacing: 0.5px;
 	font-weight: 600;
-	padding: 14px 26px;
-	border-radius: 8px;
+	padding: 16px 32px;
+	border-radius: 10px;
 	border: 2px solid rgba(255,255,255,.35);
 	transition: all .2s;
 	display: inline-flex;
@@ -46,12 +46,12 @@
 	background: var(--red);
 	color: #fff;
 	font-family: 'Barlow Condensed', sans-serif;
-	font-size: 20px;
+	font-size: 22px; letter-spacing: 1px;
 	font-weight: 700;
 	letter-spacing: .5px;
 	text-transform: uppercase;
-	padding: 16px 36px;
-	border-radius: 8px;
+	padding: 18px 40px;
+	border-radius: 10px;
 	transition: all .2s;
 	display: inline-flex;
 	align-items: center;
@@ -70,8 +70,8 @@
 	color: var(--navy);
 	font-size: 17px;
 	font-weight: 700;
-	padding: 16px 36px;
-	border-radius: 8px;
+	padding: 18px 40px;
+	border-radius: 10px;
 	transition: all .2s;
 	display: inline-flex;
 	align-items: center;
