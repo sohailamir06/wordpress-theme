@@ -3,7 +3,7 @@
 	.stats-arrow-r { right: 14px; }
 	.svcs-grid { grid-template-columns: repeat(2, 1fr); }
 	.why-grid { grid-template-columns: 1fr 1fr; }
-	.process-grid { grid-template-columns: repeat(2, 1fr); }
+	.process-grid { grid-template-columns: repeat(2, 1fr) !important; }
 	.process-road { display: none; }
 	.brands-track {
 		justify-content: flex-start;
@@ -82,7 +82,7 @@
 	.brands-page-grid { grid-template-columns: repeat(2, 1fr); }
 	.family-band-inner { grid-template-columns: 1fr; gap: 16px; }
 	.emg-watermark { font-size: 100px; }
-	.process-grid { grid-template-columns: 1fr; }
+	.process-grid { grid-template-columns: 1fr !important; }
 	.proc-desc { max-width: 420px; }
 	.reviews-grid { grid-template-columns: 1fr !important; }
 	.reviews-tags { justify-content: flex-start; }

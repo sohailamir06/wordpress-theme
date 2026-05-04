@@ -11,7 +11,7 @@ function ca_section_process() {
 		[ 'Problem Solved',       'Repair done, system tested, invoice emailed with before & after photos. Comfort restored — guaranteed.' ],
 	];
 	ob_start(); ?>
-	<section class="section process-section" data-process>
+	<section class="section process-section process-v2 process-static-end" data-process>
 		<div class="sec-in">
 			<div class="reveal process-head">
 				<div class="sec-label">Simple &amp; Transparent</div>
@@ -45,7 +45,7 @@ function ca_section_process() {
 			</div>
 			<div class="process-grid">
 				<?php foreach ( $steps as $i => $st ) : ?>
-					<div class="proc-step reveal d<?php echo $i + 1; ?>" data-step="<?php echo $i; ?>">
+					<div class="proc-step <?php echo $i < 3 ? 'is-past' : 'is-active'; ?> reveal d<?php echo $i + 1; ?>" data-step="<?php echo $i; ?>">
 						<div class="proc-num"><?php echo $i + 1; ?></div>
 						<div class="proc-title"><?php echo esc_html( $st[0] ); ?></div>
 						<p class="proc-desc"><?php echo esc_html( $st[1] ); ?></p>
