@@ -12,11 +12,11 @@
 @import url('parts/brands.css');
 @import url('parts/map.css');
 @import url('parts/membership.css');
-@import url('parts/gallery.css?v=1.0.14');
+@import url('parts/gallery.css?v=1.0.16');
 @import url('parts/emergency.css');
 @import url('parts/pages.css');
 @import url('parts/footer.css');
-@import url('parts/responsive.css?v=1.0.14');
+@import url('parts/responsive.css?v=1.0.16');
 
 /* Global overrides — must come after all imports */
 /* Remove default WP list-block bullets from membership perks */

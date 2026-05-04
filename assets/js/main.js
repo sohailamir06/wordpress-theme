@@ -167,65 +167,152 @@
 		});
 	}
 
-	// 3D rotating gallery (Lazy-Susan)
+	// 3D coverflow gallery.
 	function initGallery() {
-		var stage = document.querySelector('[data-gallery]') || document.querySelector('.gallery-section');
-		if (!stage) return;
-		var cards = stage.querySelectorAll('[data-gallery-card], .gallery-card');
-		var dots = stage.querySelectorAll('.gallery-dot');
-		var arrL = stage.querySelector('.gallery-arrow-l');
-		var arrR = stage.querySelector('.gallery-arrow-r');
-		var n = cards.length;
-		if (!n) return;
+		var galleries = document.querySelectorAll('[data-gallery]');
+		if (!galleries.length) galleries = document.querySelectorAll('.gallery-section');
+		if (!galleries.length) return;
 
-		var idx = 0;
-		var paused = false;
-		var auto = null;
+		galleries.forEach(function (root) {
+			var stage = root.querySelector('.gallery-stage') || root;
+			var cards = root.querySelectorAll('[data-gallery-card], .gallery-card');
+			var dots = root.querySelectorAll('.gallery-dot');
+			var prev = root.querySelector('.gallery-arrow-l');
+			var next = root.querySelector('.gallery-arrow-r');
+			var toggle = root.querySelector('.gallery-toggle');
+			var current = root.querySelector('[data-gallery-current]');
+			var n = cards.length;
+			if (!n) return;
 
-		function position() {
-			cards.forEach(function (card, i) {
+			var idx = 0;
+			var paused = false;
+			var autoplay = root.getAttribute('data-gallery-autoplay') !== 'false';
+			var timer = null;
+
+			function pad(num) {
+				return num < 10 ? '0' + num : String(num);
+			}
+
+			function signedDistance(i) {
 				var rel = ((i - idx) + n) % n;
 				if (rel > n / 2) rel -= n;
-				var abs = Math.abs(rel);
-				var translateX = rel * 178;
-				var rotateY = rel * -7;
-				var z = abs * -62;
-				var opacity = abs > 3 ? 0 : 1 - abs * 0.14;
-				var scale = 1 - abs * 0.055;
-				card.style.transform = 'translateX(' + translateX + 'px) translateZ(' + z + 'px) rotateY(' + rotateY + 'deg) scale(' + scale + ')';
-				card.style.opacity = opacity;
-				card.style.zIndex = 100 - abs;
-				card.classList.toggle('is-front', rel === 0);
+				return rel;
+			}
+
+			function position() {
+				var stageWidth = stage.clientWidth || root.clientWidth || 1180;
+				var cardWidth = cards[0].getBoundingClientRect().width || 420;
+				var spread = Math.min(Math.max(stageWidth * 0.28, 155), cardWidth * 0.88);
+
+				cards.forEach(function (card, i) {
+					var rel = signedDistance(i);
+					var abs = Math.abs(rel);
+					var hidden = abs > 3;
+					var depth = abs * -92;
+					var rotate = rel * -34;
+					var scale = abs === 0 ? 1.06 : Math.max(0.68, 0.9 - abs * 0.075);
+					var offset = rel * spread * (abs > 1 ? 1.08 : 1);
+					var opacity = hidden ? 0 : Math.max(0.18, 1 - abs * 0.19);
+
+					card.style.transform = 'translateX(' + offset + 'px) translateZ(' + depth + 'px) rotateY(' + rotate + 'deg) scale(' + scale + ')';
+					card.style.opacity = opacity;
+					card.style.zIndex = String(120 - abs);
+					card.setAttribute('aria-label', 'Project ' + pad(i + 1) + ' of ' + n);
+					card.setAttribute('aria-current', rel === 0 ? 'true' : 'false');
+					card.setAttribute('tabindex', rel === 0 || abs === 1 ? '0' : '-1');
+					if (!card.getAttribute('role') && card.tagName.toLowerCase() !== 'button') {
+						card.setAttribute('role', 'button');
+					}
+					card.classList.toggle('is-front', rel === 0);
+					card.classList.toggle('is-side', abs > 0 && !hidden);
+					card.classList.toggle('is-hidden', hidden);
+				});
+
+				dots.forEach(function (dot, di) {
+					var active = di === idx;
+					dot.classList.toggle('active', active);
+					dot.setAttribute('aria-current', active ? 'true' : 'false');
+				});
+
+				if (current) current.textContent = pad(idx + 1);
+			}
+
+			function go(i) {
+				idx = (i + n) % n;
+				position();
+			}
+
+			function stopAuto() {
+				if (timer) clearInterval(timer);
+				timer = null;
+			}
+
+			function startAuto() {
+				stopAuto();
+				if (!autoplay) return;
+				timer = setInterval(function () {
+					if (!paused) go(idx + 1);
+				}, 4000);
+			}
+
+			function setAutoplay(enabled) {
+				autoplay = enabled;
+				if (toggle) {
+					toggle.classList.toggle('is-off', !enabled);
+					toggle.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+					toggle.textContent = enabled ? 'Auto-Spin' : 'Paused';
+				}
+				startAuto();
+			}
+
+			cards.forEach(function (card, i) {
+				card.addEventListener('click', function () {
+					go(i);
+					startAuto();
+				});
+				card.addEventListener('keydown', function (e) {
+					if (e.key === 'Enter' || e.key === ' ') {
+						e.preventDefault();
+						go(i);
+						startAuto();
+					}
+				});
 			});
-			dots.forEach(function (d, di) { d.classList.toggle('active', di === idx); });
-		}
 
-		function go(i) { idx = (i + n) % n; position(); }
-		function startAuto() {
-			stopAuto();
-			auto = setInterval(function () { if (!paused) go(idx + 1); }, 3500);
-		}
-		function stopAuto() { if (auto) clearInterval(auto); auto = null; }
+			dots.forEach(function (dot, di) {
+				dot.addEventListener('click', function () {
+					go(di);
+					startAuto();
+				});
+			});
 
-		cards.forEach(function (card, i) {
-			card.addEventListener('click', function () { go(i); startAuto(); });
-		});
-		dots.forEach(function (d, di) {
-			d.addEventListener('click', function () { go(di); startAuto(); });
-		});
-		if (arrL) arrL.addEventListener('click', function () { go(idx - 1); startAuto(); });
-		if (arrR) arrR.addEventListener('click', function () { go(idx + 1); startAuto(); });
-		stage.addEventListener('mouseenter', function () { paused = true; });
-		stage.addEventListener('mouseleave', function () { paused = false; });
-		document.addEventListener('keydown', function (e) {
-			var rect = stage.getBoundingClientRect();
-			if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-			if (e.key === 'ArrowLeft')  go(idx - 1);
-			if (e.key === 'ArrowRight') go(idx + 1);
-		});
+			if (prev) prev.addEventListener('click', function () { go(idx - 1); startAuto(); });
+			if (next) next.addEventListener('click', function () { go(idx + 1); startAuto(); });
+			if (toggle) toggle.addEventListener('click', function () { setAutoplay(!autoplay); });
 
-		position();
-		startAuto();
+			root.addEventListener('mouseenter', function () { paused = true; });
+			root.addEventListener('mouseleave', function () { paused = false; });
+			root.addEventListener('focusin', function () { paused = true; });
+			root.addEventListener('focusout', function () { paused = false; });
+
+			document.addEventListener('keydown', function (e) {
+				var rect = root.getBoundingClientRect();
+				if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+				if (e.key === 'ArrowLeft') {
+					go(idx - 1);
+					startAuto();
+				}
+				if (e.key === 'ArrowRight') {
+					go(idx + 1);
+					startAuto();
+				}
+			});
+
+			window.addEventListener('resize', position, { passive: true });
+
+			position();
+			setAutoplay(autoplay);
+		});
 	}
 
 	// Contact form: disable repeat submits while the server-side handler runs.

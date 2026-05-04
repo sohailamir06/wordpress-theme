@@ -218,9 +218,9 @@ function ca_refresh_legacy_home_gallery_section( $post_id, $path ) {
 			$is_gallery_block = false !== strpos( $class_name, 'gallery-section' ) || 'cool-air-usa/home-gallery' === $pattern;
 			if ( $is_gallery_block ) {
 				$serialized = serialize_blocks( [ $block ] );
-				$is_current = false !== strpos( $serialized, 'gallery-start-' )
-					&& false !== strpos( $serialized, 'gallery-arrow-l' )
-					&& false !== strpos( $serialized, 'Project 12 / 12' );
+				$is_current = false !== strpos( $serialized, 'data-gallery-autoplay' )
+					&& false !== strpos( $serialized, 'gallery-toggle' )
+					&& false !== strpos( $serialized, '5-Ton Carrier Swap' );
 
 				if ( ! $is_current ) {
 					$items[ $index ] = $gallery_block;

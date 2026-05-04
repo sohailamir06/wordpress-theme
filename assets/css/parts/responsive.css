@@ -98,8 +98,6 @@
 	.reviews-grid { grid-template-columns: 1fr !important; }
 	.reviews-tags { justify-content: flex-start; }
 	.milestones { grid-template-columns: repeat(2, 1fr); }
-	.gallery-stage { height: 310px; }
-	.gallery-card { width: 232px; height: 270px; margin-left: -116px; margin-top: -135px; }
 	.page-hero-split { grid-template-columns: 1fr; gap: 32px; }
 	.counties-cities { grid-template-columns: 1fr; }
 }
