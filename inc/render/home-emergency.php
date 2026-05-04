@@ -25,7 +25,7 @@ function ca_section_emergency() {
 			<div class="emg-left">
 				<div class="emg-live-badge">
 					<span class="emg-live-dot"></span>
-					<span class="emg-live-text">Open 24/7/365 — Emergency Dispatch</span>
+					<span class="emg-live-text">OPEN 24/7/365 — EMERGENCY DISPATCH</span>
 				</div>
 				<h2 class="emg-h2">A/C Down? Water Heater Out?<br><span class="emg-h2-red">We're On The Way.</span></h2>
 				<p class="emg-sub">HVAC and plumbing emergencies don't keep business hours. We're open around the clock — real people answer your call and dispatch the nearest certified technician right away.</p>
@@ -36,14 +36,16 @@ function ca_section_emergency() {
 				</div>
 			</div>
 			<div class="emg-right">
-				<a class="btn-red emg-call" href="tel:<?php echo CA_PHONE_RAW; ?>">📞 <?php echo CA_PHONE; ?></a>
-				<div class="emg-mini-grid">
-					<?php foreach ( $mini_stats as $s ) : ?>
-						<div class="emg-stat-mini">
-							<div class="emg-stat-mini-val"><?php echo esc_html( $s[0] ); ?></div>
-							<div class="emg-stat-mini-lbl"><?php echo esc_html( $s[1] ); ?></div>
-						</div>
-					<?php endforeach; ?>
+				<div class="emg-card">
+					<a class="btn-red emg-call" href="tel:<?php echo CA_PHONE_RAW; ?>">📞 <?php echo CA_PHONE; ?></a>
+					<div class="emg-mini-grid">
+						<?php foreach ( $mini_stats as $s ) : ?>
+							<div class="emg-stat-mini">
+								<div class="emg-stat-mini-val"><?php echo esc_html( $s[0] ); ?></div>
+								<div class="emg-stat-mini-lbl"><?php echo esc_html( $s[1] ); ?></div>
+							</div>
+						<?php endforeach; ?>
+					</div>
 				</div>
 			</div>
 		</div>
