@@ -6,8 +6,8 @@
  * Inserter: true
  */
 ?>
-<!-- wp:group {"className":"stats-bar stats-start-3","layout":{"type":"constrained"}} -->
-<div class="wp-block-group stats-bar stats-start-3">
+<!-- wp:group {"className":"stats-bar","layout":{"type":"constrained"}} -->
+<div class="wp-block-group stats-bar">
 	<!-- wp:group {"className":"stats-slider-wrap","layout":{"type":"constrained"}} -->
 	<div class="wp-block-group stats-slider-wrap">
 		<!-- wp:group {"className":"stats-slider-track","layout":{"type":"flex","flexWrap":"nowrap"}} -->

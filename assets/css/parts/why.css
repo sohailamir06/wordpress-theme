@@ -11,12 +11,17 @@
 .why-header .sec-title { justify-content: center; text-align: center; }
 .why-header .sec-sub { margin: 0 auto; text-align: center; }
 
-.why-grid {}
+.why-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 18px;
+	margin-bottom: 24px;
+}
 .why-card {
 	background: #fff;
 	border: 1px solid #e8edf5;
 	border-radius: 18px;
-	padding: 34px 28px; box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+	padding: 26px 22px;
 	position: relative;
 	overflow: hidden;
 	cursor: default;

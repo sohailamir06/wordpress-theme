@@ -13,10 +13,10 @@ function ca_render_site_footer() {
 				<div class="footer-logo"><img src="<?php echo esc_url( CA_THEME_URI . '/assets/images/logo4t.png' ); ?>" alt="<?php esc_attr_e( 'Cool Air USA', 'cool-air-usa' ); ?>"></div>
 				<div class="footer-tagline">We Care About Your Air</div>
 				<p class="footer-about">Family-owned and operated since 2009. South Florida's most trusted HVAC contractor serving over 250,000 lifetime customers across Miami-Dade, Broward, and Palm Beach counties.</p>
-				<div class="footer-crow">Phone: <a href="tel:<?php echo esc_attr( CA_PHONE_RAW ); ?>"><?php echo esc_html( CA_PHONE ); ?></a></div>
-				<div class="footer-crow">Email: <a href="mailto:<?php echo esc_attr( CA_EMAIL ); ?>"><?php echo esc_html( CA_EMAIL ); ?></a></div>
-				<div class="footer-crow">Address: <?php echo esc_html( CA_ADDRESS ); ?></div>
-				<div class="footer-crow">Office: 7am-9pm - Emergency: 24/7/365</div>
+				<div class="footer-crow">📞 <a href="tel:<?php echo esc_attr( CA_PHONE_RAW ); ?>"><?php echo esc_html( CA_PHONE ); ?></a></div>
+				<div class="footer-crow">✉️ <a href="mailto:<?php echo esc_attr( CA_EMAIL ); ?>"><?php echo esc_html( CA_EMAIL ); ?></a></div>
+				<div class="footer-crow">📍 <?php echo esc_html( CA_ADDRESS ); ?></div>
+				<div class="footer-crow">🕐 Office: 7am–9pm · Emergency: 24/7/365</div>
 			</div>
 
 			<?php foreach ( [ 'footer_hvac', 'footer_more', 'footer_company' ] as $location ) : ?>
@@ -29,12 +29,12 @@ function ca_render_site_footer() {
 		</div>
 
 		<div class="footer-bot">
-			<div class="footer-bot-copy">Copyright <?php echo esc_html( ca_year() ); ?> Cool Air USA. All rights reserved. | CAC1816920</div>
+			<div class="footer-bot-copy">© <?php echo esc_html( ca_year() ); ?> Cool Air USA. All rights reserved. | CAC1816920</div>
 			<div class="footer-legal-links">
 				<?php echo ca_render_footer_legal_links(); ?>
 			</div>
 			<div class="fbadges">
-				<span class="fbadge">4.9 Google</span>
+				<span class="fbadge">⭐ 4.9 Google</span>
 				<span class="fbadge">A+ BBB</span>
 				<span class="fbadge">Licensed &amp; Insured</span>
 				<span class="fbadge">Family Owned &amp; Operated</span>
