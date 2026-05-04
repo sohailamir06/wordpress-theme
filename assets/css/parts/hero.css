@@ -35,13 +35,27 @@
 }
 
 @keyframes floatA {
-	0%, 100% { transform: translateY(0) rotate(-4deg); }
-	50% { transform: translateY(-18px) rotate(4deg); }
+
+	0%,
+	100% {
+		transform: translateY(0) rotate(-4deg);
+	}
+
+	50% {
+		transform: translateY(-18px) rotate(4deg);
+	}
 }
 
 @keyframes floatB {
-	0%, 100% { transform: translateY(0); }
-	50% { transform: translateY(-14px); }
+
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-14px);
+	}
 }
 
 .hero-float {
@@ -193,13 +207,28 @@
 
 .hero-checks {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: center;
 	gap: 10px 14px;
+	width: max-content;
+	max-width: none;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	/* margin: 0 !important;
+	padding: 0 !important; */
 }
 
-.hero-checks.wp-block-group {
+.hero-checks.wp-block-group,
+.hero-checks.has-global-padding,
+.hero-checks.is-layout-constrained {
 	max-width: none !important;
 	display: flex !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	left: 50% !important;
+	right: auto !important;
 }
 
 .hero-check {
@@ -241,8 +270,15 @@
 }
 
 @keyframes breatheLogo {
-	0%, 100% { transform: scale(1); }
-	50% { transform: scale(1.025); }
+
+	0%,
+	100% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.025);
+	}
 }
 
 .hero-logo-card {
@@ -411,7 +447,9 @@
 }
 
 @keyframes scrollPulse {
-	0%, 100% {
+
+	0%,
+	100% {
 		opacity: .35;
 		transform: translateY(0);
 	}
@@ -498,6 +536,15 @@
 
 	.hero-check {
 		white-space: normal;
+	}
+
+	.hero-checks {
+		flex-wrap: wrap;
+		width: 100%;
+		max-width: none;
+		justify-content: center;
+		left: auto;
+		transform: none;
 	}
 
 	.hero-badges {
