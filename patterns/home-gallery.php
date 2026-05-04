@@ -24,8 +24,8 @@
 		</div>
 		<!-- /wp:group -->
 
-		<!-- wp:group {"className":"gallery-stage gallery-start-9","layout":{"type":"constrained"}} -->
-		<div class="wp-block-group gallery-stage gallery-start-9">
+		<!-- wp:group {"className":"gallery-stage gallery-start-1","layout":{"type":"constrained"}} -->
+		<div class="wp-block-group gallery-stage gallery-start-1">
 			<!-- wp:paragraph {"className":"gallery-arrow gallery-arrow-l"} -->
 			<p class="gallery-arrow gallery-arrow-l">&lsaquo;</p>
 			<!-- /wp:paragraph -->
@@ -244,15 +244,15 @@
 
 			<!-- wp:group {"className":"gallery-dots","layout":{"type":"constrained"}} -->
 			<div class="wp-block-group gallery-dots">
-				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
-				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
-				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
-				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
-				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
-				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
-				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
-				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
 				<!-- wp:paragraph {"className":"gallery-dot active"} --><p class="gallery-dot active"></p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
+				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
 				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
 				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
 				<!-- wp:paragraph {"className":"gallery-dot"} --><p class="gallery-dot"></p><!-- /wp:paragraph -->
@@ -264,6 +264,5 @@
 	<!-- /wp:group -->
 </section>
 <!-- /wp:group -->
-
 
 

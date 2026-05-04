@@ -97,7 +97,7 @@
 		start();
 	}
 
-	// Process section: van animation + step highlighting on scroll
+	// Process section: keep the home timeline in its completed state.
 	function initProcessSection() {
 		var section = document.querySelector('[data-process]') || document.querySelector('.process-section') || document.querySelector('.proc-section');
 		if (!section) return;
@@ -120,7 +120,8 @@
 			});
 		}
 
-		if (section.classList.contains('process-static-end')) {
+		if (section.classList.contains('process-section') || section.classList.contains('process-v2') || section.classList.contains('process-static-end')) {
+			section.classList.add('process-static-end');
 			update(3);
 			return;
 		}
@@ -183,16 +184,6 @@
 		if (!n) return;
 
 		var idx = 0;
-		var startHost = stage.classList.contains('gallery-stage') ? stage : stage.querySelector('.gallery-stage');
-		var startClass = startHost ? Array.prototype.find.call(startHost.classList, function (cls) {
-			return cls.indexOf('gallery-start-') === 0;
-		}) : null;
-		if (startClass) {
-			var parsed = parseInt(startClass.replace('gallery-start-', ''), 10);
-			if (!isNaN(parsed) && parsed > 0 && parsed <= n) {
-				idx = parsed - 1;
-			}
-		}
 		var paused = false;
 		var auto = null;
 
@@ -201,11 +192,11 @@
 				var rel = ((i - idx) + n) % n;
 				if (rel > n / 2) rel -= n;
 				var abs = Math.abs(rel);
-				var translateX = rel * 220;
-				var rotateY = rel * -22;
-				var z = abs * -120;
-				var opacity = abs > 3 ? 0 : 1 - abs * 0.18;
-				var scale = 1 - abs * 0.08;
+				var translateX = rel * 178;
+				var rotateY = rel * -7;
+				var z = abs * -62;
+				var opacity = abs > 3 ? 0 : 1 - abs * 0.14;
+				var scale = 1 - abs * 0.055;
 				card.style.transform = 'translateX(' + translateX + 'px) translateZ(' + z + 'px) rotateY(' + rotateY + 'deg) scale(' + scale + ')';
 				card.style.opacity = opacity;
 				card.style.zIndex = 100 - abs;
