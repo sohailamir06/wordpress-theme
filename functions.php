@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CA_THEME_VERSION', '1.0.13' );
+define( 'CA_THEME_VERSION', '1.0.14' );
 define( 'CA_THEME_DIR', get_template_directory() );
 define( 'CA_THEME_URI', get_template_directory_uri() );
 define( 'CA_PHONE', '(954) 915-1155' );

@@ -16,6 +16,11 @@
 	.brands-page-grid { grid-template-columns: repeat(3, 1fr); }
 	.county-cards { grid-template-columns: 1fr; }
 	.counties-grid { grid-template-columns: 1fr; }
+	.hero-split {
+		grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr);
+		gap: 42px;
+		padding-inline: 32px;
+	}
 	.reviews-summary {
 		grid-template-columns: 1fr !important;
 		gap: 20px;
@@ -47,10 +52,16 @@
 	.nav-hamburger { display: flex; }
 	.section, .section-sm { padding: 56px 20px; }
 	.hero-split {
-		grid-template-columns: 1fr;
-		padding: 60px 20px;
+		grid-template-columns: 1fr !important;
+		gap: 34px;
+		padding: 72px 20px 68px;
 	}
-	.hero-right { display: none; }
+	.hero-h1 { font-size: clamp(50px, 13vw, 70px); }
+	.hero-right {
+		display: flex;
+		max-width: 460px;
+		margin: 0 auto;
+	}
 	.svcs-grid { grid-template-columns: 1fr; }
 	.why-grid { grid-template-columns: 1fr; }
 	.county-cards { grid-template-columns: 1fr; }
