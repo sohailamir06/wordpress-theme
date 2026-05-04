@@ -17,3 +17,13 @@
 @import url('parts/pages.css');
 @import url('parts/footer.css');
 @import url('parts/responsive.css');
+
+/* Global overrides — must come after all imports */
+/* Remove default WP list-block bullets from membership perks */
+ul.memb-perks,
+ul.memb-perks.wp-block-list {
+	list-style: none !important;
+	padding-left: 0 !important;
+	padding-inline-start: 0 !important;
+	margin: 24px 0 32px !important;
+}

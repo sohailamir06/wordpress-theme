@@ -25,7 +25,7 @@
 	position: relative;
 	overflow: hidden;
 	cursor: default;
-	transition: transform .2s ease-out, box-shadow .2s ease-out;
+	transition: transform .12s ease-out, box-shadow .12s ease-out;
 	transform-style: preserve-3d;
 	will-change: transform;
 	--why-color: #38bdf8;
@@ -60,7 +60,7 @@
 .why-desc {
 	font-size: 13.5px;
 	color: var(--text-2);
-	line-height: 1.75;
+	line-height: 1.65;
 }
 .why-cta {
 	text-align: center;
@@ -71,4 +71,4 @@
 	justify-content: center;
 }
 
-.why-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0,0,0,0.08); }
+.why-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.06); }

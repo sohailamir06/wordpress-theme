@@ -163,13 +163,13 @@
 .reviews-grid {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
-	gap: 16px;
+	gap: 18px;
 }
 .review-card {
 	background: #fff;
-	border: 1px solid #d9e3ef;
-	border-radius: 12px;
-	padding: 18px 18px 16px;
+	border: 1px solid #e8edf5;
+	border-radius: 16px;
+	padding: 22px 22px 20px;
 	display: flex;
 	flex-direction: column;
 	transition: all .25s;
@@ -185,7 +185,7 @@
 	display: flex;
 	align-items: center;
 	gap: 12px;
-	margin-bottom: 10px;
+	margin-bottom: 12px;
 }
 .review-avatar {
 	width: 42px;
@@ -252,9 +252,9 @@
 	font-weight: 500;
 }
 .review-text {
-	font-size: 13px;
+	font-size: 14px;
 	color: var(--text);
-	line-height: 1.55;
+	line-height: 1.65;
 	margin-bottom: 14px;
 	flex: 1;
 }
