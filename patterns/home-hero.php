@@ -7,16 +7,16 @@
  * Inserter: true
  */
 ?>
-<!-- wp:group {"tagName":"section","className":"hero","layout":{"type":"constrained"}} -->
-<section class="wp-block-group hero">
+<!-- wp:group {"tagName":"section","className":"hero hero-v2","layout":{"type":"constrained"}} -->
+<section class="wp-block-group hero hero-v2">
 	<!-- wp:group {"className":"hero-bg","layout":{"type":"constrained"}} -->
 	<div class="wp-block-group hero-bg"></div>
 	<!-- /wp:group -->
 	<!-- wp:paragraph {"className":"hero-float hero-float-a"} -->
-	<p class="hero-float hero-float-a">AC</p>
+	<p class="hero-float hero-float-a" aria-hidden="true"></p>
 	<!-- /wp:paragraph -->
 	<!-- wp:paragraph {"className":"hero-float hero-float-b"} -->
-	<p class="hero-float hero-float-b">H2O</p>
+	<p class="hero-float hero-float-b" aria-hidden="true"></p>
 	<!-- /wp:paragraph -->
 
 	<!-- wp:group {"className":"hero-split","layout":{"type":"flex","flexWrap":"nowrap"}} -->
@@ -32,7 +32,7 @@
 			<!-- /wp:heading -->
 
 			<!-- wp:paragraph {"className":"hero-sub"} -->
-			<p class="hero-sub">Honest pricing, same-day service, and a team that treats your home like their own. South Florida's most trusted HVAC and plumbing company, open 24/7, 365 days a year.</p>
+			<p class="hero-sub">Honest pricing, same-day service, and a team that treats your home like their own. South Florida's most trusted HVAC and plumbing company &mdash; Open 24/7, 365 days a year.</p>
 			<!-- /wp:paragraph -->
 
 			<!-- wp:buttons {"className":"hero-acts"} -->
@@ -42,7 +42,7 @@
 				<!-- /wp:button -->
 
 				<!-- wp:button {"className":"btn-outline-w"} -->
-				<div class="wp-block-button btn-outline-w"><a class="wp-block-button__link wp-element-button" href="tel:9549151155">Call or Text (954) 915-1155</a></div>
+				<div class="wp-block-button btn-outline-w"><a class="wp-block-button__link wp-element-button" href="tel:9549151155"><span aria-hidden="true">&#128222;</span>(954) 915-1155</a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->
@@ -50,19 +50,19 @@
 			<!-- wp:group {"className":"hero-checks","layout":{"type":"constrained"}} -->
 			<div class="wp-block-group hero-checks">
 				<!-- wp:paragraph {"className":"hero-check"} -->
-				<p class="hero-check"><span class="hero-check-icon">✓</span>Licensed &amp; Insured</p>
+				<p class="hero-check"><span class="hero-check-icon">&#10003;</span>Licensed &amp; Insured</p>
 				<!-- /wp:paragraph -->
 
 				<!-- wp:paragraph {"className":"hero-check"} -->
-				<p class="hero-check"><span class="hero-check-icon">✓</span>4.9 Star Rating and 4,600+ Reviews</p>
+				<p class="hero-check"><span class="hero-check-icon">&#10003;</span>4.9 Star Rating and 4,760+ Reviews</p>
 				<!-- /wp:paragraph -->
 
 				<!-- wp:paragraph {"className":"hero-check"} -->
-				<p class="hero-check"><span class="hero-check-icon">✓</span>Same-Day Service</p>
+				<p class="hero-check"><span class="hero-check-icon">&#10003;</span>Same-Day Service</p>
 				<!-- /wp:paragraph -->
 
 				<!-- wp:paragraph {"className":"hero-check"} -->
-				<p class="hero-check"><span class="hero-check-icon">✓</span>1-Year Warranty</p>
+				<p class="hero-check"><span class="hero-check-icon">&#10003;</span>1-Year Warranty</p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->
@@ -109,7 +109,7 @@
 					<p class="hero-badge-val">17+</p>
 					<!-- /wp:paragraph -->
 					<!-- wp:paragraph {"className":"hero-badge-lbl"} -->
-					<p class="hero-badge-lbl">Years Family-Owned</p>
+					<p class="hero-badge-lbl">Years Family-Owned &amp; Operated</p>
 					<!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->
@@ -120,7 +120,7 @@
 					<p class="hero-badge-val">24/7</p>
 					<!-- /wp:paragraph -->
 					<!-- wp:paragraph {"className":"hero-badge-lbl"} -->
-					<p class="hero-badge-lbl">Always Open</p>
+					<p class="hero-badge-lbl">Always Open For You</p>
 					<!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->
@@ -140,12 +140,12 @@
 						<p class="grating-num">4.9</p>
 						<!-- /wp:paragraph -->
 						<!-- wp:paragraph {"className":"grating-stars"} -->
-						<p class="grating-stars">*****</p>
+						<p class="grating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
 						<!-- /wp:paragraph -->
 					</div>
 					<!-- /wp:group -->
 					<!-- wp:paragraph {"className":"grating-sub"} -->
-					<p class="grating-sub">Based on 4,600+ Google reviews</p>
+					<p class="grating-sub">Based on 4,760+ Google reviews</p>
 					<!-- /wp:paragraph -->
 				</div>
 				<!-- /wp:group -->

@@ -10,25 +10,25 @@ function ca_section_hero() {
 		[ '17+',   'Years Family-Owned & Operated' ],
 		[ '24/7',  'Always Open For You' ],
 	];
-	$checks = [ 'Licensed & Insured', '4.9 Star Rating and 4,600+ Reviews', 'Same-Day Service', '1-Year Warranty' ];
+	$checks = [ 'Licensed & Insured', '4.9 Star Rating and 4,760+ Reviews', 'Same-Day Service', '1-Year Warranty' ];
 
 	ob_start(); ?>
-	<section class="hero" data-parallax>
+	<section class="hero hero-v2" data-parallax>
 		<div class="hero-bg"></div>
-		<div class="hero-float hero-float-a">*</div>
-		<div class="hero-float hero-float-b">H2O</div>
+		<div class="hero-float hero-float-a" aria-hidden="true"></div>
+		<div class="hero-float hero-float-b" aria-hidden="true"></div>
 		<div class="hero-split">
 			<div>
 				<div class="hero-eyebrow">Your Neighbors. Not a Franchise. Since 2009.</div>
 				<h1 class="hero-h1"><em>HVAC &amp;</em><br><em>Plumbing</em><br>Experts<br>You Can<br>Trust</h1>
-				<p class="hero-sub">Honest pricing, same-day service, and a team that treats your home like their own. South Florida's most trusted HVAC and plumbing company - Open 24/7, 365 days a year.</p>
+				<p class="hero-sub">Honest pricing, same-day service, and a team that treats your home like their own. South Florida's most trusted HVAC and plumbing company &mdash; Open 24/7, 365 days a year.</p>
 				<div class="hero-acts">
 					<a class="btn-green" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Schedule Service &rarr;</a>
-					<a class="btn-outline-w" href="tel:<?php echo CA_PHONE_RAW; ?>">Call or Text <?php echo CA_PHONE; ?></a>
+					<a class="btn-outline-w" href="tel:<?php echo esc_attr( CA_PHONE_RAW ); ?>"><span aria-hidden="true">&#128222;</span><?php echo esc_html( CA_PHONE ); ?></a>
 				</div>
 				<div class="hero-checks">
 					<?php foreach ( $checks as $c ) : ?>
-						<div class="hero-check"><span class="hero-check-icon">✓</span><?php echo esc_html( $c ); ?></div>
+						<div class="hero-check"><span class="hero-check-icon">&#10003;</span><?php echo esc_html( $c ); ?></div>
 					<?php endforeach; ?>
 				</div>
 			</div>
@@ -65,9 +65,9 @@ function ca_google_rating_card() {
 		<div class="grating-meta">
 			<div class="grating-row">
 				<span class="grating-num">4.9</span>
-				<span class="grating-stars">★★★★★</span>
+				<span class="grating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
 			</div>
-			<div class="grating-sub">Based on 4,600+ Google reviews</div>
+			<div class="grating-sub">Based on 4,760+ Google reviews</div>
 		</div>
 		<a class="grating-link" href="#reviews">Read All &rarr;</a>
 	</div>

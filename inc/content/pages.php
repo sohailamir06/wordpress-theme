@@ -92,6 +92,7 @@ function ca_sync_theme_pages_with_admin() {
 		// Expand pattern references into concrete block trees on the front page so
 		// Gutenberg loads all sections as directly editable content.
 		ca_expand_front_page_pattern_references( $page_id, $path );
+		ca_refresh_legacy_home_hero_section( $page_id, $path );
 		ca_refresh_legacy_home_gallery_section( $page_id, $path );
 		ca_refresh_legacy_home_stats_section( $page_id, $path );
 		ca_refresh_legacy_home_reviews_section( $page_id, $path );
@@ -151,6 +152,7 @@ function ca_sync_theme_page_on_save( $post_id, $post, $update ) {
 
 		ca_apply_page_template( $post_id, isset( $config['template'] ) ? (string) $config['template'] : '' );
 		ca_expand_front_page_pattern_references( $post_id, $path );
+		ca_refresh_legacy_home_hero_section( $post_id, $path );
 		ca_refresh_legacy_home_gallery_section( $post_id, $path );
 		ca_refresh_legacy_home_stats_section( $post_id, $path );
 		ca_refresh_legacy_home_reviews_section( $post_id, $path );

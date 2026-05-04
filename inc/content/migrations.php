@@ -49,6 +49,111 @@ function ca_expand_front_page_pattern_references( $post_id, $path ) {
 }
 
 /**
+ * Upgrade legacy or malformed home hero markup to the screenshot-matched v2 pattern.
+ *
+ * @param int    $post_id Page ID.
+ * @param string $path    Blueprint page path.
+ * @return void
+ */
+function ca_refresh_legacy_home_hero_section( $post_id, $path ) {
+	if ( 'home' !== $path ) {
+		return;
+	}
+
+	$post = get_post( $post_id );
+	if ( ! $post || 'page' !== $post->post_type ) {
+		return;
+	}
+
+	$content = trim( (string) $post->post_content );
+	if ( '' === $content ) {
+		return;
+	}
+	if ( ! function_exists( 'parse_blocks' ) || ! function_exists( 'serialize_blocks' ) ) {
+		return;
+	}
+
+	$blocks = parse_blocks( $content );
+	if ( empty( $blocks ) ) {
+		return;
+	}
+
+	$hero_markup = '';
+	$hero_file   = trailingslashit( CA_THEME_DIR ) . 'patterns/home-hero.php';
+	if ( is_readable( $hero_file ) ) {
+		ob_start();
+		include $hero_file;
+		$hero_markup = trim( (string) ob_get_clean() );
+	}
+	if ( '' === $hero_markup ) {
+		return;
+	}
+
+	$hero_pattern_blocks = parse_blocks( $hero_markup );
+	if ( empty( $hero_pattern_blocks[0] ) || ! is_array( $hero_pattern_blocks[0] ) ) {
+		return;
+	}
+
+	$hero_block = $hero_pattern_blocks[0];
+	$updated    = false;
+
+	$replace_hero = static function ( array &$items ) use ( &$replace_hero, $hero_block, &$updated ) {
+		foreach ( $items as $index => &$block ) {
+			if ( ! is_array( $block ) ) {
+				continue;
+			}
+
+			$attrs      = isset( $block['attrs'] ) && is_array( $block['attrs'] ) ? $block['attrs'] : [];
+			$class_name = isset( $attrs['className'] ) ? (string) $attrs['className'] : '';
+			$pattern    = '';
+			if ( isset( $attrs['metadata'] ) && is_array( $attrs['metadata'] ) ) {
+				$pattern = isset( $attrs['metadata']['patternName'] ) ? (string) $attrs['metadata']['patternName'] : '';
+			}
+
+			$is_hero_block = false !== strpos( ' ' . $class_name . ' ', ' hero ' ) || 'cool-air-usa/home-hero' === $pattern;
+			if ( $is_hero_block ) {
+				$serialized = serialize_blocks( [ $block ] );
+				$is_current = false !== strpos( $serialized, 'hero-v2' )
+					&& false !== strpos( $serialized, '4,760+ Reviews' )
+					&& false !== strpos( $serialized, 'You Can<br>Trust' );
+
+				if ( ! $is_current ) {
+					$items[ $index ] = $hero_block;
+					$updated         = true;
+				}
+
+				return;
+			}
+
+			if ( ! empty( $block['innerBlocks'] ) && is_array( $block['innerBlocks'] ) ) {
+				$replace_hero( $block['innerBlocks'] );
+				if ( $updated ) {
+					return;
+				}
+			}
+		}
+	};
+
+	$replace_hero( $blocks );
+
+	if ( ! $updated ) {
+		return;
+	}
+
+	$new_content = trim( serialize_blocks( $blocks ) );
+	if ( '' === $new_content || $new_content === $content ) {
+		return;
+	}
+
+	wp_update_post(
+		[
+			'ID'           => $post_id,
+			'post_content' => $new_content,
+		]
+	);
+}
+
+/**
  * Upgrade legacy 3-card home gallery block to the editable 12-card slider layout.
  *
  * @param int    $post_id Page ID.
