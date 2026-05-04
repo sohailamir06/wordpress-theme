@@ -426,7 +426,7 @@ function ca_refresh_legacy_home_reviews_section( $post_id, $path ) {
 }
 
 /**
- * Upgrade legacy home process section to latest editable v2 block structure.
+ * Upgrade legacy home process section to latest editable v3 block structure.
  *
  * @param int    $post_id Page ID.
  * @param string $path    Blueprint page path.
@@ -483,9 +483,10 @@ function ca_refresh_legacy_home_process_section( $post_id, $path ) {
 		}
 
 		$serialized = serialize_blocks( [ $block ] );
-		$is_current = false !== strpos( $serialized, 'process-v2' )
-			&& false !== strpos( $serialized, 'process-static-end' )
-			&& false !== strpos( $serialized, '&#128666;' );
+		$is_current = false !== strpos( $serialized, 'process-v3' )
+			&& false !== strpos( $serialized, 'id="process"' )
+			&& false !== strpos( $serialized, 'data-process-start="1"' )
+			&& false !== strpos( $serialized, 'process-road-dashed' );
 		if ( $is_current ) {
 			return;
 		}

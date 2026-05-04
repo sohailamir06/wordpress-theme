@@ -97,7 +97,7 @@
 		start();
 	}
 
-	// Process section: keep the home timeline in its completed state.
+	// Process section: animate vehicle, fill, and active step states.
 	function initProcessSection() {
 		var section = document.querySelector('[data-process]') || document.querySelector('.process-section') || document.querySelector('.proc-section');
 		if (!section) return;
@@ -120,21 +120,16 @@
 			});
 		}
 
-		if (section.classList.contains('process-section') || section.classList.contains('process-v2') || section.classList.contains('process-static-end')) {
-			section.classList.add('process-static-end');
-			update(3);
-			return;
-		}
-
 		function startCycle() {
 			if (started) return;
 			started = true;
-			update(0);
-			var i = 0;
+			var parsedStart = parseInt(section.getAttribute('data-process-start') || '1', 10);
+			var i = isNaN(parsedStart) ? 1 : Math.max(0, Math.min(steps.length - 1, parsedStart));
+			update(i);
 			timer = setInterval(function () {
-				i = (i + 1) % 4;
+				i = (i + 1) % steps.length;
 				update(i);
-			}, 2200);
+			}, 2300);
 		}
 
 		if ('IntersectionObserver' in window) {
