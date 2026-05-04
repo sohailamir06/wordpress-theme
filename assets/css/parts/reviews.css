@@ -1,62 +1,92 @@
 .reviews-section {
-	background: #eef3f8;
-	padding: 86px 40px;
+	background: #f7fafc;
+	padding: 72px 40px;
 }
-.reviews-head { text-align: center; margin-bottom: 34px; }
+.reviews-head { text-align: center; margin-bottom: 36px; }
 .reviews-head .sec-label,
 .reviews-head .sec-title { justify-content: center; text-align: center; }
 .reviews-head .sec-sub {
 	text-align: center;
 	margin: 10px auto 0;
-	max-width: 620px;
 }
 
 .reviews-summary {
 	background: #fff;
-	border-radius: 16px;
-	border: 1px solid #d9e3ef;
-	box-shadow: 0 8px 24px rgba(15,23,42,.04);
-	padding: 26px 24px;
-	margin: 0 auto 24px;
-	max-width: 1028px;
+	border-radius: 18px;
+	border: 1px solid #e8edf5;
+	box-shadow: 0 8px 28px rgba(15,23,42,.06);
+	padding: 28px 32px;
+	margin: 0 auto 28px;
+	max-width: 1152px;
 	display: grid;
-	grid-template-columns: auto 1fr auto;
-	gap: 26px;
+	grid-template-columns: minmax(230px, auto) minmax(360px, 1fr) minmax(178px, auto);
+	gap: 32px;
 	align-items: center;
+}
+/* Override Gutenberg constrained layout on summary */
+.reviews-summary.wp-block-group {
+	max-width: 1152px !important;
+}
+.reviews-summary > * {
+	margin-block-start: 0 !important;
+	margin-block-end: 0 !important;
 }
 .reviews-summary-rating {
 	display: flex;
 	align-items: center;
-	gap: 12px;
-	padding-right: 24px;
-	border-right: 1px solid #e3eaf2;
+	gap: 16px;
+	padding-right: 32px;
+	border-right: 1px solid #e8edf5;
 }
+.reviews-summary-rating.wp-block-group {
+	display: flex !important;
+	max-width: none !important;
+}
+.reviews-summary-rating > * {
+	margin-block-start: 0 !important;
+	margin-block-end: 0 !important;
+}
+/* The Google logo "G" paragraph */
 .reviews-rating-logo {
-	width: 42px;
-	height: 42px;
+	width: 54px;
+	height: 54px;
 	border-radius: 50%;
-	background: #fff;
-	border: 1px solid #dde7f1;
+	background: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%234285f4' d='M24 9.5c3.5 0 6.6 1.2 9 3.4l6.7-6.7C35.6 2.4 30.1 0 24 0 14.6 0 6.5 5.4 2.5 13.3l7.8 6.1C12.2 13.5 17.6 9.5 24 9.5z'/%3E%3Cpath fill='%2334a853' d='M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.9 7.2l7.6 5.9c4.4-4.1 7.1-10.1 7.1-17.6z'/%3E%3Cpath fill='%23fbbc04' d='M10.3 28.6c-.5-1.5-.8-3-.8-4.6s.3-3.1.8-4.6l-7.8-6.1C.9 16.6 0 20.2 0 24s.9 7.4 2.5 10.7l7.8-6.1z'/%3E%3Cpath fill='%23ea4335' d='M24 48c6.1 0 11.3-2 15.1-5.5l-7.6-5.9c-2.1 1.4-4.7 2.2-7.5 2.2-6.4 0-11.8-4-13.7-9.9l-7.8 6.1C6.5 42.6 14.6 48 24 48z'/%3E%3C/svg%3E") center / 44px 44px no-repeat;
+	border: 0;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 34px;
-	font-weight: 700;
-	color: #4285f4;
+	font-size: 38px;
+	font-weight: 900;
+	font-family: 'Google Sans', 'Product Sans', Arial, sans-serif;
+	color: transparent;
 	flex-shrink: 0;
+	margin: 0;
+	line-height: 1;
 }
 .reviews-rating-row { display: flex; align-items: flex-end; gap: 10px; }
+.reviews-rating-row.wp-block-group {
+	display: flex !important;
+	align-items: flex-end;
+	max-width: none !important;
+}
+.reviews-rating-row > * {
+	margin-block-start: 0 !important;
+	margin-block-end: 0 !important;
+}
 .reviews-rating-num {
 	font-family: 'Barlow Condensed', sans-serif;
-	font-size: 50px;
+	font-size: 54px;
 	font-weight: 900;
 	color: var(--navy);
 	line-height: .85;
-	letter-spacing: -1px;
+	letter-spacing: 0;
+	margin: 0;
 }
 .reviews-rating-stars {
 	color: #fbbc04;
 	font-size: 18px;
+	margin: 0;
 }
 .reviews-rating-sub {
 	font-size: 12px;
@@ -65,31 +95,77 @@
 	font-weight: 600;
 }
 
-.reviews-distribution { flex: 1; min-width: 0; }
+.reviews-distribution {
+	display: flex;
+	flex-direction: column;
+	gap: 9px;
+	flex: 1;
+	min-width: 0;
+}
+.reviews-distribution.wp-block-group {
+	max-width: none !important;
+}
+.reviews-distribution > * {
+	margin-block-start: 0 !important;
+	margin-block-end: 0 !important;
+}
 .reviews-dist-row {
 	display: flex;
 	align-items: center;
 	gap: 10px;
-	margin-bottom: 6px;
+	margin: 0;
+	width: 100%;
 }
+/* Override Gutenberg group layout on dist-row */
+.reviews-dist-row.wp-block-group {
+	max-width: none !important;
+	display: flex !important;
+	align-items: center;
+	gap: 10px;
+	margin: 0 !important;
+}
+.reviews-dist-row > * { margin: 0 !important; }
 .reviews-dist-star {
 	font-size: 12px;
 	font-weight: 600;
 	color: var(--text-2);
 	width: 14px;
+	margin: 0;
 }
-.reviews-dist-icon { color: #fbbc04; font-size: 11px; }
+.reviews-dist-icon { color: #fbbc04; font-size: 11px; margin: 0; }
 .reviews-dist-bar {
-	flex: 1;
-	height: 6px;
+	flex: 1 1 auto;
+	width: auto;
+	min-width: 180px;
+	height: 7px;
 	background: #f1f5f9;
 	border-radius: 4px;
 	overflow: hidden;
+	/* Override Gutenberg layout */
+	display: block !important;
+	max-width: none !important;
+}
+/* Override inner constrained Gutenberg group */
+.reviews-dist-bar.wp-block-group {
+	flex: 1 1 auto !important;
+	max-width: none !important;
+	width: auto !important;
+	display: block !important;
+	margin: 0 !important;
 }
 .reviews-dist-fill {
 	height: 100%;
 	background: #cbd5e1;
 	border-radius: 4px;
+	display: block !important;
+	max-width: none !important;
+}
+/* Override Gutenberg layout on the fill element */
+.reviews-dist-fill.wp-block-group {
+	display: block !important;
+	max-width: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 .reviews-dist-fill.is-top { background: #fbbc04; }
 .reviews-dist-pct {
@@ -98,20 +174,30 @@
 	width: 36px;
 	text-align: right;
 	font-weight: 600;
+	margin: 0;
 }
 
 .reviews-platforms {
 	display: flex;
 	flex-direction: column;
-	gap: 9px;
-	padding-left: 24px;
-	border-left: 1px solid #e3eaf2;
+	gap: 8px;
+	padding-left: 32px;
+	border-left: 1px solid #e8edf5;
+}
+/* Override Gutenberg layout on platforms */
+.reviews-platforms.wp-block-group {
+	max-width: none !important;
+}
+.reviews-platforms > * {
+	margin-block-start: 0 !important;
+	margin-block-end: 0 !important;
 }
 .reviews-platform {
 	display: flex;
 	align-items: center;
-	gap: 9px;
+	gap: 10px;
 	font-size: 13px;
+	margin: 0;
 }
 .reviews-platform-dot {
 	width: 8px;
@@ -135,7 +221,7 @@
 	flex-wrap: wrap;
 	gap: 8px;
 	justify-content: center;
-	margin-bottom: 22px;
+	margin-bottom: 28px;
 }
 .reviews-tags-lead {
 	font-size: 11px;
@@ -156,14 +242,21 @@
 	display: inline-flex;
 	align-items: center;
 	gap: 7px;
+	margin: 0;
 }
 .reviews-tag-name { color: var(--navy); }
 .reviews-tag-count { color: var(--text-2); font-size: 11px; }
 
 .reviews-grid {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	display: grid !important;
+	grid-template-columns: repeat(4, 1fr) !important;
 	gap: 18px;
+	max-width: 1152px;
+	margin: 0 auto;
+}
+/* Override Gutenberg grid layout override */
+.reviews-grid.wp-block-group {
+	max-width: 1152px !important;
 }
 .review-card {
 	background: #fff;
@@ -175,6 +268,16 @@
 	transition: all .25s;
 	box-shadow: 0 1px 3px rgba(0,0,0,.02);
 	position: relative;
+	min-height: 254px;
+}
+.review-card.wp-block-group {
+	max-width: none !important;
+	display: flex !important;
+	flex-direction: column !important;
+}
+.review-card > * {
+	margin-block-start: 0 !important;
+	margin-block-end: 0 !important;
 }
 .review-card:hover {
 	transform: translateY(-4px);
@@ -187,9 +290,14 @@
 	gap: 12px;
 	margin-bottom: 12px;
 }
+.review-head.wp-block-group {
+	max-width: none !important;
+	display: flex !important;
+}
 .review-avatar {
 	width: 42px;
 	height: 42px;
+	min-width: 42px;
 	border-radius: 50%;
 	background: linear-gradient(135deg, var(--accent), var(--cta));
 	display: flex;
@@ -200,18 +308,25 @@
 	color: #fff;
 	flex-shrink: 0;
 	box-shadow: 0 2px 6px rgba(0,0,0,.08);
+	margin: 0;
 }
 .review-meta { flex: 1; min-width: 0; }
+.review-meta.wp-block-group { max-width: none !important; }
 .review-name-row {
 	display: flex;
 	align-items: center;
 	gap: 6px;
+}
+.review-name-row.wp-block-group {
+	max-width: none !important;
+	display: flex !important;
 }
 .review-name {
 	font-size: 14.5px;
 	font-weight: 700;
 	color: var(--navy);
 	line-height: 1.1;
+	margin: 0;
 }
 .review-verified {
 	width: 14px;
@@ -225,19 +340,26 @@
 	justify-content: center;
 	font-weight: 900;
 	flex-shrink: 0;
+	margin: 0;
 }
 .reviews-google-mark {
+	width: 18px;
+	height: 18px;
+	background: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%234285f4' d='M24 9.5c3.5 0 6.6 1.2 9 3.4l6.7-6.7C35.6 2.4 30.1 0 24 0 14.6 0 6.5 5.4 2.5 13.3l7.8 6.1C12.2 13.5 17.6 9.5 24 9.5z'/%3E%3Cpath fill='%2334a853' d='M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.9 7.2l7.6 5.9c4.4-4.1 7.1-10.1 7.1-17.6z'/%3E%3Cpath fill='%23fbbc04' d='M10.3 28.6c-.5-1.5-.8-3-.8-4.6s.3-3.1.8-4.6l-7.8-6.1C.9 16.6 0 20.2 0 24s.9 7.4 2.5 10.7l7.8-6.1z'/%3E%3Cpath fill='%23ea4335' d='M24 48c6.1 0 11.3-2 15.1-5.5l-7.6-5.9c-2.1 1.4-4.7 2.2-7.5 2.2-6.4 0-11.8-4-13.7-9.9l-7.8 6.1C6.5 42.6 14.6 48 24 48z'/%3E%3C/svg%3E") center / contain no-repeat;
 	margin-left: auto;
 	font-size: 29px;
 	font-weight: 700;
-	color: #4285f4;
+	color: transparent;
 	line-height: 1;
+	margin: 0 0 0 auto;
+	flex-shrink: 0;
 }
 .review-loc {
 	font-size: 11px;
 	color: var(--text-2);
 	margin-top: 2px;
 	font-weight: 500;
+	margin: 2px 0 0;
 }
 .review-stars-row {
 	display: flex;
@@ -245,11 +367,16 @@
 	gap: 8px;
 	margin-bottom: 10px;
 }
-.review-stars { color: #fbbc04; font-size: 14px; }
+.review-stars-row.wp-block-group {
+	max-width: none !important;
+	display: flex !important;
+}
+.review-stars { color: #fbbc04; font-size: 14px; margin: 0; }
 .review-date {
 	font-size: 11px;
 	color: var(--text-2);
 	font-weight: 500;
+	margin: 0;
 }
 .review-text {
 	font-size: 14px;
@@ -262,12 +389,19 @@
 	display: flex;
 	align-items: center;
 	gap: 14px;
+	margin-top: auto;
 	padding-top: 12px;
 	border-top: 1px solid #f0f4f8;
 	font-size: 11.5px;
 	color: var(--text-2);
 	font-weight: 600;
+	flex-wrap: wrap;
 }
+.review-foot.wp-block-group {
+	max-width: none !important;
+	display: flex !important;
+}
+.review-foot p { margin: 0; }
 .review-recommends {
 	margin-left: auto;
 	color: var(--green-2);
@@ -280,4 +414,55 @@
 	justify-content: center;
 	margin-top: 36px;
 	flex-wrap: wrap;
+}
+.reviews-cta.wp-block-buttons {
+	display: flex !important;
+	gap: 14px;
+	justify-content: center;
+	margin-top: 36px;
+}
+.reviews-cta .wp-block-button.btn-navy-cta,
+.reviews-cta .wp-block-button.btn-write-review {
+	padding: 0 !important;
+	border: 0 !important;
+	background: transparent !important;
+	box-shadow: none !important;
+}
+.reviews-cta .btn-navy-cta .wp-block-button__link,
+.reviews-cta .btn-write-review .wp-block-button__link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: .8px;
+	line-height: 1;
+	padding: 13px 22px;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+.reviews-cta .btn-navy-cta .wp-block-button__link {
+	gap: 10px;
+	background: var(--navy) !important;
+	color: #fff !important;
+	padding-inline: 26px;
+}
+.reviews-cta .btn-navy-cta .wp-block-button__link::before {
+	content: '';
+	width: 16px;
+	height: 16px;
+	background: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%234285f4' d='M24 9.5c3.5 0 6.6 1.2 9 3.4l6.7-6.7C35.6 2.4 30.1 0 24 0 14.6 0 6.5 5.4 2.5 13.3l7.8 6.1C12.2 13.5 17.6 9.5 24 9.5z'/%3E%3Cpath fill='%2334a853' d='M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.9 7.2l7.6 5.9c4.4-4.1 7.1-10.1 7.1-17.6z'/%3E%3Cpath fill='%23fbbc04' d='M10.3 28.6c-.5-1.5-.8-3-.8-4.6s.3-3.1.8-4.6l-7.8-6.1C.9 16.6 0 20.2 0 24s.9 7.4 2.5 10.7l7.8-6.1z'/%3E%3Cpath fill='%23ea4335' d='M24 48c6.1 0 11.3-2 15.1-5.5l-7.6-5.9c-2.1 1.4-4.7 2.2-7.5 2.2-6.4 0-11.8-4-13.7-9.9l-7.8 6.1C6.5 42.6 14.6 48 24 48z'/%3E%3C/svg%3E") center / contain no-repeat;
+	flex-shrink: 0;
+}
+.reviews-cta .btn-write-review .wp-block-button__link {
+	gap: 8px;
+	background: #fff !important;
+	border: 1.5px solid #cbd5e1;
+	color: var(--navy) !important;
+}
+.reviews-cta .btn-write-review .wp-block-button__link::before {
+	content: '\2605';
+	font-size: 13px;
+	line-height: 1;
 }

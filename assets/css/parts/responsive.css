@@ -17,7 +17,7 @@
 	.county-cards { grid-template-columns: 1fr; }
 	.counties-grid { grid-template-columns: 1fr; }
 	.reviews-summary {
-		grid-template-columns: 1fr;
+		grid-template-columns: 1fr !important;
 		gap: 20px;
 	}
 	.reviews-summary-rating {
@@ -32,7 +32,7 @@
 		border-top: 1px solid #e8edf5;
 		padding-top: 20px;
 	}
-	.reviews-grid { grid-template-columns: 1fr 1fr; }
+	.reviews-grid { grid-template-columns: 1fr 1fr !important; }
 	.family-band-inner { grid-template-columns: 1fr 1fr; }
 	.milestones { grid-template-columns: repeat(3, 1fr); }
 	.membership-plans { grid-template-columns: 1fr; }
@@ -84,7 +84,7 @@
 	.emg-watermark { font-size: 100px; }
 	.process-grid { grid-template-columns: 1fr; }
 	.proc-desc { max-width: 420px; }
-	.reviews-grid { grid-template-columns: 1fr; }
+	.reviews-grid { grid-template-columns: 1fr !important; }
 	.reviews-tags { justify-content: flex-start; }
 	.milestones { grid-template-columns: repeat(2, 1fr); }
 	.gallery-stage { height: 320px; }
