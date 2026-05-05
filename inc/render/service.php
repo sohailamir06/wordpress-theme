@@ -43,7 +43,7 @@ function ca_service_hero( $d, $slug ) {
 				<div class="page-hero-right">
 					<div class="page-hero-card-label">What We Handle</div>
 					<div class="issue-grid">
-						<?php foreach ( array_slice( $d['issues'], 0, 4 ) as $i ) : ?>
+						<?php foreach ( $d['issues'] as $i ) : ?>
 							<div class="issue-card" data-tilt-soft>
 								<div class="issue-title"><?php echo esc_html( $i[0] ); ?></div>
 								<div class="issue-desc"><?php echo esc_html( $i[1] ); ?></div>
@@ -123,11 +123,12 @@ function ca_service_process( $d ) {
 				<div class="sec-label warranty-label">The Cool Air Warranty</div>
 				<h3 class="warranty-title">Your Service Is Fully Protected</h3>
 				<ul class="bullets-list light">
-					<li>1-year full parts &amp; labor warranty</li>
-					<li>30-day maintenance warranty</li>
-					<li>Same issue recurs = free fix</li>
-					<li>All parts new &amp; unboxed onsite</li>
+					<li>1-year full parts &amp; labor warranty on all repairs</li>
+					<li>30-day warranty on all maintenance services</li>
+					<li>If the same issue recurs, we fix it at no cost</li>
+					<li>All parts new &amp; unboxed onsite for transparency</li>
 				</ul>
+				<p class="warranty-desc">Tens of thousands of South Florida residents trust in Cool Air USA. Join the Cool Air family today.</p>
 				<div class="warranty-acts">
 					<a class="btn-green" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Schedule Now →</a>
 					<a class="btn-green-call" href="tel:<?php echo CA_PHONE_RAW; ?>">📞 Call or Text</a>
@@ -143,11 +144,12 @@ function ca_service_cta() {
 	ob_start(); ?>
 	<section class="cta-section">
 		<div class="content-in">
+			<div class="cta-kicker">Ready to get started?</div>
 			<h2 class="sec-title light center">Schedule Your Service Today</h2>
-			<p class="sec-sub light center mx-auto">Available 24/7, 365 days a year. You'll always speak to a live agent — never an answering machine.</p>
+			<p class="sec-sub light center mx-auto">Available 24/7, 365 days a year. You'll always speak to a live agent &mdash; never an answering machine.</p>
 			<div class="cta-acts">
-				<a class="btn-green" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Book Online →</a>
-				<a class="btn-green-call" href="tel:<?php echo CA_PHONE_RAW; ?>">📞 Call or Text <?php echo CA_PHONE; ?></a>
+				<a class="btn-green" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Book Online &rarr;</a>
+				<a class="btn-green-call" href="tel:<?php echo esc_attr( CA_PHONE_RAW ); ?>"><span class="btn-phone-icon" aria-hidden="true">&#9742;</span> Call or Text <?php echo esc_html( CA_PHONE ); ?></a>
 			</div>
 		</div>
 	</section>

@@ -1,107 +1,286 @@
 @media (max-width: 1024px) {
-	.stats-arrow-l { left: 14px; }
-	.stats-arrow-r { right: 14px; }
-	.svcs-grid { grid-template-columns: repeat(2, 1fr); }
-	.why-grid { grid-template-columns: 1fr 1fr; }
-	.process-grid { grid-template-columns: repeat(2, 1fr) !important; }
-	.process-road { display: none; }
+	.stats-arrow-l {
+		left: 14px;
+	}
+
+	.stats-arrow-r {
+		right: 14px;
+	}
+
+	.svcs-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.why-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.process-grid {
+		grid-template-columns: repeat(2, 1fr) !important;
+	}
+
+	.process-road {
+		display: none;
+	}
+
 	.brands-track {
 		justify-content: flex-start;
 		overflow-x: auto;
 		padding: 0 14px;
 	}
-	.footer-main { grid-template-columns: 1fr 1fr; gap: 32px; }
-	.benefit-cards { grid-template-columns: 1fr 1fr; }
-	.specials-grid { grid-template-columns: 1fr 1fr; }
-	.brands-page-grid { grid-template-columns: repeat(3, 1fr); }
-	.county-cards { grid-template-columns: 1fr; }
-	.counties-grid { grid-template-columns: 1fr; }
+
+	.footer-main {
+		grid-template-columns: 1fr 1fr;
+		gap: 32px;
+	}
+
+	.benefit-cards {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.specials-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.brands-page-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.county-cards {
+		grid-template-columns: 1fr;
+	}
+
+	.counties-grid {
+		grid-template-columns: 1fr;
+	}
+
 	.hero-split {
 		grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr);
 		gap: 42px;
 		padding-inline: 32px;
 	}
+
 	.reviews-summary {
 		grid-template-columns: 1fr !important;
 		gap: 20px;
 	}
+
 	.reviews-summary-rating {
 		padding-right: 0;
 		border-right: none;
 		border-bottom: 1px solid #e8edf5;
 		padding-bottom: 20px;
 	}
+
 	.reviews-platforms {
 		padding-left: 0;
 		border-left: none;
 		border-top: 1px solid #e8edf5;
 		padding-top: 20px;
 	}
-	.reviews-grid { grid-template-columns: 1fr 1fr !important; }
-	.family-band-inner { grid-template-columns: 1fr 1fr; }
-	.milestones { grid-template-columns: repeat(3, 1fr); }
-	.membership-plans { grid-template-columns: 1fr; }
+
+	.reviews-grid {
+		grid-template-columns: 1fr 1fr !important;
+	}
+
+	.family-band-inner {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.milestones {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.membership-plans {
+		grid-template-columns: 1fr;
+	}
 }
 
 @media (max-width: 768px) {
-	.stats-slide { grid-template-columns: repeat(2, 1fr); min-height: auto; }
-	.stat { padding: 18px 12px 22px; }
-	.stat-val { font-size: clamp(36px, 8vw, 46px); }
-	.stat-lbl { font-size: 12px; letter-spacing: .6px; }
-	.nav-links, .nav-actions { display: none; }
-	.nav-hamburger { display: flex; }
-	.section, .section-sm { padding: 56px 20px; }
+	.stats-slide {
+		grid-template-columns: repeat(2, 1fr);
+		min-height: auto;
+	}
+
+	.stat {
+		padding: 18px 12px 22px;
+	}
+
+	.stat-val {
+		font-size: clamp(36px, 8vw, 46px);
+	}
+
+	.stat-lbl {
+		font-size: 12px;
+		letter-spacing: .6px;
+	}
+
+	.nav-links,
+	.nav-actions {
+		display: none;
+	}
+
+	.nav-hamburger {
+		display: flex;
+	}
+
+	.section,
+	.section-sm {
+		padding: 56px 20px;
+	}
+
 	.hero-split {
 		grid-template-columns: 1fr !important;
 		gap: 34px;
 		padding: 72px 20px 68px;
 	}
-	.hero-h1 { font-size: clamp(50px, 13vw, 70px); }
+
+	.hero-h1 {
+		font-size: clamp(50px, 13vw, 70px);
+	}
+
 	.hero-right {
 		display: flex;
 		max-width: 460px;
 		margin: 0 auto;
 	}
-	.svcs-grid { grid-template-columns: 1fr; }
-	.why-grid { grid-template-columns: 1fr; }
-	.county-cards { grid-template-columns: 1fr; }
+
+	.svcs-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.why-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.county-cards {
+		grid-template-columns: 1fr;
+	}
+
 	.footer-main {
 		grid-template-columns: 1fr;
 		padding: 40px 20px;
 	}
-	.footer-bot { padding: 20px; }
-	.content-section { padding: 56px 20px; }
+
+	.footer-bot {
+		padding: 20px;
+	}
+
+	.content-section {
+		padding: 56px 20px;
+	}
+
+	.cta-section {
+		min-height: 0;
+		padding: 58px 20px;
+	}
+
+	.cta-section .sec-title {
+		font-size: clamp(36px, 9vw, 46px);
+	}
+
 	.two-col {
 		grid-template-columns: 1fr;
 		gap: 32px;
 	}
-	.issue-grid { grid-template-columns: 1fr; }
-	.contact-grid { grid-template-columns: 1fr; }
+
+	.issue-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.contact-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.warranty-card {
+		padding: 28px;
+	}
+
+	.warranty-title {
+		font-size: 20px;
+	}
+
 	.ebar {
 		font-size: 12px;
 		gap: 8px;
 		flex-direction: column;
 		padding: 8px 16px;
 	}
-	.ebar-item + .ebar-item { border-left: none; }
+
+	.ebar-item+.ebar-item {
+		border-left: none;
+	}
+
 	.emg-inner {
 		flex-direction: column;
 		text-align: center;
 	}
-	.benefit-cards { grid-template-columns: 1fr; }
-	.specials-grid { grid-template-columns: 1fr; }
-	.brands-page-grid { grid-template-columns: repeat(2, 1fr); }
-	.family-band-inner { grid-template-columns: 1fr; gap: 16px; }
-	.emg-watermark { font-size: 100px; }
-	.process-grid { grid-template-columns: 1fr !important; }
-	.proc-desc { max-width: 420px; }
-	.reviews-grid { grid-template-columns: 1fr !important; }
-	.reviews-tags { justify-content: flex-start; }
-	.milestones { grid-template-columns: repeat(2, 1fr); }
-	.page-hero-split { grid-template-columns: 1fr; gap: 32px; }
-	.counties-cities { grid-template-columns: 1fr; }
+
+	.benefit-cards {
+		grid-template-columns: 1fr;
+	}
+
+	.specials-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.brands-page-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.family-band-inner {
+		grid-template-columns: 1fr;
+		gap: 16px;
+	}
+
+	.emg-watermark {
+		font-size: 100px;
+	}
+
+	.process-grid {
+		grid-template-columns: 1fr !important;
+	}
+
+	.proc-desc {
+		max-width: 420px;
+	}
+
+	.reviews-grid {
+		grid-template-columns: 1fr !important;
+	}
+
+	.reviews-tags {
+		justify-content: flex-start;
+	}
+
+	.milestones {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.page-hero-split {
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+
+	.counties-cities {
+		grid-template-columns: 1fr;
+	}
 }
 
 @media (max-width: 520px) {
-	.stats-slide { grid-template-columns: 1fr; }
+	.stats-slide {
+		grid-template-columns: 1fr;
+	}
+
+	.cta-section .cta-acts {
+		width: 100%;
+	}
+
+	.cta-section a.btn-green,
+	.cta-section a.btn-green-call,
+	.cta-section .wp-block-button.btn-green .wp-block-button__link,
+	.cta-section .wp-block-button.btn-green-call .wp-block-button__link {
+		width: 100%;
+		max-width: 320px;
+	}
 }

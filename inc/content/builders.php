@@ -212,19 +212,22 @@ function ca_render_service_page_builder_content( $slug ) {
 <section class="wp-block-group cta-section">
 	<!-- wp:group {"className":"content-in","layout":{"type":"constrained"}} -->
 	<div class="wp-block-group content-in">
+		<!-- wp:paragraph {"align":"center","className":"cta-kicker"} -->
+		<p class="has-text-align-center cta-kicker">Ready to get started?</p>
+		<!-- /wp:paragraph -->
 		<!-- wp:heading {"textAlign":"center","level":2,"className":"sec-title light center"} -->
 		<h2 class="wp-block-heading has-text-align-center sec-title light center">Schedule Your Service Today</h2>
 		<!-- /wp:heading -->
 		<!-- wp:paragraph {"align":"center","className":"sec-sub light center mx-auto"} -->
-		<p class="has-text-align-center sec-sub light center mx-auto">Available 24/7, 365 days a year. You will always speak to a live agent.</p>
+		<p class="has-text-align-center sec-sub light center mx-auto">Available 24/7, 365 days a year. You will always speak to a live agent &mdash; never an answering machine.</p>
 		<!-- /wp:paragraph -->
 		<!-- wp:buttons {"className":"cta-acts","layout":{"type":"flex","justifyContent":"center"}} -->
 		<div class="wp-block-buttons cta-acts">
 			<!-- wp:button {"className":"btn-green"} -->
-			<div class="wp-block-button btn-green"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Book Online -&gt;</a></div>
+			<div class="wp-block-button btn-green"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Book Online &rarr;</a></div>
 			<!-- /wp:button -->
 			<!-- wp:button {"className":"btn-green-call"} -->
-			<div class="wp-block-button btn-green-call"><a class="wp-block-button__link wp-element-button" href="tel:<?php echo esc_attr( CA_PHONE_RAW ); ?>">Call or Text <?php echo esc_html( CA_PHONE ); ?></a></div>
+			<div class="wp-block-button btn-green-call"><a class="wp-block-button__link wp-element-button" href="tel:<?php echo esc_attr( CA_PHONE_RAW ); ?>"><span class="btn-phone-icon" aria-hidden="true">&#9742;</span> Call or Text <?php echo esc_html( CA_PHONE ); ?></a></div>
 			<!-- /wp:button -->
 		</div>
 		<!-- /wp:buttons -->
