@@ -168,7 +168,6 @@ function ca_render_desktop_menu_items( $items ) {
 
 function ca_render_nav_dropdown( $item, $index ) {
 	$dropdown_id = sanitize_title( $item['title'] ) . '-' . (int) $index;
-	$children    = ca_flatten_menu_children( $item['children'] );
 
 	ob_start(); ?>
 	<div class="nav-item" data-dropdown="<?php echo esc_attr( $dropdown_id ); ?>">
@@ -176,8 +175,12 @@ function ca_render_nav_dropdown( $item, $index ) {
 			<?php echo esc_html( $item['title'] ); ?> <span class="nav-chevron">v</span>
 		</button>
 		<div class="nav-dropdown">
-			<?php foreach ( $children as $child ) : ?>
-				<?php echo ca_render_nav_link( $child, 'nav-dd-item' ); ?>
+			<?php foreach ( $item['children'] as $child_index => $child ) : ?>
+				<?php if ( ! empty( $child['children'] ) ) : ?>
+					<?php echo ca_render_nav_submenu( $child, $child_index ); ?>
+				<?php else : ?>
+					<?php echo ca_render_nav_link( $child, 'nav-dd-item' ); ?>
+				<?php endif; ?>
 			<?php endforeach; ?>
 		</div>
 	</div>
@@ -185,17 +188,26 @@ function ca_render_nav_dropdown( $item, $index ) {
 	return ob_get_clean();
 }
 
-function ca_flatten_menu_children( $items ) {
-	$flat = [];
+function ca_render_nav_submenu( $item, $index ) {
+	$dropdown_id = sanitize_title( $item['title'] ) . '-' . (int) $index;
 
-	foreach ( $items as $item ) {
-		$flat[] = $item;
-		if ( ! empty( $item['children'] ) ) {
-			$flat = array_merge( $flat, ca_flatten_menu_children( $item['children'] ) );
-		}
-	}
-
-	return $flat;
+	ob_start(); ?>
+	<div class="nav-item has-submenu" data-dropdown="<?php echo esc_attr( $dropdown_id ); ?>">
+		<button class="nav-dd-item<?php echo ca_menu_item_is_active( $item ) ? ' act' : ''; ?>" type="button">
+			<?php echo esc_html( $item['title'] ); ?> <span class="nav-chevron-sub">›</span>
+		</button>
+		<div class="nav-dropdown submenu">
+			<?php foreach ( $item['children'] as $child_index => $child ) : ?>
+				<?php if ( ! empty( $child['children'] ) ) : ?>
+					<?php echo ca_render_nav_submenu( $child, $child_index ); ?>
+				<?php else : ?>
+					<?php echo ca_render_nav_link( $child, 'nav-dd-item' ); ?>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</div>
+	</div>
+	<?php
+	return ob_get_clean();
 }
 
 function ca_render_mobile_menu_items( $items ) {

@@ -6,24 +6,38 @@
 		var closeTimer = null;
 
 		dropdowns.forEach(function (item) {
-			item.addEventListener('mouseenter', function () {
+			item.addEventListener('mouseenter', function (e) {
 				if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
-				dropdowns.forEach(function (d) { if (d !== item) d.classList.remove('open'); });
+				
+				// Only close siblings, not ancestors
+				var siblings = item.parentElement.querySelectorAll(':scope > [data-dropdown]');
+				siblings.forEach(function (s) { if (s !== item) s.classList.remove('open'); });
+				
 				item.classList.add('open');
+				e.stopPropagation();
 			});
+
 			item.addEventListener('mouseleave', function () {
 				if (closeTimer) clearTimeout(closeTimer);
 				closeTimer = setTimeout(function () {
 					item.classList.remove('open');
 				}, 180);
 			});
-			var btn = item.querySelector('.nav-btn');
-			if (btn) {
+
+			var btn = item.querySelector('.nav-btn, .nav-dd-item');
+			if (btn && btn.parentElement === item) {
 				btn.addEventListener('click', function (e) {
-					e.preventDefault();
-					var open = item.classList.contains('open');
-					dropdowns.forEach(function (d) { d.classList.remove('open'); });
-					if (!open) item.classList.add('open');
+					if (item.classList.contains('has-submenu') || item.parentElement.classList.contains('nav-links')) {
+						e.preventDefault();
+						e.stopPropagation();
+						var open = item.classList.contains('open');
+						
+						// Only close siblings
+						var siblings = item.parentElement.querySelectorAll(':scope > [data-dropdown]');
+						siblings.forEach(function (d) { d.classList.remove('open'); });
+						
+						if (!open) item.classList.add('open');
+					}
 				});
 			}
 		});
