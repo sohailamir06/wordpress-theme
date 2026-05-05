@@ -11,6 +11,10 @@
 	position: relative;
 	z-index: 1001;
 	border-bottom: 1px solid rgba(255,255,255,.08);
+	transition: all 0.3s ease;
+	overflow: hidden;
+	height: auto;
+	max-height: 250px;
 }
 .ebar-item {
 	display: inline-flex;
@@ -59,7 +63,28 @@
 	z-index: 1000;
 	background: #fff;
 	box-shadow: 0 2px 20px rgba(0,0,0,.08);
+	transition: all 0.3s ease;
 }
+
+/* Ensure the FSE header wrapper doesn't constrain sticky behavior */
+header.wp-block-template-part {
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+}
+
+/* Scrolled state */
+.nav-wrapper.is-scrolled {
+	box-shadow: 0 4px 25px rgba(0,0,0,.12);
+}
+
+.nav-wrapper.is-scrolled .ebar {
+	max-height: 0;
+	opacity: 0;
+	border-bottom-width: 0;
+	pointer-events: none;
+}
+
 .nav-inner {
 	max-width: var(--max-w);
 	margin: 0 auto;
@@ -68,6 +93,11 @@
 	display: flex;
 	align-items: center;
 	gap: 4px;
+	transition: height 0.3s ease;
+}
+
+.nav-wrapper.is-scrolled .nav-inner {
+	height: 60px;
 }
 .nav-logo {
 	display: flex;

@@ -47,10 +47,31 @@
 		});
 	}
 
+	function initScroll() {
+		var header = document.querySelector('[data-site-header]');
+		if (!header) return;
+
+		function handleScroll() {
+			if (window.scrollY > 40) {
+				header.classList.add('is-scrolled');
+			} else {
+				header.classList.remove('is-scrolled');
+			}
+		}
+
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		handleScroll(); // Initial check
+	}
+
 	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', function () { initNav(); initMobile(); });
+		document.addEventListener('DOMContentLoaded', function () { 
+			initNav(); 
+			initMobile(); 
+			initScroll();
+		});
 	} else {
 		initNav();
 		initMobile();
+		initScroll();
 	}
 })();
