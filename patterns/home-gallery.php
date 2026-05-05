@@ -9,16 +9,16 @@
 $cool_air_gallery_projects = [
 	[ 'label' => 'AC Install', 'title' => '5-Ton Carrier Swap', 'location' => 'Coral Gables - Miami-Dade', 'color' => '#2563eb', 'color_2' => '#0f2f68' ],
 	[ 'label' => 'Ductwork', 'title' => 'Full Duct Replacement', 'location' => 'Boca Square - Palm Beach', 'color' => '#92400e', 'color_2' => '#171923' ],
-	[ 'label' => 'Drain Service', 'title' => 'Main Line Hydro-Jet', 'location' => 'Davie - Broward', 'color' => '#4d7c0f', 'color_2' => '#101827' ],
+	[ 'label' => 'Thermostat', 'title' => 'Smart Multi-Zone Setup', 'location' => 'Doral - Miami-Dade', 'color' => '#3b82f6', 'color_2' => '#111827' ],
 	[ 'label' => 'Emergency Repair', 'title' => '11PM Burst Pipe Rescue', 'location' => 'Coral Springs - Broward', 'color' => '#dc2626', 'color_2' => '#171923' ],
+	[ 'label' => 'Indoor Air', 'title' => 'Whole-home UV purifier', 'location' => 'Weston - Broward', 'color' => '#1e4d5c', 'color_2' => '#0d2631' ],
+	[ 'label' => 'Coastal AC', 'title' => 'Salt-rated condenser', 'location' => 'Highland Beach - Palm Beach', 'color' => '#6b5c3e', 'color_2' => '#3a3220' ],
+	[ 'label' => 'Repipe', 'title' => 'Whole-home copper repipe', 'location' => 'Pembroke Pines - Broward', 'color' => '#4a1e5c', 'color_2' => '#2a0f3c' ],
 	[ 'label' => 'AC Repair', 'title' => 'Same-Day Compressor Fix', 'location' => 'Fort Lauderdale - Broward', 'color' => '#0284c7', 'color_2' => '#0f243d' ],
 	[ 'label' => 'Plumbing', 'title' => 'Tankless Heater Install', 'location' => 'Pembroke Pines - Broward', 'color' => '#0891b2', 'color_2' => '#102a43' ],
-	[ 'label' => 'Commercial', 'title' => 'Rooftop Unit Crane Set', 'location' => 'Miami - Miami-Dade', 'color' => '#7c3aed', 'color_2' => '#111827' ],
-	[ 'label' => 'Maintenance', 'title' => 'Annual Tune-Up Visit', 'location' => 'Wellington - Palm Beach', 'color' => '#1d4ed8', 'color_2' => '#0f172a' ],
 	[ 'label' => 'UV Lights', 'title' => 'UV-C Coil Protection', 'location' => 'Aventura - Miami-Dade', 'color' => '#0d9488', 'color_2' => '#10212b' ],
-	[ 'label' => 'Air Quality', 'title' => 'Whole-Home HEPA Upgrade', 'location' => 'Hollywood - Broward', 'color' => '#0ea5e9', 'color_2' => '#152033' ],
-	[ 'label' => 'Thermostat', 'title' => 'Smart Multi-Zone Setup', 'location' => 'Doral - Miami-Dade', 'color' => '#3b82f6', 'color_2' => '#111827' ],
-	[ 'label' => 'Pipe Repair', 'title' => 'Kitchen Repipe Finish', 'location' => 'Delray Beach - Palm Beach', 'color' => '#16a34a', 'color_2' => '#102018' ],
+	[ 'label' => 'Commercial', 'title' => 'Rooftop Unit Installation', 'location' => 'Miami - Miami-Dade', 'color' => '#7c3aed', 'color_2' => '#111827' ],
+	[ 'label' => 'Maintenance', 'title' => 'Annual Tune-Up Visit', 'location' => 'Wellington - Palm Beach', 'color' => '#1d4ed8', 'color_2' => '#0f172a' ],
 ];
 $cool_air_gallery_total = count( $cool_air_gallery_projects );
 ?>

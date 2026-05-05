@@ -1,8 +1,12 @@
+/* =========================================================
+   GALLERY SECTION — 3-D COVERFLOW CAROUSEL
+   ========================================================= */
+
 .gallery-section {
 	background:
-		linear-gradient(180deg, #ffffff 0%, var(--off) 52%, #ffffff 100%);
+		linear-gradient(180deg, #ffffff 0%, var(--off) 50%, #ffffff 100%);
 	overflow: hidden;
-	padding: 76px 0 92px;
+	padding: 80px 0 100px;
 }
 
 .gallery-section .sec-in {
@@ -10,6 +14,7 @@
 	padding-inline: 40px;
 }
 
+/* ── Head ─────────────────────────────────────────────── */
 .gallery-head {
 	margin-bottom: 0;
 	text-align: center;
@@ -22,14 +27,14 @@
 }
 
 .gallery-head .sec-label {
-	background: rgba(14, 165, 233, .12);
+	background: rgba(56, 189, 248, .12);
 	border-radius: 999px;
 	color: var(--accent);
 	display: inline-flex;
 	font-size: 11px;
 	letter-spacing: 2px;
 	margin-bottom: 18px;
-	padding: 9px 16px;
+	padding: 9px 18px;
 }
 
 .gallery-head .sec-title {
@@ -39,38 +44,44 @@
 
 .gallery-head .sec-sub {
 	margin: 0 auto;
-	max-width: 620px;
+	max-width: 640px;
 	text-align: center;
 }
 
+/* ── Counter ──────────────────────────────────────────── */
 .gallery-count {
 	color: var(--navy);
 	font-family: 'Barlow Condensed', sans-serif;
-	font-size: 21px;
+	font-size: 22px;
 	font-weight: 900;
 	line-height: 1;
-	margin: 30px 0 0;
+	margin: 28px 0 0;
 }
 
 .gallery-count span {
 	color: var(--accent);
 }
 
+/* ── Stage & perspective container ───────────────────── */
 .gallery-stage {
-	--gallery-card-w: clamp(250px, 35vw, 440px);
-	--gallery-card-h: clamp(260px, 26vw, 292px);
-	height: 430px;
-	margin: 72px auto 0;
-	max-width: 1220px;
-	perspective: 1600px;
+	--gallery-card-w: clamp(260px, 32vw, 420px);
+	--gallery-card-h: clamp(270px, 24vw, 300px);
+
+	height: 440px;
+	margin: 64px auto 0;
+	max-width: 1240px;
+	/* KEY: deep perspective for dramatic 3-D */
+	perspective: 1000px;
+	perspective-origin: 50% 40%;
 	position: relative;
 	user-select: none;
 }
 
 .gallery-stage.wp-block-group {
-	max-width: 1220px !important;
+	max-width: 1240px !important;
 }
 
+/* ── Track — lives in 3-D space ──────────────────────── */
 .gallery-track {
 	height: var(--gallery-card-h);
 	left: 50%;
@@ -78,7 +89,7 @@
 	top: 0;
 	transform: translateX(-50%);
 	transform-style: preserve-3d;
-	width: min(100%, 1180px);
+	width: min(100%, 1200px);
 }
 
 .gallery-track.wp-block-group {
@@ -86,17 +97,21 @@
 	max-width: none !important;
 }
 
+/* ── Cards ────────────────────────────────────────────── */
 .gallery-card {
 	--g-color: #2563eb;
 	--g-color-2: #0f172a;
+
 	align-items: flex-start;
 	appearance: none;
 	background:
-		radial-gradient(circle at 78% 18%, rgba(255, 255, 255, .2) 0, transparent 34%),
-		linear-gradient(140deg, var(--g-color) 0%, var(--g-color-2) 68%, #080d17 100%);
-	border: 1px solid rgba(255, 255, 255, .16);
-	border-radius: 18px;
-	box-shadow: 0 22px 44px rgba(15, 23, 42, .14);
+		radial-gradient(circle at 76% 16%, rgba(255, 255, 255, .22) 0, transparent 36%),
+		linear-gradient(145deg, var(--g-color) 0%, var(--g-color-2) 65%, #05080f 100%);
+	border: 1px solid rgba(255, 255, 255, .14);
+	border-radius: 20px;
+	box-shadow:
+		0 24px 48px rgba(15, 23, 42, .18),
+		0 8px 16px rgba(15, 23, 42, .10);
 	color: #fff;
 	cursor: pointer;
 	display: flex;
@@ -104,6 +119,7 @@
 	height: var(--gallery-card-h);
 	justify-content: flex-end;
 	left: 50%;
+	/* horizontally centre each card on the axis */
 	margin: 0 0 0 calc(var(--gallery-card-w) / -2);
 	overflow: hidden;
 	padding: 28px;
@@ -113,32 +129,37 @@
 	transform-origin: center center;
 	transform-style: preserve-3d;
 	transition:
-		transform .72s cubic-bezier(.2,.8,.2,1),
-		opacity .42s ease,
-		filter .42s ease,
-		box-shadow .42s ease;
+		transform .72s cubic-bezier(.25, .46, .45, .94),
+		opacity   .48s ease,
+		filter    .48s ease,
+		box-shadow .48s ease;
 	width: var(--gallery-card-w);
+	will-change: transform, opacity;
 }
 
-.gallery-card::before {
-	background:
-		linear-gradient(90deg, rgba(255,255,255,.18), transparent 32%),
-		linear-gradient(180deg, transparent 0%, rgba(2, 6, 23, .54) 100%);
-	content: "";
-	inset: 0;
-	pointer-events: none;
-	position: absolute;
-}
-
+/* Gloss highlight line at top */
 .gallery-card::after {
-	background: linear-gradient(90deg, rgba(255,255,255,.34), transparent);
-	content: "";
+	background: linear-gradient(90deg, rgba(255, 255, 255, .38), transparent);
+	content: '';
 	height: 1px;
 	left: 18px;
-	opacity: .72;
+	opacity: .65;
 	position: absolute;
 	right: 18px;
 	top: 0;
+}
+
+/* Subtle dark vignette at bottom */
+.gallery-card::before {
+	background: linear-gradient(
+		180deg,
+		transparent 40%,
+		rgba(2, 6, 23, .62) 100%
+	);
+	content: '';
+	inset: 0;
+	pointer-events: none;
+	position: absolute;
 }
 
 .gallery-card.wp-block-group {
@@ -155,29 +176,32 @@
 	z-index: 1;
 }
 
+/* ── Active / front card ──────────────────────────────── */
 .gallery-card.is-front {
-	border-color: rgba(125, 211, 252, .82);
+	border-color: rgba(125, 211, 252, .70);
 	box-shadow:
-		0 34px 90px rgba(37, 99, 235, .34),
-		0 18px 44px rgba(15, 23, 42, .18),
-		0 0 0 3px rgba(56, 189, 248, .34);
-	filter: saturate(1.12);
+		0 40px 90px rgba(14, 165, 233, .32),
+		0 20px 48px rgba(15, 23, 42, .22),
+		0 0 0 2.5px rgba(56, 189, 248, .40);
+	filter: saturate(1.15) brightness(1.04);
 }
 
+/* ── Side cards ───────────────────────────────────────── */
 .gallery-card.is-side {
-	filter: saturate(.9) brightness(.82);
+	filter: saturate(.82) brightness(.74);
 }
 
 .gallery-card.is-hidden {
 	pointer-events: none;
 }
 
+/* ── Card typography ──────────────────────────────────── */
 .gallery-card-index {
 	align-items: center;
-	background: rgba(3, 7, 18, .42);
-	border: 1px solid rgba(255,255,255,.12);
+	background: rgba(3, 7, 18, .46);
+	border: 1px solid rgba(255, 255, 255, .14);
 	border-radius: 8px;
-	color: rgba(255, 255, 255, .86);
+	color: rgba(255, 255, 255, .88);
 	display: inline-flex;
 	font-family: 'Barlow Condensed', sans-serif;
 	font-size: 14px;
@@ -192,10 +216,10 @@
 }
 
 .gallery-card-cat {
-	color: rgba(186, 230, 253, .78);
-	font-size: 13px;
+	color: rgba(186, 230, 253, .82);
+	font-size: 12px;
 	font-weight: 800;
-	letter-spacing: 1.8px;
+	letter-spacing: 2px;
 	line-height: 1;
 	margin-bottom: 9px !important;
 	text-transform: uppercase;
@@ -205,24 +229,24 @@
 	color: #fff;
 	display: block;
 	font-family: 'Barlow Condensed', sans-serif;
-	font-size: clamp(24px, 3vw, 31px);
+	font-size: clamp(23px, 2.8vw, 30px);
 	font-weight: 900;
-	line-height: .98;
+	line-height: .97;
 	margin-bottom: 8px !important;
-	text-transform: none;
 }
 
 .gallery-card-loc {
-	color: rgba(255, 255, 255, .72);
+	color: rgba(255, 255, 255, .68);
 	display: block;
-	font-size: 15px;
-	font-weight: 700;
-	line-height: 1.25;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.3;
 }
 
+/* ── Controls ─────────────────────────────────────────── */
 .gallery-controls {
 	align-items: center;
-	bottom: 58px;
+	bottom: 62px;
 	display: flex;
 	gap: 12px;
 	justify-content: center;
@@ -235,38 +259,38 @@
 .gallery-arrow,
 .gallery-toggle {
 	appearance: none;
-	background: rgba(255,255,255,.92);
-	border: 1px solid rgba(226, 232, 240, .9);
-	box-shadow: 0 10px 26px rgba(15, 23, 42, .14);
+	background: rgba(255, 255, 255, .95);
+	border: 1px solid rgba(203, 213, 225, .85);
+	box-shadow: 0 8px 22px rgba(15, 23, 42, .12);
 	color: var(--navy);
 	cursor: pointer;
 	font-family: 'Barlow Condensed', sans-serif;
 	font-weight: 900;
 	transition:
-		background .2s ease,
+		background  .2s ease,
 		border-color .2s ease,
-		box-shadow .2s ease,
-		color .2s ease,
-		transform .2s ease;
+		box-shadow  .2s ease,
+		color       .2s ease,
+		transform   .2s ease;
 }
 
 .gallery-arrow {
 	align-items: center;
 	border-radius: 50%;
 	display: inline-flex;
-	font-size: 28px;
-	height: 44px;
+	font-size: 26px;
+	height: 46px;
 	justify-content: center;
 	line-height: 1;
-	padding: 0 0 4px;
-	width: 44px;
+	padding: 0 0 3px;
+	width: 46px;
 }
 
 .gallery-toggle {
 	border-radius: 999px;
-	font-size: 13px;
+	font-size: 12px;
 	height: 44px;
-	letter-spacing: .9px;
+	letter-spacing: 1px;
 	padding: 0 22px;
 	text-transform: uppercase;
 }
@@ -277,17 +301,18 @@
 .gallery-toggle:focus-visible {
 	background: var(--accent);
 	border-color: var(--accent);
-	box-shadow: 0 12px 30px rgba(37, 99, 235, .28);
+	box-shadow: 0 10px 28px rgba(14, 165, 233, .36);
 	color: #fff;
 	outline: none;
-	transform: translateY(-1px);
+	transform: translateY(-2px);
 }
 
 .gallery-toggle.is-off {
 	background: #e2e8f0;
-	color: rgba(15, 23, 42, .68);
+	color: rgba(15, 23, 42, .58);
 }
 
+/* ── Dots ─────────────────────────────────────────────── */
 .gallery-dots {
 	align-items: center;
 	bottom: 22px;
@@ -314,26 +339,27 @@
 	height: 7px;
 	padding: 0;
 	transition:
-		background .2s ease,
-		width .2s ease,
-		transform .2s ease;
+		background .22s ease,
+		width      .22s ease,
+		transform  .22s ease;
 	width: 7px;
 }
 
 .gallery-dot:hover,
 .gallery-dot:focus-visible {
-	background: rgba(37, 99, 235, .62);
+	background: rgba(14, 165, 233, .55);
 	outline: none;
-	transform: scale(1.2);
+	transform: scale(1.25);
 }
 
 .gallery-dot.active {
 	background: var(--accent);
-	width: 24px;
+	width: 26px;
 }
 
+/* ── Hint ─────────────────────────────────────────────── */
 .gallery-hint {
-	bottom: -15px;
+	bottom: -18px;
 	color: #64748b;
 	font-size: 12px;
 	left: 0;
@@ -344,21 +370,24 @@
 	text-align: center;
 }
 
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 @media (max-width: 1024px) {
 	.gallery-section .sec-in {
 		padding-inline: 24px;
 	}
 
 	.gallery-stage {
-		--gallery-card-w: clamp(244px, 48vw, 390px);
-		height: 408px;
-		margin-top: 60px;
+		--gallery-card-w: clamp(244px, 46vw, 380px);
+		height: 420px;
+		margin-top: 56px;
 	}
 }
 
 @media (max-width: 768px) {
 	.gallery-section {
-		padding: 60px 0 74px;
+		padding: 60px 0 80px;
 	}
 
 	.gallery-section .sec-in {
@@ -366,10 +395,11 @@
 	}
 
 	.gallery-stage {
-		--gallery-card-w: min(76vw, 326px);
-		--gallery-card-h: 258px;
-		height: 382px;
+		--gallery-card-w: min(78vw, 330px);
+		--gallery-card-h: 266px;
+		height: 390px;
 		margin-top: 48px;
+		perspective: 700px;
 	}
 
 	.gallery-card {
@@ -378,20 +408,16 @@
 	}
 
 	.gallery-card-title {
-		font-size: 25px;
-	}
-
-	.gallery-card-loc {
-		font-size: 13px;
+		font-size: 24px;
 	}
 
 	.gallery-controls {
-		bottom: 54px;
+		bottom: 58px;
 	}
 
 	.gallery-toggle {
-		font-size: 12px;
-		padding-inline: 18px;
+		font-size: 11px;
+		padding-inline: 16px;
 	}
 
 	.gallery-hint {
@@ -401,12 +427,14 @@
 
 @media (max-width: 520px) {
 	.gallery-stage {
-		--gallery-card-w: min(82vw, 300px);
-		--gallery-card-h: 250px;
+		--gallery-card-w: min(84vw, 295px);
+		--gallery-card-h: 252px;
+		height: 376px;
+		perspective: 600px;
 	}
 
 	.gallery-controls {
-		gap: 9px;
+		gap: 8px;
 	}
 
 	.gallery-arrow {
@@ -416,6 +444,6 @@
 
 	.gallery-toggle {
 		height: 40px;
-		padding-inline: 15px;
+		padding-inline: 14px;
 	}
 }

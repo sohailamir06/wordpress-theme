@@ -202,27 +202,61 @@
 			function position() {
 				var stageWidth = stage.clientWidth || root.clientWidth || 1180;
 				var cardWidth = cards[0].getBoundingClientRect().width || 420;
-				var spread = Math.min(Math.max(stageWidth * 0.28, 155), cardWidth * 0.88);
+
+				// ── Coverflow tuning ──────────────────────────────────
+				// firstGap  → horizontal shift of the 1st side card from centre
+				// stackGap  → extra shift added for each card beyond the 1st
+				// baseDepth → Z push for the 1st side card
+				// depthStep → extra Z push per subsequent card
+				// angle     → rotateY for every side card (all same)
+				// scaleStep → scale reduction per step
+				// fadeStep  → opacity reduction per step
+				// maxVisible → cards shown per side before hiding
+				var firstGap   = cardWidth * 0.56;
+				var stackGap   = cardWidth * 0.30;
+				var baseDepth  = 180;
+				var depthStep  = 70;
+				var angle      = 50;
+				var scaleStep  = 0.06;
+				var fadeStep   = 0.22;
+				var maxVisible = 3;
 
 				cards.forEach(function (card, i) {
 					var rel = signedDistance(i);
 					var abs = Math.abs(rel);
-					var hidden = abs > 3;
-					var depth = abs * -92;
-					var rotate = rel * -34;
-					var scale = abs === 0 ? 1.06 : Math.max(0.68, 0.9 - abs * 0.075);
-					var offset = rel * spread * (abs > 1 ? 1.08 : 1);
-					var opacity = hidden ? 0 : Math.max(0.18, 1 - abs * 0.19);
+					var hidden = abs > maxVisible;
 
-					card.style.transform = 'translateX(' + offset + 'px) translateZ(' + depth + 'px) rotateY(' + rotate + 'deg) scale(' + scale + ')';
-					card.style.opacity = opacity;
-					card.style.zIndex = String(120 - abs);
+					var tx = 0, tz = 0, ry = 0, sc = 1, op = 1;
+
+					if (rel !== 0) {
+						var side = rel > 0 ? 1 : -1;
+						// Shift: firstGap for |1|, plus stackGap for each further card
+						tx = side * (firstGap + (abs - 1) * stackGap);
+						tz = -(baseDepth + (abs - 1) * depthStep);
+						ry = -side * angle;
+						sc = Math.max(0.65, 1 - abs * scaleStep);
+						op = Math.max(0, 1 - abs * fadeStep);
+					}
+
+					if (hidden) op = 0;
+
+					card.style.transform =
+						'translateX(' + tx + 'px) ' +
+						'translateZ(' + tz + 'px) ' +
+						'rotateY(' + ry + 'deg) ' +
+						'scale(' + sc + ')';
+
+					card.style.opacity = String(op);
+					card.style.zIndex  = String(100 - abs);
+
 					card.setAttribute('aria-label', 'Project ' + pad(i + 1) + ' of ' + n);
 					card.setAttribute('aria-current', rel === 0 ? 'true' : 'false');
 					card.setAttribute('tabindex', rel === 0 || abs === 1 ? '0' : '-1');
+
 					if (!card.getAttribute('role') && card.tagName.toLowerCase() !== 'button') {
 						card.setAttribute('role', 'button');
 					}
+
 					card.classList.toggle('is-front', rel === 0);
 					card.classList.toggle('is-side', abs > 0 && !hidden);
 					card.classList.toggle('is-hidden', hidden);
