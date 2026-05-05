@@ -2,9 +2,9 @@
 	background: var(--navy);
 	position: relative;
 	overflow: hidden;
-	min-height: 100vh;
+	min-height: calc(100vh - 250px);
 	display: flex;
-	align-items: stretch;
+	align-items: center;
 	width: 100%;
 	max-width: none !important;
 	margin: 0 !important;

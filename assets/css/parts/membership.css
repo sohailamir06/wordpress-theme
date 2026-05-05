@@ -3,11 +3,16 @@
 	padding: 72px 40px;
 	text-align: center;
 }
+
 .memb-label {
-	color: rgba(255,255,255,.6);
+	color: rgba(255, 255, 255, .6);
 	justify-content: center;
 }
-.memb-label::before { background: rgba(255,255,255,.3) !important; }
+
+.memb-label::before {
+	background: rgba(255, 255, 255, .3) !important;
+}
+
 .memb-perks {
 	display: flex;
 	align-items: center;
@@ -18,16 +23,18 @@
 	list-style: none;
 	padding: 0;
 }
+
 /* Gutenberg list-item inside memb-perks */
 .memb-perks li,
 .memb-perk {
 	display: flex;
 	align-items: center;
 	gap: 8px;
-	color: rgba(255,255,255,.92);
+	color: rgba(255, 255, 255, .92);
 	font-size: 15px;
 	font-weight: 500;
 }
+
 /* Override WP list block default styles */
 .memb-perks.wp-block-list,
 ul.memb-perks {
@@ -35,12 +42,13 @@ ul.memb-perks {
 	padding-left: 0 !important;
 	padding-inline-start: 0 !important;
 }
+
 .memb-perks li::before {
 	content: '✓';
 	width: 22px;
 	height: 22px;
 	min-width: 22px;
-	background: rgba(255,255,255,.2);
+	background: rgba(255, 255, 255, .2);
 	border-radius: 50%;
 	display: inline-flex;
 	align-items: center;
@@ -49,10 +57,11 @@ ul.memb-perks {
 	color: #fff;
 	flex-shrink: 0;
 }
+
 .memb-perk-chk {
 	width: 22px;
 	height: 22px;
-	background: rgba(255,255,255,.2);
+	background: rgba(255, 255, 255, .2);
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
@@ -61,7 +70,11 @@ ul.memb-perks {
 	color: #fff;
 	flex-shrink: 0;
 }
-.memb-cta { text-align: center; }
+
+.memb-cta {
+	text-align: center;
+}
+
 /* Gutenberg button block inside membership */
 .memb-cta .wp-block-button__link {
 	background: #fff !important;
@@ -82,6 +95,7 @@ ul.memb-perks {
 	margin-left: auto;
 	margin-right: auto;
 }
+
 .memb-plan-card {
 	background: #fff;
 	border: 1px solid #e8edf5;
@@ -90,11 +104,13 @@ ul.memb-perks {
 	position: relative;
 	transition: all .25s;
 }
+
 .memb-plan-card.is-featured {
 	border-color: var(--cta);
-	box-shadow: 0 12px 40px rgba(34,197,94,.15);
+	box-shadow: 0 12px 40px rgba(34, 197, 94, .15);
 	transform: translateY(-4px);
 }
+
 .memb-plan-flag {
 	position: absolute;
 	top: -12px;
@@ -108,6 +124,7 @@ ul.memb-perks {
 	padding: 5px 14px;
 	border-radius: 999px;
 }
+
 .memb-plan-name {
 	font-family: 'Barlow Condensed', sans-serif;
 	font-size: 28px;
@@ -115,12 +132,14 @@ ul.memb-perks {
 	color: var(--navy);
 	text-transform: uppercase;
 }
+
 .memb-plan-price {
 	display: flex;
 	align-items: baseline;
 	gap: 6px;
 	margin: 12px 0 8px;
 }
+
 .memb-plan-price-val {
 	font-family: 'Barlow Condensed', sans-serif;
 	font-size: 56px;
@@ -128,18 +147,23 @@ ul.memb-perks {
 	color: var(--cta-2);
 	line-height: 1;
 }
+
 .memb-plan-period {
 	font-size: 16px;
 	color: var(--text-2);
 	font-weight: 600;
 }
+
 .memb-plan-tag {
 	font-size: 14px;
 	color: var(--text-2);
 	margin-bottom: 20px;
 	line-height: 1.6;
 }
-.memb-plan-cta { margin-top: 24px; }
+
+.memb-plan-cta {
+	margin-top: 24px;
+}
 
 .bullets-list {
 	list-style: none;
@@ -147,6 +171,7 @@ ul.memb-perks {
 	flex-direction: column;
 	gap: 10px;
 }
+
 .bullets-list li {
 	display: flex;
 	align-items: flex-start;
@@ -155,6 +180,7 @@ ul.memb-perks {
 	color: var(--text-2);
 	line-height: 1.6;
 }
+
 .bullets-list li::before {
 	content: '✓';
 	width: 22px;
@@ -170,4 +196,7 @@ ul.memb-perks {
 	flex-shrink: 0;
 	margin-top: 1px;
 }
-.bullets-list.light li { color: rgba(255,255,255,.75); }
+
+.bullets-list.light li {
+	color: rgba(255, 255, 255, .75);
+}
