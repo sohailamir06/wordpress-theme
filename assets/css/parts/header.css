@@ -250,6 +250,30 @@ header.wp-block-template-part {
 	display: flex;
 }
 
+/* Scrollable Dropdown Styles */
+.nav-item.is-scrollable .nav-dropdown.submenu {
+	max-height: 400px;
+	overflow-y: auto;
+	scrollbar-width: thin;
+	scrollbar-color: var(--accent) #f1f5f9;
+}
+
+/* Custom Scrollbar Styling */
+.nav-dropdown::-webkit-scrollbar {
+	width: 6px;
+}
+.nav-dropdown::-webkit-scrollbar-track {
+	background: #f1f5f9;
+	border-radius: 10px;
+}
+.nav-dropdown::-webkit-scrollbar-thumb {
+	background: #e2e8f0;
+	border-radius: 10px;
+}
+.nav-dropdown::-webkit-scrollbar-thumb:hover {
+	background: var(--accent);
+}
+
 .nav-actions {
 	display: flex;
 	align-items: center;

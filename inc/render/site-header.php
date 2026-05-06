@@ -190,9 +190,10 @@ function ca_render_nav_dropdown( $item, $index ) {
 
 function ca_render_nav_submenu( $item, $index ) {
 	$dropdown_id = sanitize_title( $item['title'] ) . '-' . (int) $index;
+	$is_miami = ( 'Miami-Dade County' === $item['title'] );
 
 	ob_start(); ?>
-	<div class="nav-item has-submenu" data-dropdown="<?php echo esc_attr( $dropdown_id ); ?>">
+	<div class="nav-item has-submenu<?php echo $is_miami ? ' is-scrollable' : ''; ?>" data-dropdown="<?php echo esc_attr( $dropdown_id ); ?>">
 		<button class="nav-dd-item<?php echo ca_menu_item_is_active( $item ) ? ' act' : ''; ?>" type="button">
 			<?php echo esc_html( $item['title'] ); ?> <span class="nav-chevron-sub">›</span>
 		</button>

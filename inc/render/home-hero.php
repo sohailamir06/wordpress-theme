@@ -24,7 +24,7 @@ function ca_section_hero() {
 				<p class="hero-sub">Honest pricing, same-day service, and a team that treats your home like their own. South Florida's most trusted HVAC and plumbing company &mdash; Open 24/7, 365 days a year.</p>
 				<div class="hero-acts">
 					<a class="btn-green" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Schedule Service &rarr;</a>
-					<a class="btn-outline-w" href="tel:<?php echo esc_attr( CA_PHONE_RAW ); ?>"><span aria-hidden="true">&#128222;</span><?php echo esc_html( CA_PHONE ); ?></a>
+					<a class="btn-outline-w" href="tel:<?php echo esc_attr( CA_PHONE_RAW ); ?>"><span aria-hidden="true">&#128222; &#128222;</span><?php echo esc_html( CA_PHONE ); ?></a>
 				</div>
 				<div class="hero-checks">
 					<?php foreach ( $checks as $c ) : ?>

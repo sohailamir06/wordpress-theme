@@ -7,7 +7,7 @@
 	align-items: center;
 	width: 100%;
 	max-width: none !important;
-	margin: 0 !important;
+	margin: auto 0 !important;
 }
 
 .hero-bg {
@@ -21,7 +21,7 @@
 
 .hero-bg.wp-block-group {
 	max-width: none !important;
-	margin: 0 !important;
+	margin: auto 0 !important;
 }
 
 .hero-bg::after {
@@ -101,18 +101,20 @@
 .hero-split {
 	position: relative;
 	z-index: 1;
-	max-width: 1166px;
+	max-width: 1280px;
 	margin: 0 auto;
-	padding: 50px 0 58px;
+	padding: 50px 0;
 	display: grid;
-	grid-template-columns: 500px 513px;
-	gap: 153px;
-	align-items: start;
+	grid-template-columns: 1fr 1fr;
+	/* Each column takes equal space */
+	gap: 50px;
+	/* Adjust the gap as needed */
+	align-items: center;
 	width: 100%;
 }
 
 .hero-split.wp-block-group {
-	max-width: 1166px !important;
+	max-width: 1280px !important;
 	display: grid !important;
 }
 
@@ -209,12 +211,12 @@
 	display: flex;
 	flex-wrap: nowrap;
 	align-items: center;
-	justify-content: center;
+	justify-content: start;
 	gap: 10px 14px;
 	width: max-content;
 	max-width: none;
 	position: relative;
-	left: 50%;
+	left: 47%;
 	transform: translateX(-50%);
 	/* margin: 0 !important;
 	padding: 0 !important; */
@@ -227,7 +229,7 @@
 	display: flex !important;
 	margin: 0 !important;
 	padding: 0 !important;
-	left: 50% !important;
+	left: 47% !important;
 	right: auto !important;
 }
 
@@ -462,8 +464,8 @@
 
 .scroll-indicator {
 	position: absolute;
-	bottom: 17px;
-	left: 50%;
+	bottom: -30px;
+	left: 52%;
 	transform: translateX(-50%);
 	display: flex;
 	flex-direction: column;
@@ -542,7 +544,7 @@
 		flex-wrap: wrap;
 		width: 100%;
 		max-width: none;
-		justify-content: center;
+		justify-content: start;
 		left: auto;
 		transform: none;
 	}
